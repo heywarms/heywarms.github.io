@@ -1,0 +1,8 @@
+<dialog class="search-dialog" aria-labelledby="search-heading">
+  <div class="dialog-heading"><h2 id="search-heading">找一点灵感</h2><button class="icon-button" type="button" data-close-dialog aria-label="关闭搜索"><%- fn_icon('close') %></button></div>
+  <label class="search-input-wrap"><%- fn_icon('search') %><span class="sr-only">搜索文章标题、分类或正文</span><input type="search" autocomplete="off" placeholder="试试 Docker、MySQL、生活…" id="search-input"></label>
+  <p class="search-status" role="status" aria-live="polite">输入关键词，搜索所有文章。</p>
+  <div class="search-results"></div>
+  <div class="search-footer"><span><kbd>Esc</kbd> 关闭</span><a href="<%= url_for('/archives/') %>">浏览全部文章 <%- fn_icon('arrow') %></a></div>
+</dialog>
+<dialog class="image-dialog" aria-label="查看图片"><button class="icon-button" type="button" data-close-dialog aria-label="关闭图片"><%- fn_icon('close') %></button><img alt=""><p></p></dialog>

@@ -1,0 +1,44 @@
+# Fieldnotes — personal theme. All presentation settings live here.
+# Existing posts and Front Matter require no changes.
+brand: Mihotel
+tagline: 保持热爱，奔赴山海。
+hero:
+  eyebrow: A LITTLE CORNER OF THE INTERNET
+  line_one: 保持好奇，
+  line_two: 自在生长。
+  introduction: 写下技术里的发现，也收藏生活中的微光。这里有代码、有想法，还有一些不着急的日常。
+  annotation: 一半是逻辑，一半是浪漫。
+featured:
+  - title: Docker快速入门
+    label: BUILD & EXPLORE
+    description: 从一个容器开始，把环境、镜像与常用命令串起来。
+    artwork: containers
+  - title: MySQL 锁
+    label: UNDER THE HOOD
+    description: 全局锁、表锁与行锁，理解并发背后的秩序。
+    artwork: database
+  - title: 什么是大模型
+    label: STAY CURIOUS
+    description: 关于大模型的第一份笔记，从概念到可能性。
+    artwork: intelligence
+about:
+  heading: 你好，很高兴在这里遇见你。
+  description: 这是我的个人数字花园。我在这里整理技术知识、记录正在探索的问题，也给生活里的灵感留一个位置。
+  note: 希望每次回看，都能遇见一个更清晰的自己。
+  interests:
+    - 技术探索
+    - 开源与创造
+    - 日常灵感
+    - 保持好奇
+social:
+  github: https://github.com/heywarms
+life:
+  title: 给日常，留一点空白。
+  description: 屏幕之外，还有值得慢慢发现的风景。把喜欢的片刻收好，让灵感有地方停留。
+  categories: [生活, 随笔, 旅行, 摄影, 日常]
+  # Add your own photographs here. Paths may point to source/images/ files.
+  # photos:
+  #   - src: /images/my-photo.jpg
+  #     alt: 照片里的风景
+  #     caption: 记住这一刻
+  photos: []

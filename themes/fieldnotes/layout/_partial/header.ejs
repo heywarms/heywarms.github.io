@@ -1,0 +1,15 @@
+<header class="site-header shell">
+  <a class="brand" href="<%= url_for('/') %>" aria-label="<%= config.title %>，首页">
+    <span class="brand-mark" aria-hidden="true"><%- fn_icon('spark') %></span>
+    <span><strong><%= theme.brand || config.title %><span class="brand-dot">.</span></strong><small><%= config.title %></small></span>
+  </a>
+  <nav class="primary-nav" id="primary-nav" aria-label="主导航">
+    <% const navItems = [{label:'首页',path:'/',active:is_home()},{label:'文章',path:'/archives/',active:is_archive() || is_post() || is_category() || is_tag()},{label:'生活',path:'/life/',active:page.fieldnotes_life || page.path === 'life/index.html'},{label:'关于',path:'/about/',active:page.path === 'about/index.html'}]; %>
+    <% navItems.forEach(item => { %><a href="<%= url_for(item.path) %>"<% if (item.active) { %> aria-current="page"<% } %>><%= item.label %></a><% }); %>
+  </nav>
+  <div class="header-actions">
+    <button class="icon-button" type="button" data-open-search aria-label="搜索文章" hidden><%- fn_icon('search') %></button>
+    <button class="icon-button theme-toggle" type="button" aria-label="切换深色模式" data-toggle-theme hidden><%- fn_icon('moon','moon-icon') %><%- fn_icon('sun','sun-icon') %></button>
+    <button class="icon-button menu-toggle" type="button" aria-label="展开导航" aria-expanded="false" aria-controls="primary-nav" data-toggle-menu hidden><%- fn_icon('menu') %></button>
+  </div>
+</header>

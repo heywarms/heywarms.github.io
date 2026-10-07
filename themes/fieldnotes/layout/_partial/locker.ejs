@@ -1,0 +1,36 @@
+<% const lid = 'locker-' + lockerMode; const picks = fn_featured(); %>
+<div class="locker-experience" data-locker data-mode="<%= lockerMode %>" data-brand="<%= theme.brand %>" data-author="<%= config.author || config.title %>" data-count="<%= fn_posts().length %>" data-landscape="<%= url_for('/images/fieldnotes-landscape.svg') %>">
+  <div class="locker-caption"><span>THE CURIOSITY CABINET</span><span>NO. 001</span></div>
+  <div class="locker-stage" aria-label="个人储物柜，三个格子分别收藏文章、生活和个人档案">
+    <img class="locker-poster" src="<%= url_for('/images/locker-preview.png') %>" alt="奶油色立体储物柜，蓝色文章柜门、黄色生活柜门和橙色个人档案抽屉" width="900" height="900">
+    <span class="locker-object-tip" aria-hidden="true"></span>
+    <p class="locker-loading" aria-live="polite">正在布置小柜子…</p>
+  </div>
+  <div class="locker-instructions"><span data-locker-hint>打开一格，随便看看。</span><button type="button" class="locker-reset" data-locker-reset hidden aria-label="合上储物柜并恢复初始视角"><%- fn_icon('refresh') %> 归位</button></div>
+  <div class="locker-controls" aria-label="打开储物柜的格子">
+    <% [{key:'articles',n:'01',label:'文章柜门'},{key:'life',n:'02',label:'生活柜门'},{key:'about',n:'03',label:'档案抽屉'}].forEach(item=>{ %>
+    <button type="button" data-locker-open="<%= item.key %>" aria-expanded="false" aria-controls="<%= lid %>-<%= item.key %>" hidden><span><%= item.n %></span><%= item.label %><%- fn_icon('northeast') %></button>
+    <% }); %>
+  </div>
+  <div class="locker-content">
+    <p class="locker-idle" data-locker-idle>把想法、日常和一点点自己，好好收在这里。</p>
+    <section id="<%= lid %>-articles" class="locker-panel" data-locker-panel="articles" hidden aria-label="文章柜里的笔记">
+      <p class="eyebrow">01 / IDEAS IN THE MAKING</p>
+      <div class="locker-notes"><% picks.forEach((item,index)=>{ %><button type="button" data-locker-pick="article-<%= index %>" aria-pressed="false"><span><%= String(index + 1).padStart(2,'0') %></span><span><%= item.post.title %></span><small>取出</small></button><% }); %></div>
+      <% picks.forEach((item,index)=>{ %><div class="locker-item-detail" data-locker-detail="article-<%= index %>" hidden><p><%= item.description || fn_excerpt(item.post,80) %></p><a class="text-link" href="<%= url_for(item.post.path) %>">打开这篇笔记 <%- fn_icon('arrow') %></a></div><% }); %>
+      <a class="locker-all-link" href="<%= url_for('/archives/') %>">查看全部 <%= fn_posts().length %> 篇文章 ↗</a>
+    </section>
+    <section id="<%= lid %>-life" class="locker-panel" data-locker-panel="life" hidden aria-label="生活柜里的明信片">
+      <p class="eyebrow">02 / AWAY FROM THE SCREEN</p><h3>给生活，留一个格子。</h3><p>这里先放一张山海插画明信片，慢慢收进更多自己的日常。</p>
+      <button class="locker-take" type="button" data-locker-pick="postcard" aria-pressed="false">取出明信片 <%- fn_icon('northeast') %></button>
+      <a class="text-link" href="<%= url_for('/life/') %>">翻翻生活切片 <%- fn_icon('arrow') %></a>
+    </section>
+    <section id="<%= lid %>-about" class="locker-panel" data-locker-panel="about" hidden aria-label="个人档案抽屉">
+      <p class="eyebrow">03 / A PERSON, STILL GROWING</p><h3><%= config.author || config.title %>的个人档案</h3><p>技术、创造和生活，都装进同一个好奇心里。</p>
+      <button class="locker-take" type="button" data-locker-pick="dossier" aria-pressed="false">取出档案袋 <%- fn_icon('northeast') %></button>
+      <a class="text-link" href="<%= lockerMode === 'about' ? '#profile' : url_for('/about/') %>">认识一下 <%- fn_icon('arrow') %></a>
+    </section>
+  </div>
+  <nav class="locker-fallback-links" aria-label="浏览柜子里的内容"><a href="<%= url_for('/archives/') %>">文章</a><a href="<%= url_for('/life/') %>">生活</a><a href="<%= lockerMode === 'about' ? '#profile' : url_for('/about/') %>">关于我</a></nav>
+  <p class="sr-only" data-locker-status aria-live="polite" aria-atomic="true"></p>
+</div>

@@ -61,7 +61,7 @@ pagination_dir: page
 include: null
 exclude: null
 ignore: null
-theme: next
+theme: fieldnotes
 deploy:
   type: git
   repo: https://github.com/wuzheng228/wuzheng228.github.io.git

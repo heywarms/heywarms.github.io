@@ -1,0 +1,1 @@
+<%- partial('_partial/archive-list', {heading:page.year ? page.year + ' 年' + (page.month ? ' ' + page.month + ' 月' : '') : '文章归档', subtitle:'把遇到的问题、想明白的事情，留在这里。', posts:fn_posts(page.posts), paginate:true}) %>

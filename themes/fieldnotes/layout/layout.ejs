@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="<%= config.language || 'zh-CN' %>">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f6f2">
+  <title><%= page.title ? page.title + ' · ' + config.title : config.title + ' · ' + (theme.tagline || '') %></title>
+  <meta name="description" content="<%= page.description || (is_post() ? fn_excerpt(page, 150) : config.description || theme.tagline) %>">
+  <link rel="canonical" href="<%= full_url_for(page.path || '') %>">
+  <link rel="icon" type="image/svg+xml" href="<%= url_for('/images/fieldnotes-mark.svg') %>">
+  <meta property="og:type" content="<%= is_post() ? 'article' : 'website' %>">
+  <meta property="og:title" content="<%= page.title || config.title %>">
+  <meta property="og:description" content="<%= is_post() ? fn_excerpt(page, 150) : config.description || theme.tagline %>">
+  <meta property="og:url" content="<%= full_url_for(page.path || '') %>">
+  <meta property="og:site_name" content="<%= config.title %>">
+  <script>try{document.documentElement.dataset.theme=localStorage.getItem('fieldnotes-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}document.documentElement.classList.add('js')</script>
+  <link rel="stylesheet" href="<%= url_for('/css/fieldnotes.css') %>">
+  <script src="<%= url_for('/js/fieldnotes.js') %>" defer></script>
+  <% if ((is_home() && (!page.current || page.current === 1)) || page.path === "about/index.html" || page.type === "about" || page.layout === "about") { %>
+  <link rel="stylesheet" href="<%= url_for('/css/locker.css') %>">
+  <script type="module" src="<%= url_for('/js/locker.js') %>"></script>
+  <% } %>
+</head>
+<body data-search-url="<%= url_for('/fieldnotes/search.json') %>">
+  <a class="skip-link" href="#main">跳到主要内容</a>
+  <%- partial('_partial/header') %>
+  <main id="main"><%- body %></main>
+  <%- partial('_partial/footer') %>
+  <%- partial('_partial/dialogs') %>
+  <div class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>

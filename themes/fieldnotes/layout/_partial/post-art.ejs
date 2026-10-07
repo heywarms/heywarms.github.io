@@ -1,0 +1,9 @@
+<div class="post-art art-<%= artwork %>" aria-hidden="true">
+<% if (artwork === 'containers') { %>
+  <div class="container-cubes"><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="art-word">build<br>something.</span><span class="art-corner">01 / CONTAINERS</span>
+<% } else if (artwork === 'database') { %>
+  <svg viewBox="0 0 300 190" fill="none"><ellipse cx="165" cy="58" rx="74" ry="26" fill="#efeccc" stroke="currentColor" stroke-width="2"/><path d="M91 58v80c0 15 33 27 74 27s74-12 74-27V58M91 96c0 15 33 27 74 27s74-12 74-27" stroke="currentColor" stroke-width="2"/><path d="M151 70v48" stroke="currentColor" stroke-width="2" stroke-dasharray="3 5"/><rect x="40" y="84" width="58" height="57" rx="12" fill="#e8e776" stroke="currentColor" stroke-width="2"/><path d="M54 84V74a15 15 0 0 1 30 0v10" stroke="currentColor" stroke-width="3"/><circle cx="69" cy="108" r="5" fill="currentColor"/><path d="M69 111v10" stroke="currentColor" stroke-width="3"/></svg><span class="art-corner">02 / DATABASE</span>
+<% } else { %>
+  <div class="ai-asterisk">✳</div><span class="ai-word">what<br>comes<br><em>next?</em></span><span class="art-corner">03 / POSSIBILITIES</span>
+<% } %>
+</div>
