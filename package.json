@@ -23,7 +23,7 @@
     "hexo-generator-index": "^4.0.0",
     "hexo-generator-search": "^2.4.3",
     "hexo-generator-tag": "^2.0.0",
-    "hexo-postcss": "^2.0.0",
+    "hexo-postcss": "^2.2.0",
     "hexo-pro": "file:../hexo-pro-client/hexo-pro",
     "hexo-renderer-ejs": "^2.0.0",
     "hexo-renderer-marked": "^6.3.0",
