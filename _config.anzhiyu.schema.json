@@ -1,0 +1,2547 @@
+{
+  "_meta": {
+    "configHash": "emzfe7",
+    "language": "zh",
+    "generatedAt": "2026-03-08T10:03:45.972Z"
+  },
+  "nav.enable": {
+    "type": "switch",
+    "label": "启用导航"
+  },
+  "nav.travelling": {
+    "type": "switch",
+    "label": "启用旅行"
+  },
+  "nav.clock": {
+    "type": "switch",
+    "label": "启用时钟"
+  },
+  "mourn.enable": {
+    "type": "switch",
+    "label": "启用哀悼日"
+  },
+  "mourn.days": {
+    "type": "input",
+    "label": "哀悼日期",
+    "placeholder": "例如: 4-5,5-12"
+  },
+  "highlight_theme": {
+    "type": "select",
+    "label": "代码高亮主题",
+    "options": [
+      {
+        "value": "darker",
+        "label": "深色"
+      },
+      {
+        "value": "pale night",
+        "label": "浅夜"
+      },
+      {
+        "value": "light",
+        "label": "明亮"
+      },
+      {
+        "value": "ocean",
+        "label": "海洋"
+      },
+      {
+        "value": "mac",
+        "label": "Mac"
+      },
+      {
+        "value": "mac light",
+        "label": "Mac明亮"
+      },
+      {
+        "value": "false",
+        "label": "禁用"
+      }
+    ]
+  },
+  "highlight_copy": {
+    "type": "switch",
+    "label": "启用复制按钮"
+  },
+  "highlight_lang": {
+    "type": "switch",
+    "label": "显示代码语言"
+  },
+  "highlight_shrink": {
+    "type": "select",
+    "label": "代码块收缩",
+    "options": [
+      {
+        "value": "true",
+        "label": "收缩"
+      },
+      {
+        "value": "false",
+        "label": "展开"
+      },
+      {
+        "value": "none",
+        "label": "展开并隐藏按钮"
+      }
+    ]
+  },
+  "highlight_height_limit": {
+    "type": "number",
+    "label": "代码块高度限制",
+    "placeholder": "单位: px"
+  },
+  "code_word_wrap": {
+    "type": "switch",
+    "label": "代码自动换行"
+  },
+  "copy.enable": {
+    "type": "switch",
+    "label": "启用复制提示"
+  },
+  "copy.copyright.enable": {
+    "type": "switch",
+    "label": "启用版权信息"
+  },
+  "copy.copyright.limit_count": {
+    "type": "number",
+    "label": "版权触发字数"
+  },
+  "author_status.enable": {
+    "type": "switch",
+    "label": "启用作者状态"
+  },
+  "author_status.statusImg": {
+    "type": "input",
+    "label": "状态图片",
+    "placeholder": "图片URL"
+  },
+  "algolia_search.enable": {
+    "type": "switch",
+    "label": "启用Algolia搜索"
+  },
+  "algolia_search.hits.per_page": {
+    "type": "number",
+    "label": "每页搜索结果数"
+  },
+  "docsearch.enable": {
+    "type": "switch",
+    "label": "启用Docsearch"
+  },
+  "docsearch.appId": {
+    "type": "input",
+    "label": "App ID",
+    "placeholder": "查看邮件"
+  },
+  "docsearch.apiKey": {
+    "type": "input",
+    "label": "API密钥",
+    "placeholder": "查看邮件"
+  },
+  "docsearch.indexName": {
+    "type": "input",
+    "label": "索引名称",
+    "placeholder": "查看邮件"
+  },
+  "local_search.enable": {
+    "type": "switch",
+    "label": "启用本地搜索"
+  },
+  "local_search.preload": {
+    "type": "switch",
+    "label": "预加载搜索"
+  },
+  "local_search.CDN": {
+    "type": "input",
+    "label": "CDN地址",
+    "placeholder": "CDN URL"
+  },
+  "mathjax.enable": {
+    "type": "switch",
+    "label": "启用MathJax"
+  },
+  "mathjax.per_page": {
+    "type": "switch",
+    "label": "每页加载"
+  },
+  "katex.enable": {
+    "type": "switch",
+    "label": "启用KaTeX"
+  },
+  "katex.per_page": {
+    "type": "switch",
+    "label": "每页加载"
+  },
+  "katex.hide_scrollbar": {
+    "type": "switch",
+    "label": "隐藏滚动条"
+  },
+  "favicon": {
+    "type": "input",
+    "label": "网站图标",
+    "placeholder": "favicon.ico路径"
+  },
+  "avatar.img": {
+    "type": "input",
+    "label": "头像图片",
+    "placeholder": "图片URL"
+  },
+  "avatar.effect": {
+    "type": "switch",
+    "label": "头像效果"
+  },
+  "disable_top_img": {
+    "type": "switch",
+    "label": "禁用顶部图片"
+  },
+  "index_img": {
+    "type": "input",
+    "label": "首页横幅",
+    "placeholder": "CSS背景或false"
+  },
+  "default_top_img": {
+    "type": "input",
+    "label": "默认顶部图片",
+    "placeholder": "图片URL或false"
+  },
+  "cover.index_enable": {
+    "type": "switch",
+    "label": "首页显示封面"
+  },
+  "cover.aside_enable": {
+    "type": "switch",
+    "label": "侧边栏显示封面"
+  },
+  "cover.archives_enable": {
+    "type": "switch",
+    "label": "归档页显示封面"
+  },
+  "cover.position": {
+    "type": "select",
+    "label": "封面位置",
+    "options": [
+      {
+        "value": "left",
+        "label": "左侧"
+      },
+      {
+        "value": "right",
+        "label": "右侧"
+      },
+      {
+        "value": "both",
+        "label": "两侧"
+      }
+    ]
+  },
+  "error_img.flink": {
+    "type": "input",
+    "label": "友链404图片",
+    "placeholder": "图片路径"
+  },
+  "error_img.post_page": {
+    "type": "input",
+    "label": "文章页404图片",
+    "placeholder": "图片路径"
+  },
+  "error_404.enable": {
+    "type": "switch",
+    "label": "启用404页面"
+  },
+  "error_404.subtitle": {
+    "type": "input",
+    "label": "404副标题",
+    "placeholder": "提示文本"
+  },
+  "error_404.background": {
+    "type": "input",
+    "label": "404背景",
+    "placeholder": "图片URL"
+  },
+  "post_meta.page.date_type": {
+    "type": "select",
+    "label": "主页日期类型",
+    "options": [
+      {
+        "value": "created",
+        "label": "创建日"
+      },
+      {
+        "value": "updated",
+        "label": "更新日"
+      },
+      {
+        "value": "both",
+        "label": "两者"
+      }
+    ]
+  },
+  "post_meta.page.date_format": {
+    "type": "select",
+    "label": "主页日期格式",
+    "options": [
+      {
+        "value": "date",
+        "label": "日期"
+      },
+      {
+        "value": "relative",
+        "label": "相对日期"
+      },
+      {
+        "value": "simple",
+        "label": "简单日期"
+      }
+    ]
+  },
+  "post_meta.page.categories": {
+    "type": "switch",
+    "label": "主页显示分类"
+  },
+  "post_meta.page.tags": {
+    "type": "switch",
+    "label": "主页显示标签"
+  },
+  "post_meta.page.label": {
+    "type": "switch",
+    "label": "主页显示描述文字"
+  },
+  "post_meta.post.date_type": {
+    "type": "select",
+    "label": "文章页日期类型",
+    "options": [
+      {
+        "value": "created",
+        "label": "创建日"
+      },
+      {
+        "value": "updated",
+        "label": "更新日"
+      },
+      {
+        "value": "both",
+        "label": "两者"
+      }
+    ]
+  },
+  "post_meta.post.date_format": {
+    "type": "select",
+    "label": "文章页日期格式",
+    "options": [
+      {
+        "value": "date",
+        "label": "日期"
+      },
+      {
+        "value": "relative",
+        "label": "相对日期"
+      }
+    ]
+  },
+  "post_meta.post.categories": {
+    "type": "switch",
+    "label": "文章页显示分类"
+  },
+  "post_meta.post.tags": {
+    "type": "switch",
+    "label": "文章页显示标签"
+  },
+  "post_meta.post.label": {
+    "type": "switch",
+    "label": "文章页显示描述文字"
+  },
+  "post_meta.post.unread": {
+    "type": "switch",
+    "label": "文章未读功能"
+  },
+  "mainTone.enable": {
+    "type": "switch",
+    "label": "启用主色调"
+  },
+  "menu": {
+    "type": "collapse",
+    "label": "导航菜单",
+    "description": "可配置文章、友链、我的、关于等菜单项"
+  },
+  "nav.menu": {
+    "type": "collapse",
+    "label": "导航菜单项",
+    "description": "可配置网页、项目等导航菜单"
+  },
+  "social": {
+    "type": "collapse",
+    "label": "社交图标",
+    "description": "可配置Github、BiliBili等社交链接"
+  },
+  "author_status.skills": {
+    "type": "collapse",
+    "label": "作者技能",
+    "description": "可配置作者技能列表"
+  },
+  "algolia_search.tags": {
+    "type": "collapse",
+    "label": "Algolia搜索标签",
+    "description": "可配置前端、Hexo等搜索标签"
+  },
+  "cover.default_cover": {
+    "type": "collapse",
+    "label": "默认封面",
+    "description": "可配置默认封面图片列表"
+  },
+  "mode": {
+    "type": "select",
+    "label": "主色调模式",
+    "options": [
+      {
+        "value": "colorthief",
+        "label": "前端获取"
+      },
+      {
+        "value": "cdn",
+        "label": "CDN参数"
+      },
+      {
+        "value": "api",
+        "label": "API请求"
+      },
+      {
+        "value": "both",
+        "label": "混合模式"
+      }
+    ]
+  },
+  "api": {
+    "type": "input",
+    "label": "API地址",
+    "placeholder": "mode为api时填写"
+  },
+  "cover_change": {
+    "type": "switch",
+    "label": "封面跟随主色调"
+  },
+  "wordcount.enable": {
+    "type": "switch",
+    "label": "启用字数统计"
+  },
+  "wordcount.post_wordcount": {
+    "type": "switch",
+    "label": "文章字数"
+  },
+  "wordcount.min2read": {
+    "type": "switch",
+    "label": "阅读时间"
+  },
+  "wordcount.total_wordcount": {
+    "type": "switch",
+    "label": "总字数"
+  },
+  "index_post_content.method": {
+    "type": "select",
+    "label": "首页文章摘要",
+    "options": [
+      {
+        "value": "1",
+        "label": "描述"
+      },
+      {
+        "value": "2",
+        "label": "混合"
+      },
+      {
+        "value": "3",
+        "label": "自动摘要"
+      },
+      {
+        "value": "false",
+        "label": "不显示"
+      }
+    ]
+  },
+  "index_post_content.length": {
+    "type": "number",
+    "label": "摘要长度"
+  },
+  "anchor": {
+    "type": "switch",
+    "label": "启用锚点"
+  },
+  "toc.post": {
+    "type": "switch",
+    "label": "文章目录"
+  },
+  "toc.page": {
+    "type": "switch",
+    "label": "页面目录"
+  },
+  "toc.number": {
+    "type": "switch",
+    "label": "显示序号"
+  },
+  "toc.expand": {
+    "type": "switch",
+    "label": "展开目录"
+  },
+  "toc.style_simple": {
+    "type": "switch",
+    "label": "简约样式"
+  },
+  "post_copyright.enable": {
+    "type": "switch",
+    "label": "启用版权声明"
+  },
+  "post_copyright.decode": {
+    "type": "switch",
+    "label": "解码作者"
+  },
+  "post_copyright.author_href": {
+    "type": "input",
+    "label": "作者链接"
+  },
+  "post_copyright.location": {
+    "type": "input",
+    "label": "作者位置"
+  },
+  "post_copyright.license": {
+    "type": "input",
+    "label": "许可协议"
+  },
+  "post_copyright.license_url": {
+    "type": "input",
+    "label": "协议链接"
+  },
+  "post_copyright.avatarSinks": {
+    "type": "switch",
+    "label": "头像下沉"
+  },
+  "post_copyright.copyright_author_img_back": {
+    "type": "input",
+    "label": "作者背景图"
+  },
+  "post_copyright.copyright_author_img_front": {
+    "type": "input",
+    "label": "作者前景图"
+  },
+  "post_copyright.copyright_author_link": {
+    "type": "input",
+    "label": "作者链接"
+  },
+  "reward.enable": {
+    "type": "switch",
+    "label": "启用打赏"
+  },
+  "post_edit.enable": {
+    "type": "switch",
+    "label": "启用在线编辑"
+  },
+  "post_edit.github": {
+    "type": "input",
+    "label": "GitHub编辑链接",
+    "placeholder": "例如：https://github.com/user/repo/edit/branch/path/"
+  },
+  "post_edit.yuque": {
+    "type": "input",
+    "label": "语雀编辑链接",
+    "placeholder": "例如：https://www.yuque.com/user/repo/"
+  },
+  "related_post.enable": {
+    "type": "switch",
+    "label": "启用相关文章"
+  },
+  "related_post.limit": {
+    "type": "number",
+    "label": "相关文章数量"
+  },
+  "related_post.date_type": {
+    "type": "select",
+    "label": "文章日期类型",
+    "options": [
+      {
+        "value": "created",
+        "label": "创建日"
+      },
+      {
+        "value": "updated",
+        "label": "更新日"
+      }
+    ]
+  },
+  "photofigcaption": {
+    "type": "switch",
+    "label": "启用图片描述"
+  },
+  "post_pagination": {
+    "type": "select",
+    "label": "文章分页",
+    "options": [
+      {
+        "value": "1",
+        "label": "旧文章"
+      },
+      {
+        "value": "2",
+        "label": "新文章"
+      },
+      {
+        "value": "3",
+        "label": "仅下一篇(旧)"
+      },
+      {
+        "value": "4",
+        "label": "仅下一篇带图(旧)"
+      },
+      {
+        "value": "false",
+        "label": "禁用"
+      }
+    ]
+  },
+  "noticeOutdate.enable": {
+    "type": "switch",
+    "label": "启用过期提醒"
+  },
+  "noticeOutdate.style": {
+    "type": "select",
+    "label": "提醒样式",
+    "options": [
+      {
+        "value": "simple",
+        "label": "简约"
+      },
+      {
+        "value": "flat",
+        "label": "扁平"
+      }
+    ]
+  },
+  "noticeOutdate.limit_day": {
+    "type": "number",
+    "label": "过期天数"
+  },
+  "noticeOutdate.position": {
+    "type": "select",
+    "label": "提醒位置",
+    "options": [
+      {
+        "value": "top",
+        "label": "顶部"
+      },
+      {
+        "value": "bottom",
+        "label": "底部"
+      }
+    ]
+  },
+  "noticeOutdate.message_prev": {
+    "type": "input",
+    "label": "提醒前缀"
+  },
+  "noticeOutdate.message_next": {
+    "type": "input",
+    "label": "提醒后缀"
+  },
+  "sharejs.enable": {
+    "type": "switch",
+    "label": "启用Share.js"
+  },
+  "sharejs.sites": {
+    "type": "input",
+    "label": "分享站点",
+    "placeholder": "例如：facebook,twitter,wechat"
+  },
+  "addtoany.enable": {
+    "type": "switch",
+    "label": "启用AddToAny"
+  },
+  "addtoany.item": {
+    "type": "input",
+    "label": "分享项目",
+    "placeholder": "例如：facebook,twitter,wechat"
+  },
+  "comments.use": {
+    "type": "input",
+    "label": "评论系统",
+    "placeholder": "例如：Twikoo/Waline"
+  },
+  "comments.text": {
+    "type": "switch",
+    "label": "显示评论名称"
+  },
+  "comments.lazyload": {
+    "type": "switch",
+    "label": "懒加载评论"
+  },
+  "comments.count": {
+    "type": "switch",
+    "label": "显示评论数"
+  },
+  "comments.card_post_count": {
+    "type": "switch",
+    "label": "首页显示评论数"
+  },
+  "valine.appId": {
+    "type": "input",
+    "label": "LeanCloud App ID"
+  },
+  "valine.appKey": {
+    "type": "input",
+    "label": "LeanCloud App Key"
+  },
+  "valine.pageSize": {
+    "type": "number",
+    "label": "评论分页大小"
+  },
+  "valine.avatar": {
+    "type": "input",
+    "label": "头像风格"
+  },
+  "valine.lang": {
+    "type": "input",
+    "label": "语言"
+  },
+  "valine.placeholder": {
+    "type": "input",
+    "label": "评论框占位符"
+  },
+  "valine.guest_info": {
+    "type": "input",
+    "label": "评论者信息"
+  },
+  "valine.recordIP": {
+    "type": "switch",
+    "label": "记录IP"
+  },
+  "valine.serverURLs": {
+    "type": "input",
+    "label": "自定义域名"
+  },
+  "valine.bg": {
+    "type": "input",
+    "label": "评论背景图"
+  },
+  "valine.emojiCDN": {
+    "type": "input",
+    "label": "表情CDN"
+  },
+  "valine.enableQQ": {
+    "type": "switch",
+    "label": "启用QQ信息"
+  },
+  "valine.requiredFields": {
+    "type": "input",
+    "label": "必填字段"
+  },
+  "valine.visitor": {
+    "type": "switch",
+    "label": "访客计数"
+  },
+  "valine.tagMeta": {
+    "type": "input",
+    "label": "标签元数据"
+  },
+  "valine.option": {
+    "type": "input",
+    "label": "其他选项"
+  },
+  "waline.serverURL": {
+    "type": "input",
+    "label": "Waline服务地址"
+  },
+  "waline.bg": {
+    "type": "input",
+    "label": "Waline背景"
+  },
+  "waline.pageview": {
+    "type": "switch",
+    "label": "Waline浏览量"
+  },
+  "meta_css": {
+    "type": "switch",
+    "label": "引入Waline元CSS"
+  },
+  "imageUploader": {
+    "type": "switch",
+    "label": "自定义图片上传"
+  },
+  "option": {
+    "type": "collapse",
+    "label": "Waline可选配置",
+    "description": "后续若有新增/修改配置参数可在此自行添加/修改"
+  },
+  "twikoo.envId": {
+    "type": "input",
+    "label": "Twikoo环境ID"
+  },
+  "twikoo.region": {
+    "type": "input",
+    "label": "Twikoo区域"
+  },
+  "twikoo.visitor": {
+    "type": "switch",
+    "label": "Twikoo访客显示"
+  },
+  "twikoo.option": {
+    "type": "collapse",
+    "label": "Twikoo可选配置",
+    "description": "Twikoo额外配置选项"
+  },
+  "artalk.server": {
+    "type": "input",
+    "label": "Artalk服务器地址"
+  },
+  "artalk.site": {
+    "type": "input",
+    "label": "Artalk站点名称"
+  },
+  "artalk.visitor": {
+    "type": "switch",
+    "label": "Artalk访客显示"
+  },
+  "artalk.option": {
+    "type": "collapse",
+    "label": "Artalk可选配置",
+    "description": "Artalk额外配置选项"
+  },
+  "giscus.repo": {
+    "type": "input",
+    "label": "Giscus仓库名"
+  },
+  "giscus.repo_id": {
+    "type": "input",
+    "label": "Giscus仓库ID"
+  },
+  "giscus.category_id": {
+    "type": "input",
+    "label": "Giscus分类ID"
+  },
+  "giscus.theme.light": {
+    "type": "input",
+    "label": "Giscus浅色主题"
+  },
+  "giscus.theme.dark": {
+    "type": "input",
+    "label": "Giscus深色主题"
+  },
+  "giscus.option": {
+    "type": "collapse",
+    "label": "Giscus可选配置",
+    "description": "Giscus额外配置选项"
+  },
+  "chat_btn": {
+    "type": "switch",
+    "label": "聊天按钮"
+  },
+  "chat_hide_show": {
+    "type": "switch",
+    "label": "滚动显示聊天按钮"
+  },
+  "chatra.enable": {
+    "type": "switch",
+    "label": "启用Chatra"
+  },
+  "chatra.id": {
+    "type": "input",
+    "label": "Chatra ID"
+  },
+  "tidio.enable": {
+    "type": "switch",
+    "label": "启用Tidio"
+  },
+  "tidio.public_key": {
+    "type": "input",
+    "label": "Tidio公钥"
+  },
+  "daovoice.enable": {
+    "type": "switch",
+    "label": "启用Daovoice"
+  },
+  "daovoice.app_id": {
+    "type": "input",
+    "label": "Daovoice应用ID"
+  },
+  "crisp.enable": {
+    "type": "switch",
+    "label": "启用Crisp"
+  },
+  "crisp.website_id": {
+    "type": "input",
+    "label": "Crisp网站ID"
+  },
+  "footer.owner.enable": {
+    "type": "switch",
+    "label": "显示站长信息"
+  },
+  "footer.owner.since": {
+    "type": "number",
+    "label": "建站年份"
+  },
+  "footer.custom_text": {
+    "type": "textarea",
+    "label": "页脚自定义文本"
+  },
+  "footer.runtime.enable": {
+    "type": "switch",
+    "label": "启用运行时间"
+  },
+  "footer.runtime.launch_time": {
+    "type": "input",
+    "label": "网站上线时间",
+    "placeholder": "MM/DD/YYYY HH:mm:ss"
+  },
+  "footer.runtime.work_img": {
+    "type": "input",
+    "label": "上班图片链接"
+  },
+  "footer.runtime.work_description": {
+    "type": "input",
+    "label": "上班描述"
+  },
+  "footer.runtime.offduty_img": {
+    "type": "input",
+    "label": "下班图片链接"
+  },
+  "footer.runtime.offduty_description": {
+    "type": "input",
+    "label": "下班描述"
+  },
+  "footer.bdageitem.enable": {
+    "type": "switch",
+    "label": "启用徽标"
+  },
+  "footer.socialBar.enable": {
+    "type": "switch",
+    "label": "启用社交栏"
+  },
+  "footer.socialBar.centerImg": {
+    "type": "input",
+    "label": "社交栏中心图片"
+  },
+  "footer.list.enable": {
+    "type": "switch",
+    "label": "启用页脚列表"
+  },
+  "footer.list.randomFriends": {
+    "type": "number",
+    "label": "随机友链数量"
+  },
+  "footer.footerBar.enable": {
+    "type": "switch",
+    "label": "启用页脚栏"
+  },
+  "footer.footerBar.authorLink": {
+    "type": "input",
+    "label": "作者链接"
+  },
+  "footer.footerBar.cc.enable": {
+    "type": "switch",
+    "label": "启用版权声明"
+  },
+  "footer.footerBar.cc.link": {
+    "type": "input",
+    "label": "版权声明链接"
+  },
+  "footer.footerBar.subTitle": {
+    "type": "textarea",
+    "label": "页脚副标题"
+  },
+  "enable": {
+    "type": "switch",
+    "label": "启用打字效果"
+  },
+  "effect": {
+    "type": "switch",
+    "label": "打字效果"
+  },
+  "startDelay": {
+    "type": "number",
+    "label": "开始延迟"
+  },
+  "typeSpeed": {
+    "type": "number",
+    "label": "打字速度"
+  },
+  "backSpeed": {
+    "type": "number",
+    "label": "回退速度"
+  },
+  "loop": {
+    "type": "switch",
+    "label": "循环打字"
+  },
+  "source": {
+    "type": "select",
+    "label": "第三方服务",
+    "options": [
+      {
+        "value": false,
+        "label": "关闭"
+      },
+      {
+        "value": 1,
+        "label": "一言网"
+      },
+      {
+        "value": 2,
+        "label": "一句网"
+      },
+      {
+        "value": 3,
+        "label": "今日诗词"
+      }
+    ]
+  },
+  "baidu_analytics": {
+    "type": "collapse",
+    "label": "百度统计",
+    "description": "百度统计配置"
+  },
+  "google_analytics": {
+    "type": "collapse",
+    "label": "谷歌分析",
+    "description": "Google Analytics配置"
+  },
+  "cnzz_analytics": {
+    "type": "collapse",
+    "label": "CNZZ统计",
+    "description": "CNZZ/友盟统计配置"
+  },
+  "cloudflare_analytics": {
+    "type": "collapse",
+    "label": "Cloudflare分析",
+    "description": "Cloudflare Web Analytics配置"
+  },
+  "microsoft_clarity": {
+    "type": "collapse",
+    "label": "Microsoft Clarity",
+    "description": "Microsoft Clarity分析工具"
+  },
+  "google_adsense.enable": {
+    "type": "switch",
+    "label": "启用谷歌广告"
+  },
+  "google_adsense.auto_ads": {
+    "type": "switch",
+    "label": "自动广告"
+  },
+  "google_adsense.js": {
+    "type": "input",
+    "label": "JS文件地址"
+  },
+  "google_adsense.client": {
+    "type": "input",
+    "label": "广告客户ID"
+  },
+  "google_adsense.enable_page_level_ads": {
+    "type": "switch",
+    "label": "页面级广告"
+  },
+  "ad": {
+    "type": "collapse",
+    "label": "手动插入广告",
+    "description": "手动在特定位置插入广告"
+  },
+  "theme_color.enable": {
+    "type": "switch",
+    "label": "启用主题色"
+  },
+  "theme_color.main": {
+    "type": "color",
+    "label": "主色调"
+  },
+  "theme_color.dark_main": {
+    "type": "color",
+    "label": "暗色主色调"
+  },
+  "theme_color.paginator": {
+    "type": "color",
+    "label": "分页器颜色"
+  },
+  "theme_color.text_selection": {
+    "type": "color",
+    "label": "文本选择颜色"
+  },
+  "theme_color.link_color": {
+    "type": "color",
+    "label": "链接颜色"
+  },
+  "theme_color.meta_color": {
+    "type": "color",
+    "label": "元数据颜色"
+  },
+  "theme_color.hr_color": {
+    "type": "color",
+    "label": "水平线颜色"
+  },
+  "theme_color.code_foreground": {
+    "type": "color",
+    "label": "代码前景色"
+  },
+  "theme_color.code_background": {
+    "type": "color",
+    "label": "代码背景色"
+  },
+  "theme_color.toc_color": {
+    "type": "color",
+    "label": "目录颜色"
+  },
+  "theme_color.scrollbar_color": {
+    "type": "color",
+    "label": "滚动条颜色"
+  },
+  "theme_color.meta_theme_color_light": {
+    "type": "color",
+    "label": "浅色主题元色"
+  },
+  "theme_color.meta_theme_color_dark": {
+    "type": "color",
+    "label": "深色主题元色"
+  },
+  "sidebar.site_data.archive": {
+    "type": "switch",
+    "label": "显示归档"
+  },
+  "sidebar.site_data.tag": {
+    "type": "switch",
+    "label": "显示标签"
+  },
+  "sidebar.site_data.category": {
+    "type": "switch",
+    "label": "显示分类"
+  },
+  "sidebar.menus_items": {
+    "type": "switch",
+    "label": "显示菜单项"
+  },
+  "sidebar.tags_cloud": {
+    "type": "switch",
+    "label": "显示标签云"
+  },
+  "sidebar.display_mode": {
+    "type": "switch",
+    "label": "显示模式切换"
+  },
+  "sidebar.nav_menu_project": {
+    "type": "switch",
+    "label": "显示导航菜单项目"
+  },
+  "h2Divider": {
+    "type": "switch",
+    "label": "文章H2分隔线"
+  },
+  "table_interlaced_discoloration": {
+    "type": "switch",
+    "label": "表格隔行变色"
+  },
+  "article_double_row": {
+    "type": "switch",
+    "label": "首页双栏显示"
+  },
+  "index_site_info_top": {
+    "type": "input",
+    "label": "主页标题顶部距离"
+  },
+  "index_top_img_height": {
+    "type": "input",
+    "label": "主页顶部图片高度"
+  },
+  "category_ui": {
+    "type": "number",
+    "label": "分类页UI"
+  },
+  "tag_ui": {
+    "type": "number",
+    "label": "标签页UI"
+  },
+  "footer_bg": {
+    "type": "switch",
+    "label": "页脚背景"
+  },
+  "rightside-bottom": {
+    "type": "input",
+    "label": "右下角按钮底部距离"
+  },
+  "canvas_ribbon.enable": {
+    "type": "switch",
+    "label": "启用静止彩带"
+  },
+  "canvas_ribbon.size": {
+    "type": "number",
+    "label": "彩带大小"
+  },
+  "canvas_ribbon.alpha": {
+    "type": "number",
+    "label": "彩带透明度"
+  },
+  "canvas_ribbon.zIndex": {
+    "type": "number",
+    "label": "彩带层级"
+  },
+  "canvas_ribbon.click_to_change": {
+    "type": "switch",
+    "label": "点击更换彩带"
+  },
+  "canvas_ribbon.mobile": {
+    "type": "switch",
+    "label": "移动端显示"
+  },
+  "canvas_fluttering_ribbon.enable": {
+    "type": "switch",
+    "label": "启用动态彩带"
+  },
+  "canvas_fluttering_ribbon.mobile": {
+    "type": "switch",
+    "label": "移动端显示"
+  },
+  "canvas_nest.enable": {
+    "type": "switch",
+    "label": "启用Canvas Nest"
+  },
+  "canvas_nest.color": {
+    "type": "input",
+    "label": "线条颜色"
+  },
+  "canvas_nest.opacity": {
+    "type": "number",
+    "label": "线条透明度"
+  },
+  "canvas_nest.zIndex": {
+    "type": "number",
+    "label": "背景层级"
+  },
+  "canvas_nest.count": {
+    "type": "number",
+    "label": "线条数量"
+  },
+  "canvas_nest.mobile": {
+    "type": "switch",
+    "label": "移动端显示"
+  },
+  "activate_power_mode.enable": {
+    "type": "switch",
+    "label": "启用打字效果"
+  },
+  "activate_power_mode.colorful": {
+    "type": "switch",
+    "label": "冒光特效"
+  },
+  "activate_power_mode.shake": {
+    "type": "switch",
+    "label": "抖动特效"
+  },
+  "activate_power_mode.mobile": {
+    "type": "switch",
+    "label": "移动端显示"
+  },
+  "fireworks.enable": {
+    "type": "switch",
+    "label": "启用烟火特效"
+  },
+  "fireworks.zIndex": {
+    "type": "number",
+    "label": "特效层级"
+  },
+  "fireworks.mobile": {
+    "type": "switch",
+    "label": "移动端显示"
+  },
+  "click_heart.enable": {
+    "type": "switch",
+    "label": "启用心形特效"
+  },
+  "click_heart.mobile": {
+    "type": "switch",
+    "label": "移动端显示"
+  },
+  "ClickShowText.enable": {
+    "type": "switch",
+    "label": "启用文字特效"
+  },
+  "ClickShowText.fontSize": {
+    "type": "input",
+    "label": "文字大小"
+  },
+  "ClickShowText.random": {
+    "type": "switch",
+    "label": "随机显示"
+  },
+  "ClickShowText.mobile": {
+    "type": "switch",
+    "label": "移动端显示"
+  },
+  "display_mode": {
+    "type": "select",
+    "label": "默认显示模式",
+    "options": [
+      {
+        "value": "light",
+        "label": "浅色"
+      },
+      {
+        "value": "dark",
+        "label": "深色"
+      }
+    ]
+  },
+  "beautify.enable": {
+    "type": "switch",
+    "label": "启用美化"
+  },
+  "beautify.field": {
+    "type": "select",
+    "label": "美化范围",
+    "options": [
+      {
+        "value": "post",
+        "label": "文章"
+      },
+      {
+        "value": "site",
+        "label": "全站"
+      }
+    ]
+  },
+  "beautify.title-prefix-icon": {
+    "type": "input",
+    "label": "标题前缀图标"
+  },
+  "beautify.title-prefix-icon-color": {
+    "type": "color",
+    "label": "图标颜色"
+  },
+  "font.global-font-size": {
+    "type": "input",
+    "label": "全局字体大小"
+  },
+  "code-font-size": {
+    "type": "input",
+    "label": "代码字体大小"
+  },
+  "font-family": {
+    "type": "input",
+    "label": "字体"
+  },
+  "code-font-family": {
+    "type": "input",
+    "label": "代码字体"
+  },
+  "blog_title_font.font_link": {
+    "type": "input",
+    "label": "博客标题字体链接"
+  },
+  "blog_title_font.font-family": {
+    "type": "input",
+    "label": "博客标题字体"
+  },
+  "hr_icon.enable": {
+    "type": "switch",
+    "label": "启用分隔线图标"
+  },
+  "hr_icon.icon": {
+    "type": "input",
+    "label": "分隔线图标代码",
+    "placeholder": "例如: \\f0c4"
+  },
+  "hr_icon.icon-top": {
+    "type": "input",
+    "label": "图标顶部样式"
+  },
+  "subtitle.enable": {
+    "type": "switch",
+    "label": "启用副标题"
+  },
+  "subtitle.effect": {
+    "type": "switch",
+    "label": "启用打字效果"
+  },
+  "subtitle.startDelay": {
+    "type": "number",
+    "label": "打字开始延迟(毫秒)"
+  },
+  "subtitle.typeSpeed": {
+    "type": "number",
+    "label": "打字速度(毫秒)"
+  },
+  "subtitle.backSpeed": {
+    "type": "number",
+    "label": "回退速度(毫秒)"
+  },
+  "subtitle.loop": {
+    "type": "switch",
+    "label": "循环打字"
+  },
+  "subtitle.source": {
+    "type": "select",
+    "label": "副标题来源",
+    "options": [
+      {
+        "value": 1,
+        "label": "一言网"
+      },
+      {
+        "value": 2,
+        "label": "一句网"
+      },
+      {
+        "value": 3,
+        "label": "今日诗词"
+      }
+    ]
+  },
+  "preloader.enable": {
+    "type": "switch",
+    "label": "启用加载动画"
+  },
+  "preloader.source": {
+    "type": "select",
+    "label": "加载动画源",
+    "options": [
+      {
+        "value": 1,
+        "label": "全页加载"
+      },
+      {
+        "value": 2,
+        "label": "进度条"
+      },
+      {
+        "value": 3,
+        "label": "全部"
+      }
+    ]
+  },
+  "preloader.pace_css_url": {
+    "type": "input",
+    "label": "Pace主题CSS链接"
+  },
+  "preloader.avatar": {
+    "type": "input",
+    "label": "加载动画头像"
+  },
+  "aside.enable": {
+    "type": "switch",
+    "label": "启用侧边栏"
+  },
+  "aside.hide": {
+    "type": "switch",
+    "label": "隐藏侧边栏"
+  },
+  "aside.button": {
+    "type": "switch",
+    "label": "显示侧边栏按钮"
+  },
+  "aside.mobile": {
+    "type": "switch",
+    "label": "移动端显示"
+  },
+  "aside.position": {
+    "type": "select",
+    "label": "侧边栏位置",
+    "options": [
+      {
+        "value": "left",
+        "label": "左侧"
+      },
+      {
+        "value": "right",
+        "label": "右侧"
+      }
+    ]
+  },
+  "aside.display.archive": {
+    "type": "switch",
+    "label": "归档页显示侧边栏"
+  },
+  "aside.display.tag": {
+    "type": "switch",
+    "label": "标签页显示侧边栏"
+  },
+  "aside.display.category": {
+    "type": "switch",
+    "label": "分类页显示侧边栏"
+  },
+  "aside.card_author.enable": {
+    "type": "switch",
+    "label": "启用作者卡片"
+  },
+  "aside.card_author.description": {
+    "type": "textarea",
+    "label": "作者描述"
+  },
+  "aside.card_author.name_link": {
+    "type": "input",
+    "label": "作者名称链接"
+  },
+  "aside.card_announcement.enable": {
+    "type": "switch",
+    "label": "启用公告卡片"
+  },
+  "aside.card_announcement.content": {
+    "type": "textarea",
+    "label": "公告内容"
+  },
+  "aside.card_weixin.enable": {
+    "type": "switch",
+    "label": "启用微信卡片"
+  },
+  "aside.card_weixin.face": {
+    "type": "input",
+    "label": "微信正面二维码"
+  },
+  "aside.card_weixin.backFace": {
+    "type": "input",
+    "label": "微信背面二维码"
+  },
+  "aside.card_recent_post.enable": {
+    "type": "switch",
+    "label": "启用最新文章卡片"
+  },
+  "aside.card_recent_post.limit": {
+    "type": "number",
+    "label": "最新文章显示数量"
+  },
+  "aside.card_recent_post.sort": {
+    "type": "select",
+    "label": "最新文章排序方式",
+    "options": [
+      {
+        "value": "date",
+        "label": "发布日期"
+      },
+      {
+        "value": "updated",
+        "label": "更新日期"
+      }
+    ]
+  },
+  "aside.card_categories.enable": {
+    "type": "switch",
+    "label": "启用分类卡片"
+  },
+  "aside.card_categories.limit": {
+    "type": "number",
+    "label": "分类显示数量"
+  },
+  "aside.card_categories.expand": {
+    "type": "select",
+    "label": "分类展开方式",
+    "options": [
+      {
+        "value": "none",
+        "label": "不展开"
+      },
+      {
+        "value": "true",
+        "label": "展开"
+      },
+      {
+        "value": "false",
+        "label": "折叠"
+      }
+    ]
+  },
+  "aside.card_tags.enable": {
+    "type": "switch",
+    "label": "启用标签卡片"
+  },
+  "aside.card_tags.limit": {
+    "type": "number",
+    "label": "标签显示数量"
+  },
+  "aside.card_tags.color": {
+    "type": "switch",
+    "label": "标签颜色"
+  },
+  "aside.card_archives.enable": {
+    "type": "switch",
+    "label": "启用归档卡片"
+  },
+  "aside.card_archives.type": {
+    "type": "select",
+    "label": "归档类型",
+    "options": [
+      {
+        "value": "yearly",
+        "label": "按年"
+      },
+      {
+        "value": "monthly",
+        "label": "按月"
+      }
+    ]
+  },
+  "aside.card_archives.format": {
+    "type": "input",
+    "label": "归档日期格式",
+    "placeholder": "例如: MMMM YYYY"
+  },
+  "aside.card_archives.order": {
+    "type": "number",
+    "label": "归档排序方向"
+  },
+  "aside.card_archives.limit": {
+    "type": "number",
+    "label": "归档显示数量"
+  },
+  "aside.card_webinfo.enable": {
+    "type": "switch",
+    "label": "启用网站信息卡片"
+  },
+  "aside.card_webinfo.post_count": {
+    "type": "switch",
+    "label": "显示文章总数"
+  },
+  "aside.card_webinfo.last_push_date": {
+    "type": "switch",
+    "label": "显示最后更新日期"
+  },
+  "busuanzi.site_uv": {
+    "type": "switch",
+    "label": "显示网站访客数"
+  },
+  "busuanzi.site_pv": {
+    "type": "switch",
+    "label": "显示网站访问量"
+  },
+  "busuanzi.page_pv": {
+    "type": "switch",
+    "label": "显示页面访问量"
+  },
+  "runtimeshow.enable": {
+    "type": "switch",
+    "label": "显示运行时间"
+  },
+  "runtimeshow.publish_date": {
+    "type": "input",
+    "label": "发布日期",
+    "placeholder": "例如: 4/1/2021 00:00:00"
+  },
+  "newest_comments.enable": {
+    "type": "switch",
+    "label": "启用最新评论"
+  },
+  "newest_comments.limit": {
+    "type": "number",
+    "label": "最新评论显示数量"
+  },
+  "newest_comments.storage": {
+    "type": "number",
+    "label": "本地存储时间(分钟)"
+  },
+  "newest_comments.avatar": {
+    "type": "switch",
+    "label": "显示评论头像"
+  },
+  "translate.enable": {
+    "type": "switch",
+    "label": "启用简繁转换"
+  },
+  "translate.default": {
+    "type": "input",
+    "label": "默认按钮文本"
+  },
+  "translate.rightMenuMsgDefault": {
+    "type": "input",
+    "label": "右键菜单默认文本"
+  },
+  "translate.defaultEncoding": {
+    "type": "select",
+    "label": "默认网站语言",
+    "options": [
+      {
+        "value": 1,
+        "label": "繁体中文"
+      },
+      {
+        "value": 2,
+        "label": "简体中文"
+      }
+    ]
+  },
+  "translate.translateDelay": {
+    "type": "number",
+    "label": "转换延迟时间"
+  },
+  "translate.msgToTraditionalChinese": {
+    "type": "input",
+    "label": "简体转繁体按钮文本"
+  },
+  "translate.msgToSimplifiedChinese": {
+    "type": "input",
+    "label": "繁体转简体按钮文本"
+  },
+  "translate.rightMenuMsgToTraditionalChinese": {
+    "type": "input",
+    "label": "右键菜单转繁体文本"
+  },
+  "translate.rightMenuMsgToSimplifiedChinese": {
+    "type": "input",
+    "label": "右键菜单转简体文本"
+  },
+  "readmode": {
+    "type": "switch",
+    "label": "阅读模式"
+  },
+  "centerConsole.enable": {
+    "type": "switch",
+    "label": "启用中控台"
+  },
+  "centerConsole.card_tags.enable": {
+    "type": "switch",
+    "label": "启用中控台标签卡片"
+  },
+  "centerConsole.card_tags.limit": {
+    "type": "number",
+    "label": "中控台标签显示数量"
+  },
+  "centerConsole.card_tags.color": {
+    "type": "switch",
+    "label": "中控台标签颜色"
+  },
+  "centerConsole.card_archives.enable": {
+    "type": "switch",
+    "label": "启用中控台归档卡片"
+  },
+  "type": {
+    "type": "select",
+    "label": "归档类型",
+    "options": [
+      {
+        "value": "yearly",
+        "label": "按年"
+      },
+      {
+        "value": "monthly",
+        "label": "按月"
+      }
+    ]
+  },
+  "format": {
+    "type": "input",
+    "label": "日期格式",
+    "placeholder": "例如：YYYY年MM月"
+  },
+  "order": {
+    "type": "number",
+    "label": "排序方向",
+    "placeholder": "1升序，-1降序"
+  },
+  "limit": {
+    "type": "number",
+    "label": "显示数量",
+    "placeholder": "0表示显示全部"
+  },
+  "sort_order": {
+    "type": "collapse",
+    "label": "排序设置",
+    "description": "除非了解其工作原理，否则请勿修改"
+  },
+  "darkmode.enable": {
+    "type": "switch",
+    "label": "启用深色模式"
+  },
+  "darkmode.button": {
+    "type": "switch",
+    "label": "显示切换按钮"
+  },
+  "darkmode.autoChangeMode": {
+    "type": "select",
+    "label": "自动切换模式",
+    "options": [
+      {
+        "value": "1",
+        "label": "跟随系统"
+      },
+      {
+        "value": "2",
+        "label": "定时切换"
+      },
+      {
+        "value": "false",
+        "label": "关闭"
+      }
+    ]
+  },
+  "darkmode.start": {
+    "type": "number",
+    "label": "深色模式开始时间"
+  },
+  "darkmode.end": {
+    "type": "number",
+    "label": "深色模式结束时间"
+  },
+  "rightside_item_order.enable": {
+    "type": "switch",
+    "label": "启用右侧栏排序"
+  },
+  "rightside_item_order.hide": {
+    "type": "collapse",
+    "label": "隐藏的右侧栏项目",
+    "description": "非必要请勿修改"
+  },
+  "rightside_item_order.show": {
+    "type": "collapse",
+    "label": "显示的右侧栏项目",
+    "description": "非必要请勿修改"
+  },
+  "medium_zoom": {
+    "type": "switch",
+    "label": "启用Medium Zoom"
+  },
+  "fancybox": {
+    "type": "switch",
+    "label": "启用Fancybox"
+  },
+  "mermaid.enable": {
+    "type": "switch",
+    "label": "启用Mermaid图表"
+  },
+  "mermaid.theme.light": {
+    "type": "select",
+    "label": "浅色主题",
+    "options": [
+      {
+        "value": "default",
+        "label": "默认"
+      },
+      {
+        "value": "forest",
+        "label": "森林"
+      },
+      {
+        "value": "dark",
+        "label": "深色"
+      },
+      {
+        "value": "neutral",
+        "label": "中性"
+      }
+    ]
+  },
+  "mermaid.theme.dark": {
+    "type": "select",
+    "label": "深色主题",
+    "options": [
+      {
+        "value": "default",
+        "label": "默认"
+      },
+      {
+        "value": "forest",
+        "label": "森林"
+      },
+      {
+        "value": "dark",
+        "label": "深色"
+      },
+      {
+        "value": "neutral",
+        "label": "中性"
+      }
+    ]
+  },
+  "note.style": {
+    "type": "select",
+    "label": "便签样式",
+    "options": [
+      {
+        "value": "simple",
+        "label": "简单"
+      },
+      {
+        "value": "modern",
+        "label": "现代"
+      },
+      {
+        "value": "flat",
+        "label": "扁平"
+      },
+      {
+        "value": "disabled",
+        "label": "禁用"
+      }
+    ]
+  },
+  "note.icons": {
+    "type": "switch",
+    "label": "显示便签图标"
+  },
+  "note.border_radius": {
+    "type": "number",
+    "label": "边框圆角"
+  },
+  "note.light_bg_offset": {
+    "type": "number",
+    "label": "背景亮度偏移",
+    "placeholder": "百分比偏移量"
+  },
+  "icons.ali_iconfont_js": {
+    "type": "input",
+    "label": "阿里图标链接",
+    "placeholder": "阿里图标symbol引用链接"
+  },
+  "icons.fontawesome": {
+    "type": "switch",
+    "label": "启用FontAwesome6"
+  },
+  "icons.fontawesome_animation_css": {
+    "type": "input",
+    "label": "FontAwesome动画CSS",
+    "placeholder": "动画CSS链接"
+  },
+  "pjax.enable": {
+    "type": "switch",
+    "label": "启用Pjax"
+  },
+  "pjax.exclude": {
+    "type": "collapse",
+    "label": "Pjax排除项",
+    "description": "可能不稳定，发现bug请反馈"
+  },
+  "aplayerInject.enable": {
+    "type": "switch",
+    "label": "注入Aplayer"
+  },
+  "aplayerInject.per_page": {
+    "type": "switch",
+    "label": "每页独立注入"
+  },
+  "snackbar.enable": {
+    "type": "switch",
+    "label": "启用Snackbar弹窗"
+  },
+  "snackbar.position": {
+    "type": "select",
+    "label": "弹窗位置",
+    "options": [
+      {
+        "value": "top-left",
+        "label": "左上"
+      },
+      {
+        "value": "top-center",
+        "label": "上中"
+      },
+      {
+        "value": "top-right",
+        "label": "右上"
+      },
+      {
+        "value": "bottom-left",
+        "label": "左下"
+      },
+      {
+        "value": "bottom-center",
+        "label": "下中"
+      },
+      {
+        "value": "bottom-right",
+        "label": "右下"
+      }
+    ]
+  },
+  "snackbar.bg_light": {
+    "type": "color",
+    "label": "浅色背景色"
+  },
+  "snackbar.bg_dark": {
+    "type": "color",
+    "label": "深色背景色"
+  },
+  "instantpage": {
+    "type": "switch",
+    "label": "启用InstantPage预加载"
+  },
+  "pangu.enable": {
+    "type": "switch",
+    "label": "启用中英文空格"
+  },
+  "pangu.field": {
+    "type": "select",
+    "label": "应用范围",
+    "options": [
+      {
+        "value": "site",
+        "label": "全站"
+      },
+      {
+        "value": "post",
+        "label": "文章"
+      }
+    ]
+  },
+  "lazyload.enable": {
+    "type": "switch",
+    "label": "启用图片懒加载"
+  },
+  "lazyload.field": {
+    "type": "select",
+    "label": "应用范围",
+    "options": [
+      {
+        "value": "site",
+        "label": "全站"
+      },
+      {
+        "value": "post",
+        "label": "文章"
+      }
+    ]
+  },
+  "lazyload.placeholder": {
+    "type": "input",
+    "label": "占位图",
+    "placeholder": "懒加载占位图URL"
+  },
+  "lazyload.blur": {
+    "type": "switch",
+    "label": "启用模糊效果"
+  },
+  "lazyload.progressive": {
+    "type": "switch",
+    "label": "启用渐进加载"
+  },
+  "pwa.enable": {
+    "type": "switch",
+    "label": "启用PWA"
+  },
+  "pwa.startup_image_enable": {
+    "type": "switch",
+    "label": "启用启动图"
+  },
+  "pwa.manifest": {
+    "type": "input",
+    "label": "Manifest文件路径"
+  },
+  "pwa.theme_color": {
+    "type": "color",
+    "label": "主题颜色"
+  },
+  "pwa.mask_icon": {
+    "type": "input",
+    "label": "Mask图标"
+  },
+  "pwa.apple_touch_icon": {
+    "type": "input",
+    "label": "Apple触摸图标"
+  },
+  "pwa.bookmark_icon": {
+    "type": "input",
+    "label": "书签图标"
+  },
+  "pwa.favicon_32_32": {
+    "type": "input",
+    "label": "32x32图标"
+  },
+  "pwa.favicon_16_16": {
+    "type": "input",
+    "label": "16x16图标"
+  },
+  "Open_Graph_meta": {
+    "type": "switch",
+    "label": "启用Open Graph元标签"
+  },
+  "css_prefix": {
+    "type": "switch",
+    "label": "添加CSS前缀"
+  },
+  "home_top.enable": {
+    "type": "switch",
+    "label": "启用首页顶部"
+  },
+  "home_top.timemode": {
+    "type": "select",
+    "label": "时间模式",
+    "options": [
+      {
+        "value": "date",
+        "label": "发布日期"
+      },
+      {
+        "value": "updated",
+        "label": "更新日期"
+      }
+    ]
+  },
+  "home_top.title": {
+    "type": "input",
+    "label": "首页标题"
+  },
+  "home_top.subTitle": {
+    "type": "input",
+    "label": "首页副标题"
+  },
+  "home_top.siteText": {
+    "type": "input",
+    "label": "站点文字"
+  },
+  "home_top.category": {
+    "type": "collapse",
+    "label": "首页分类",
+    "description": "首页顶部分类配置"
+  },
+  "home_top.default_descr": {
+    "type": "input",
+    "label": "默认描述"
+  },
+  "home_top.swiper.enable": {
+    "type": "switch",
+    "label": "启用轮播图"
+  },
+  "home_top.swiper.swiper_css": {
+    "type": "input",
+    "label": "Swiper CSS依赖",
+    "placeholder": "Swiper CSS链接"
+  },
+  "home_top.swiper.swiper_js": {
+    "type": "input",
+    "label": "Swiper JS依赖",
+    "placeholder": "Swiper JS链接"
+  },
+  "home_top.banner.tips": {
+    "type": "input",
+    "label": "横幅提示"
+  },
+  "home_top.banner.title": {
+    "type": "input",
+    "label": "横幅标题"
+  },
+  "home_top.banner.image": {
+    "type": "input",
+    "label": "横幅图片",
+    "placeholder": "图片URL"
+  },
+  "home_top.banner.link": {
+    "type": "input",
+    "label": "横幅链接",
+    "placeholder": "链接URL"
+  },
+  "friends_vue.enable": {
+    "type": "switch",
+    "label": "启用朋友圈"
+  },
+  "vue_js": {
+    "type": "input",
+    "label": "Vue JS 地址",
+    "placeholder": "请输入 JS 文件 URL"
+  },
+  "apiurl": {
+    "type": "input",
+    "label": "朋友圈后端地址",
+    "placeholder": "请输入 API 地址"
+  },
+  "top_tips": {
+    "type": "input",
+    "label": "顶部提示语",
+    "placeholder": "请输入提示文本"
+  },
+  "top_background": {
+    "type": "input",
+    "label": "顶部背景",
+    "placeholder": "请输入背景图片 URL"
+  },
+  "universe.enable": {
+    "type": "switch",
+    "label": "深色模式粒子效果"
+  },
+  "bubble.enable": {
+    "type": "switch",
+    "label": "页面气泡效果"
+  },
+  "console.enable": {
+    "type": "switch",
+    "label": "控制台打印信息"
+  },
+  "LA.enable": {
+    "type": "switch",
+    "label": "51a 统计"
+  },
+  "LA.ck": {
+    "type": "input",
+    "label": "51a 统计 CK",
+    "placeholder": "请输入 CK 值"
+  },
+  "LA.LingQueMonitorID": {
+    "type": "input",
+    "label": "51a 统计 ID",
+    "placeholder": "请输入监控 ID"
+  },
+  "umami.enable": {
+    "type": "switch",
+    "label": "Umami 统计"
+  },
+  "umami.apiHost": {
+    "type": "input",
+    "label": "Umami API 地址",
+    "placeholder": "https://analytics.example.com"
+  },
+  "umami.websiteId": {
+    "type": "input",
+    "label": "网站 ID",
+    "placeholder": "请输入网站 ID"
+  },
+  "umami.token": {
+    "type": "input",
+    "label": "API Token",
+    "placeholder": "请输入 API Token"
+  },
+  "diytitle.enable": {
+    "type": "switch",
+    "label": "标签卖萌"
+  },
+  "diytitle.leaveTitle": {
+    "type": "input",
+    "label": "离开标题",
+    "placeholder": "请输入离开时标题"
+  },
+  "diytitle.backTitle": {
+    "type": "input",
+    "label": "返回标题",
+    "placeholder": "请输入返回时标题"
+  },
+  "comment_barrage_config.enable": {
+    "type": "switch",
+    "label": "留言弹幕"
+  },
+  "comment_barrage_config.maxBarrage": {
+    "type": "number",
+    "label": "最大弹幕数",
+    "placeholder": "请输入同时显示的最大弹幕数"
+  },
+  "comment_barrage_config.barrageTime": {
+    "type": "number",
+    "label": "弹幕间隔时间(ms)",
+    "placeholder": "请输入弹幕显示间隔时间"
+  },
+  "comment_barrage_config.accessToken": {
+    "type": "input",
+    "label": "访问 Token",
+    "placeholder": "请输入控制台获取的 Token"
+  },
+  "comment_barrage_config.mailMd5": {
+    "type": "input",
+    "label": "博主邮箱 MD5",
+    "placeholder": "请输入博主邮箱的 MD5 值"
+  },
+  "nav_music.enable": {
+    "type": "switch",
+    "label": "左下角音乐"
+  },
+  "nav_music.console_widescreen_music": {
+    "type": "switch",
+    "label": "宽屏控制台显示音乐"
+  },
+  "nav_music.id": {
+    "type": "input",
+    "label": "歌单 ID",
+    "placeholder": "请输入歌单 ID"
+  },
+  "nav_music.server": {
+    "type": "select",
+    "label": "音乐服务器",
+    "options": [
+      {
+        "value": "netease",
+        "label": "网易云音乐"
+      },
+      {
+        "value": "tencent",
+        "label": "QQ音乐"
+      },
+      {
+        "value": "kugou",
+        "label": "酷狗音乐"
+      },
+      {
+        "value": "xiami",
+        "label": "虾米音乐"
+      },
+      {
+        "value": "baidu",
+        "label": "百度音乐"
+      }
+    ]
+  },
+  "nav_music.volume": {
+    "type": "number",
+    "label": "默认音量",
+    "placeholder": "请输入默认音量(0-1)"
+  },
+  "nav_music.all_playlist": {
+    "type": "input",
+    "label": "全部歌单 URL",
+    "placeholder": "请输入歌单 URL"
+  },
+  "music_page_default": {
+    "type": "select",
+    "label": "音乐页面默认歌单",
+    "options": [
+      {
+        "value": "nav_music",
+        "label": "导航音乐"
+      },
+      {
+        "value": "custom",
+        "label": "自定义"
+      }
+    ]
+  },
+  "visitorMail.enable": {
+    "type": "switch",
+    "label": "评论匿名邮箱"
+  },
+  "visitorMail.mail": {
+    "type": "input",
+    "label": "匿名邮箱地址",
+    "placeholder": "请输入默认匿名邮箱"
+  },
+  "ptool.enable": {
+    "type": "switch",
+    "label": "文章底部工具"
+  },
+  "ptool.share_mobile": {
+    "type": "switch",
+    "label": "移动端分享"
+  },
+  "ptool.share_weibo": {
+    "type": "switch",
+    "label": "微博分享"
+  },
+  "ptool.share_copyurl": {
+    "type": "switch",
+    "label": "复制链接"
+  },
+  "ptool.categories": {
+    "type": "switch",
+    "label": "显示分类"
+  },
+  "ptool.mode": {
+    "type": "input",
+    "label": "运营模式",
+    "placeholder": "请输入运营模式描述"
+  },
+  "greetingBox": {
+    "type": "collapse",
+    "label": "欢迎语配置",
+    "description": "配置不同时间段的欢迎语，需按格式填写 list 数组"
+  },
+  "post_head_ai_description.enable": {
+    "type": "switch",
+    "label": "文章 AI 摘要"
+  },
+  "post_head_ai_description.gptName": {
+    "type": "input",
+    "label": "GPT 名称",
+    "placeholder": "请输入 AI 名称"
+  },
+  "post_head_ai_description.mode": {
+    "type": "select",
+    "label": "摘要模式",
+    "options": [
+      {
+        "value": "tianli",
+        "label": "天利"
+      },
+      {
+        "value": "local",
+        "label": "本地"
+      }
+    ]
+  },
+  "post_head_ai_description.switchBtn": {
+    "type": "switch",
+    "label": "显示切换按钮"
+  },
+  "post_head_ai_description.btnLink": {
+    "type": "input",
+    "label": "按钮链接",
+    "placeholder": "请输入按钮跳转链接"
+  },
+  "post_head_ai_description.randomNum": {
+    "type": "number",
+    "label": "随机次数",
+    "placeholder": "请输入最大随机次数"
+  },
+  "post_head_ai_description.basicWordCount": {
+    "type": "number",
+    "label": "最低字符数",
+    "placeholder": "请输入最低获取字符数(1000-1999)"
+  },
+  "post_head_ai_description.key": {
+    "type": "input",
+    "label": "API Key",
+    "placeholder": "请输入 API Key"
+  },
+  "post_head_ai_description.Referer": {
+    "type": "input",
+    "label": "Referer",
+    "placeholder": "请输入 Referer 地址"
+  },
+  "shortcutKey.enable": {
+    "type": "switch",
+    "label": "快捷键"
+  },
+  "shortcutKey.delay": {
+    "type": "number",
+    "label": "键位延时(ms)",
+    "placeholder": "请输入所有键位延时"
+  },
+  "shortcutKey.shiftDelay": {
+    "type": "number",
+    "label": "Shift 延时(ms)",
+    "placeholder": "请输入 Shift 按下延时"
+  },
+  "accesskey.enable": {
+    "type": "switch",
+    "label": "无障碍优化"
+  },
+  "linkPageTop.enable": {
+    "type": "switch",
+    "label": "友情链接顶部配置"
+  },
+  "linkPageTop.title": {
+    "type": "input",
+    "label": "友情链接标题",
+    "placeholder": "请输入标题文本"
+  },
+  "linkPageTop.addFriendPlaceholder": {
+    "type": "textarea",
+    "label": "添加友链格式",
+    "placeholder": "请输入自定义评论格式"
+  },
+  "pageThumbnailSuffix": {
+    "type": "input",
+    "label": "缩略图后缀",
+    "placeholder": "请输入页面缩略图后缀"
+  },
+  "agreementPopup.enable": {
+    "type": "switch",
+    "label": "隐私协议弹窗"
+  },
+  "agreementPopup.url": {
+    "type": "input",
+    "label": "协议页面路径",
+    "placeholder": "请输入隐私协议页面路径"
+  },
+  "rightClickMenu.enable": {
+    "type": "switch",
+    "label": "右键菜单"
+  },
+  "peoplecanvas.enable": {
+    "type": "switch",
+    "label": "首页随便逛逛模式"
+  },
+  "peoplecanvas.img": {
+    "type": "input",
+    "label": "首页图片",
+    "placeholder": "请输入图片 URL"
+  },
+  "dynamicEffect.postTopWave": {
+    "type": "switch",
+    "label": "文章顶部波浪效果"
+  },
+  "dynamicEffect.postTopRollZoomInfo": {
+    "type": "switch",
+    "label": "文章顶部滚动缩放"
+  },
+  "dynamicEffect.pageCommentsRollZoom": {
+    "type": "switch",
+    "label": "非文章页面评论滚动缩放"
+  },
+  "inject": {
+    "type": "collapse",
+    "label": "代码注入",
+    "description": "在 head 和 bottom 中插入自定义 CSS 和 JS 代码"
+  },
+  "CDN.internal_provider": {
+    "type": "select",
+    "label": "内部脚本 CDN",
+    "options": [
+      {
+        "value": "local",
+        "label": "本地"
+      },
+      {
+        "value": "elemecdn",
+        "label": "elemecdn"
+      },
+      {
+        "value": "jsdelivr",
+        "label": "jsdelivr"
+      },
+      {
+        "value": "unpkg",
+        "label": "unpkg"
+      },
+      {
+        "value": "cdnjs",
+        "label": "cdnjs"
+      },
+      {
+        "value": "onmicrosoft",
+        "label": "onmicrosoft"
+      },
+      {
+        "value": "cbd",
+        "label": "cbd"
+      },
+      {
+        "value": "anheyu",
+        "label": "anheyu"
+      },
+      {
+        "value": "custom",
+        "label": "自定义"
+      }
+    ]
+  },
+  "CDN.third_party_provider": {
+    "type": "select",
+    "label": "第三方脚本 CDN",
+    "options": [
+      {
+        "value": "elemecdn",
+        "label": "elemecdn"
+      },
+      {
+        "value": "jsdelivr",
+        "label": "jsdelivr"
+      },
+      {
+        "value": "unpkg",
+        "label": "unpkg"
+      },
+      {
+        "value": "cdnjs",
+        "label": "cdnjs"
+      },
+      {
+        "value": "onmicrosoft",
+        "label": "onmicrosoft"
+      },
+      {
+        "value": "cbd",
+        "label": "cbd"
+      },
+      {
+        "value": "anheyu",
+        "label": "anheyu"
+      },
+      {
+        "value": "custom",
+        "label": "自定义"
+      }
+    ]
+  },
+  "CDN.version": {
+    "type": "switch",
+    "label": "CDN 版本号"
+  },
+  "CDN.custom_format": {
+    "type": "input",
+    "label": "自定义 CDN 格式",
+    "placeholder": "https://npm.elemecdn.com/${name}@latest/${file}"
+  },
+  "CDN.option": {
+    "type": "collapse",
+    "label": "CDN 选项",
+    "description": "配置各个模块的 CDN 地址，按需填写"
+  }
+}

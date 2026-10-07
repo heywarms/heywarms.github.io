@@ -1,0 +1,37 @@
+.DS_Store
+Thumbs.db
+db.json
+*.log
+node_modules/
+public/
+.deploy*/
+_multiconfig.yml
+
+# Hexo Pro source sync: begin
+node_modules/
+/public/
+/.deploy*/
+/.deploy_git/
+/.hexopro_sync_git/
+.DS_Store
+Thumbs.db
+.env
+.env.*
+*.log
+/db.json
+/blogInfoList.json
+/deploy_config.json
+/sync_config.json
+/_admin-config.yml
+/data/*.db
+/data/*.db~
+/data/*_cache.db
+/.wrangler/
+/.edgeone/
+/.vercel/
+/.netlify/
+!/.hexo-pro/
+/.hexo-pro/*
+!/.hexo-pro/document-identities.json
+/public/
+# Hexo Pro source sync: end

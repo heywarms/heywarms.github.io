@@ -1,0 +1,42 @@
+[
+  {
+    "id": "477492d3-279b-4504-a6ef-3d2b27f32903",
+    "name": "99999999",
+    "description": "",
+    "structure": "312312312312 ${title} ${num}  ${bool} ${array} ${obj}\n",
+    "variables": [
+      {
+        "name": "title",
+        "type": "string",
+        "default": "1",
+        "description": ""
+      },
+      {
+        "name": "num",
+        "type": "string",
+        "default": "3123",
+        "description": ""
+      },
+      {
+        "name": "bool",
+        "type": "boolean",
+        "default": "false",
+        "description": ""
+      },
+      {
+        "name": "array",
+        "type": "array",
+        "default": "[]",
+        "description": ""
+      },
+      {
+        "name": "obj",
+        "type": "object",
+        "default": "{}",
+        "description": ""
+      }
+    ],
+    "createdAt": "2025-05-05T06:05:00.614Z",
+    "updatedAt": "2025-05-05T06:48:38.186Z"
+  }
+]
