@@ -32,7 +32,7 @@
     "hexo-server": "^3.0.0",
     "hexo-theme-landscape": "^1.0.0",
     "nib": "^1.2.0",
-    "postcss": "^8.4.49",
+    "postcss": "^8.5.29",
     "postcss-import": "^16.1.0",
     "postcss-load-config": "^6.0.1",
     "postcss-styl": "^0.12.3",
