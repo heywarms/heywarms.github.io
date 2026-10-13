@@ -196,7 +196,7 @@
     {
       "documentId": "3f7619e3-a75b-42b1-b9c4-832a9ed01730",
       "kind": "Post",
-      "source": "_posts/中国-11746854518196.md",
+      "source": "_discarded/1791854412432/_posts/中国-11746854518196.md",
       "fingerprint": "69003ddf1a5a68ddc55c37de88557855ba7be44cc83eccdaa516a52d17468328"
     },
     {
@@ -252,6 +252,12 @@
       "kind": "Post",
       "source": "_posts/.md",
       "fingerprint": "5fe259f717e157ab03de41ab7947bb8035cfdeb984a13c5eec40b27d1690113b"
+    },
+    {
+      "documentId": "00cade04-8758-42be-9f48-37c2f97b96c3",
+      "kind": "Post",
+      "source": "_posts/中国-11746854518196.md",
+      "fingerprint": "69003ddf1a5a68ddc55c37de88557855ba7be44cc83eccdaa516a52d17468328"
     }
   ]
 }
