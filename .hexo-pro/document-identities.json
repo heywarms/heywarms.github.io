@@ -209,7 +209,7 @@
       "documentId": "81a20a53-e232-4410-97f4-d3f71aeaec48",
       "kind": "Post",
       "source": "_posts/2026-05-09-量化的小市场策略.md",
-      "fingerprint": "1ef176828b285f62655867576b30402da0dcb0e8a754c81bba21ad6bf7e07fbf"
+      "fingerprint": "3c367a9701b7821ffe7f9e6f7645955b9c7faa34e4d684b4a1376a99b01e487a"
     },
     {
       "documentId": "aa94d013-4e85-4339-aea0-0651692a2855",
@@ -258,6 +258,18 @@
       "kind": "Post",
       "source": "_posts/中国-11746854518196.md",
       "fingerprint": "69003ddf1a5a68ddc55c37de88557855ba7be44cc83eccdaa516a52d17468328"
+    },
+    {
+      "kind": "Post",
+      "source": "_drafts/喜欢的头像.md",
+      "documentId": "d42395ae-bce5-4ccd-a265-8e1e6cd4c185",
+      "fingerprint": "fc6bd309ce8fbccc6732829aace705527ca339f19cd7bdcfc0dda37d3b0b8242"
+    },
+    {
+      "kind": "Post",
+      "source": "_posts/自媒体起号.md",
+      "documentId": "15184286-d799-4a34-8b29-8434044e274d",
+      "fingerprint": "beb09b1b9995110e177df1f7f682ab7af66b05653062d0b865d8978dd4275357"
     }
   ]
 }
