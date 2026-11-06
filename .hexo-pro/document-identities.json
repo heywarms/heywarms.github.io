@@ -572,16 +572,22 @@
       "fingerprint": "beb09b1b9995110e177df1f7f682ab7af66b05653062d0b865d8978dd4275357"
     },
     {
-      "documentId": "b0524e97-aae9-46ab-9679-83e590d3a5ed",
-      "kind": "Post",
-      "source": "_drafts/.md",
-      "fingerprint": "5fe259f717e157ab03de41ab7947bb8035cfdeb984a13c5eec40b27d1690113b"
-    },
-    {
       "documentId": "b8bc4237-ec34-4235-a607-080808594169",
       "kind": "Post",
       "source": "_drafts/2026-10-08-b8bc4237.md",
       "fingerprint": "816e3e8f5821ad3b6ba0d19430edd588f2a20eebaa2c9987a5a79310c9f94a30"
+    },
+    {
+      "documentId": "d6385347-0b3b-4cf0-90e7-997d82fc39a8",
+      "kind": "Post",
+      "source": "_drafts/2026-11-06-d6385347.md",
+      "fingerprint": "77b7ff1e1b12298be29f37bf46aeb8b0da452ca61f959d68cd295ad6ba201243"
+    },
+    {
+      "documentId": "b0524e97-aae9-46ab-9679-83e590d3a5ed",
+      "kind": "Post",
+      "source": "_drafts/.md",
+      "fingerprint": "2c7acf7ef22eeae49cc6ed4a953effcbc30b8120006bbf71b552161a71be9c79"
     }
   ]
 }
