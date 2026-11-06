@@ -70,11 +70,11 @@ function createCabinet(host, T, RoundedBoxGeometry) {
   const resources = new Set();
   const register = resource => { resources.add(resource); return resource; };
   const material = (color, roughness = .65, metalness = .05) => register(new T.MeshStandardMaterial({ color, roughness, metalness }));
-  const cream = material('#e8e3d3');
+  const cream = material(host.dataset.bodyColor || '#e8e3d3');
   const interior = material('#bcbba9');
-  const blue = material('#294ddb', .38, .16);
-  const yellow = material('#ecd581', .5, .12);
-  const orange = material('#d9835c', .5, .12);
+  const blue = material(host.dataset.articlesColor || '#294ddb', .38, .16);
+  const yellow = material(host.dataset.lifeColor || '#ecd581', .5, .12);
+  const orange = material(host.dataset.aboutColor || '#d9835c', .5, .12);
   const chrome = material('#d8dcdf', .23, .7);
   const ink = material('#343d45');
   const paper = material('#fff7df');

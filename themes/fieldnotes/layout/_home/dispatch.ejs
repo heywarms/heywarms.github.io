@@ -1,0 +1,16 @@
+<% const d = section; const wordmark = d.wordmark || theme.brand || config.title; const hasMedia = Boolean(d.video || d.video_webm || d.poster); %>
+<section class="cinema-section cinema-dispatch" id="subscribe">
+  <div class="cinema-shell">
+    <div class="dispatch-row">
+      <div class="dispatch-copy">
+        <% if (d.eyebrow) { %><p class="cinema-mono dispatch-eyebrow"><%= d.eyebrow %></p><% } %>
+        <% if (d.title) { %><h2 class="dispatch-title"><%= d.title %></h2><% } %>
+        <% if (d.description) { %><p class="dispatch-description"><%= d.description %></p><% } %>
+        <% if (d.form_action) { %><form class="glass dispatch-form" action="<%= d.form_action %>" method="post" target="_blank"><label class="sr-only" for="dispatch-email">邮箱地址</label><input id="dispatch-email" type="email" name="<%= d.email_field %>" placeholder="<%= d.placeholder %>" autocomplete="email" required><button type="submit" aria-label="<%= d.button_label %>"><%- fn_icon('arrow') %></button></form><% } %>
+        <%- partial('_partial/cinema-social', {className: 'dispatch-social'}) %>
+      </div>
+      <% if (hasMedia) { %><div class="dispatch-media"><%- partial('_partial/cinema-video', {video: d.video, webm: d.video_webm, poster: d.poster, className: '', preload: 'metadata'}) %><% if (d.video_caption) { %><span class="glass cinema-mono dispatch-caption"><%= d.video_caption %></span><% } %></div><% } %>
+    </div>
+    <p class="cinema-display dispatch-wordmark" aria-hidden="true"><%= wordmark %><% if (d.signature) { %><span class="cinema-signature"><%= d.signature %></span><% } %></p>
+  </div>
+</section>

@@ -1,0 +1,5 @@
+<% const b = fn_settings().list_backdrop; %>
+<div class="list-backdrop" data-list-backdrop aria-hidden="true" style="--list-hue: <%= b.hue %>deg">
+  <% if (b.video) { %><video autoplay muted loop playsinline preload="auto"<% if (b.poster) { %> poster="<%= fn_media(b.poster) %>"<% } %> src="<%= fn_media(b.video) %>"></video><% } else { %><img src="<%= fn_media(b.poster) %>" alt=""><% } %>
+  <span class="list-backdrop-veil"></span>
+</div>

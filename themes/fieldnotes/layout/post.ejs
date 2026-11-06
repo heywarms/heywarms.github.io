@@ -1,3 +1,28 @@
-<div class="reading-progress" aria-hidden="true"><span></span></div>
-<article class="shell post-page"><header class="post-header"><a class="text-link back-link" href="<%= url_for('/archives/') %>"><%- fn_icon('back') %> 回到文章</a><div class="post-categories"><% fn_categories(page).forEach(category=>{ %><a href="<%= url_for(category.path) %>"><%= category.name %></a><% }); %></div><h1><%= page.title %></h1><div class="post-meta"><time datetime="<%= date_xml(page.date) %>"><%= date(page.date,'YYYY 年 MM 月 DD 日') %></time><span>·</span><span><%= fn_minutes(page) %> 分钟阅读</span><span>·</span><span><%= config.author || config.title %></span></div></header>
-<div class="reading-layout"><div class="post-body"><div class="prose" id="article-content"><%- page.content %></div><div class="post-end"><span aria-hidden="true">✳</span><p>感谢你读到这里。<br><small>愿这篇记录，刚好对你有用。</small></p><button class="button button-outline" type="button" data-copy-link hidden>分享这篇 <%- fn_icon('northeast') %></button></div><% if(page.tags && page.tags.length) { %><div class="post-tags"><% page.tags.forEach(tag=>{ %><a href="<%= url_for(tag.path) %>"># <%= tag.name %></a><% }); %></div><% } %><nav class="post-navigation" aria-label="前后文章"><% if(page.prev) { %><a href="<%= url_for(page.prev.path) %>"><small>上一篇</small><strong><%= page.prev.title %></strong></a><% } %><% if(page.next) { %><a href="<%= url_for(page.next.path) %>"><small>下一篇</small><strong><%= page.next.title %></strong></a><% } %></nav></div><aside class="post-toc"><div><p class="eyebrow">ON THIS PAGE</p><h2>阅读目录</h2><%- toc(page.content, {list_number:false, max_depth:3}) %><a class="toc-top" href="#main">回到顶部 ↑</a></div></aside></div></article>
+<% const options = fn_settings().article; const route = options.series ? fn_reading_path(page) : null; const updated = fn_updated(page); const outline = toc(page.content, {list_number:false, max_depth:3}); %>
+<% if (options.progress) { %><div class="reading-progress" aria-hidden="true"><span></span></div><% } %>
+<article class="shell post-page">
+  <header class="post-header">
+    <a class="text-link back-link" href="<%= url_for('/archives/') %>"><%- fn_icon('back') %> 回到文章</a>
+    <div class="post-categories"><% fn_categories(page).forEach(category => { %><a href="<%= url_for(category.path) %>"><%= category.name %></a><% }); %></div>
+    <h1><%= page.title %></h1>
+    <div class="post-meta article-meta"><time datetime="<%= date_xml(page.date) %>">发布于 <%= date(page.date, 'YYYY.MM.DD') %></time><% if (updated) { %><time datetime="<%= date_xml(updated) %>">更新于 <%= date(updated, 'YYYY.MM.DD') %></time><% } %><% if (options.reading_time) { %><span><%= fn_minutes(page) %> 分钟阅读</span><% } %><span><%= config.author || config.title %></span></div>
+    <% if (route) { %><a class="article-collection" href="<%= url_for(route.topic.path) %>"><span><%- fn_icon('code') %><%= route.topic.title %></span><span>第 <%= route.index + 1 %> / <%= route.topic.posts.length %> 篇 <%- fn_icon('arrow') %></span></a><% } %>
+  </header>
+  <div class="reading-layout<%= options.toc && outline ? '' : ' no-toc' %>">
+    <div class="post-body">
+      <% if (options.mobile_toc && outline) { %><details class="mobile-toc" data-mobile-toc><summary><%- fn_icon('menu') %><strong>本页目录</strong><span data-toc-current>展开章节</span><span class="toc-chevron" aria-hidden="true"></span></summary><nav aria-label="手机阅读目录"><%- outline %><a class="toc-top" href="#main">回到顶部 ↑</a></nav></details><% } %>
+      <div class="prose" id="article-content"><%- page.content %></div>
+      <% if (options.info) { %><section class="article-note" aria-label="文章信息"><p class="eyebrow">文章信息</p><dl><dt>记录者</dt><dd><%= config.author || config.title %></dd><dt>发布于</dt><dd><time datetime="<%= date_xml(page.date) %>"><%= date(page.date, 'YYYY 年 MM 月 DD 日') %></time></dd><% if (updated) { %><dt>最后更新</dt><dd><time datetime="<%= date_xml(updated) %>"><%= date(updated, 'YYYY 年 MM 月 DD 日') %></time></dd><% } %><dt>原文链接</dt><dd><a href="<%= full_url_for(page.path) %>"><%= full_url_for(page.path) %></a></dd></dl><p><%= (theme.article || {}).notice || '引用时请注明作者与原文链接；文中另有来源或授权说明的内容，请遵循其说明。' %></p></section><% } %>
+      <div class="post-end"><p>全文完</p><% if (options.share) { %><button class="button button-outline" type="button" data-copy-link hidden>分享这篇 <%- fn_icon('northeast') %></button><% } %></div>
+      <% if (options.tags && page.tags && page.tags.length) { %><div class="post-tags"><% page.tags.forEach(tag => { %><a href="<%= url_for(tag.path) %>"># <%= tag.name %></a><% }); %></div><% } %>
+      <% if (route) { %>
+      <section class="series-next" aria-labelledby="series-heading"><div class="series-heading"><div><p class="eyebrow">同一专题</p><h2 id="series-heading"><%= route.topic.title %></h2></div><a class="text-link" href="<%= url_for(route.topic.path) %>">全部 <%= route.topic.posts.length %> 篇 <%- fn_icon('arrow') %></a></div>
+        <nav class="series-links" aria-label="专题阅读顺序"><% if (route.previous) { %><a href="<%= url_for(route.previous.path) %>"><span>回看上一节</span><strong><%= route.previous.title %></strong><%- fn_icon('back') %></a><% } %><% if (route.next) { %><a class="series-forward" href="<%= url_for(route.next.path) %>"><span>继续读下一节</span><strong><%= route.next.title %></strong><%- fn_icon('arrow') %></a><% } else { %><a class="series-forward" href="<%= url_for('/topics/') %>"><span>这是这组笔记的最后一篇</span><strong>换一格，发现新的问题</strong><%- fn_icon('arrow') %></a><% } %></nav>
+      </section>
+      <% } else { %>
+      <nav class="post-navigation" aria-label="前后文章"><% if (page.prev) { %><a href="<%= url_for(page.prev.path) %>"><small>上一篇</small><strong><%= page.prev.title %></strong></a><% } %><% if (page.next) { %><a href="<%= url_for(page.next.path) %>"><small>下一篇</small><strong><%= page.next.title %></strong></a><% } %></nav>
+      <% } %>
+    </div>
+    <% if (options.toc && outline) { %><aside class="post-toc"><div><h2>目录</h2><nav aria-label="阅读目录"><%- outline %></nav><a class="toc-top" href="#main">回到顶部 ↑</a></div></aside><% } %>
+  </div>
+</article>

@@ -1,0 +1,18 @@
+/* Configuration affects layout without changing the responsive gutters. */
+.shell { max-width: var(--content-width, 1200px); }
+body { font-family: var(--body-font, var(--font)); }
+.static-cabinet { margin: 0; min-width: 0; text-align: center; }
+.static-cabinet img { display: block; width: 100%; max-width: 540px; height: auto; margin: auto; }
+.static-cabinet figcaption { color: var(--muted); font-size: 13px; margin-top: 12px; }
+.reading-layout.no-toc { grid-template-columns: minmax(0, 1fr); max-width: 800px; margin-inline: auto; }
+.journal-section.without-life { grid-template-columns: minmax(0, 1fr); }
+.footer-links { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 24px; font-size: 14px; }
+.brand-mark.has-avatar { display: inline-flex; flex: none; width: 44px; height: 44px; overflow: hidden; border-radius: 50%; background: #f3eee4; }
+.brand-mark.has-avatar img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; }
+/* Wordmark: the first "o" of the brand is a small ringed planet (fn_wordmark). */
+.brand-o { display: inline-block; width: .8em; height: .8em; margin: 0 .01em; vertical-align: -.06em; color: var(--blue); overflow: visible; }
+.brand-o .planet { stroke: var(--brand-planet, currentColor); }
+.brand-o .ring { stroke: var(--brand-ring, currentColor); opacity: .8; }
+html.has-stage, html.voyage-space { --brand-planet: var(--cinema-accent, #c6ff3d); --brand-ring: var(--sphere-a, #6ee7ff); }
+/* Without a mark, the wordmark needs a little air inside the rounded header pill. */
+html.has-stage .brand:not(:has(.brand-mark)), html.voyage-space .brand:not(:has(.brand-mark)) { padding-left: 10px; }

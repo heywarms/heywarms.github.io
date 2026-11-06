@@ -1,0 +1,17 @@
+<% const p = section; const description = p.description || (theme.about && theme.about.description) || ''; const hasArt = Boolean(p.video || p.video_webm || p.poster); %>
+<section class="cinema-profile" id="about">
+  <div class="cinema-shell profile-layout">
+    <div class="profile-copy">
+      <% if (p.eyebrow) { %><p class="cinema-mono profile-eyebrow"><%= p.eyebrow %></p><% } %>
+      <%- partial('_partial/cinema-heading', {tag: 'h2', lines: p.heading.length ? p.heading : ['About'], signature: p.signature, className: 'profile-title'}) %>
+      <% if (description) { %><p class="profile-lead"><%= description %></p><% } %>
+      <% if (p.note) { %><p class="profile-note"><%= p.note %></p><% } %>
+      <% if (p.facts.length) { %><dl class="cinema-mono profile-facts"><% p.facts.forEach(fact => { %><dt><%= fact.label %></dt><dd><%= fact.value %></dd><% }); %></dl><% } %>
+      <% if (p.link_text && p.link_url) { %><a class="cinema-button is-navy" href="<%= fn_url(p.link_url) %>"><%= p.link_text %> <%- fn_icon('arrow') %></a><% } %>
+    </div>
+    <% if (hasArt || p.stickers.length) { %><div class="profile-art">
+      <% if (hasArt) { %><div class="profile-media"><%- partial('_partial/cinema-video', {video: p.video, webm: p.video_webm, poster: p.poster, className: '', preload: 'metadata'}) %></div><% } %>
+      <% p.stickers.forEach(sticker => { %><span class="profile-sticker"><%= sticker %></span><% }); %>
+    </div><% } %>
+  </div>
+</section>

@@ -1,0 +1,552 @@
+# Fieldnotes 主题配置
+# 推荐修改博客根目录 _config.fieldnotes.yml；它覆盖此处默认值。
+# Hexo Pro → 主题 → Fieldnotes → 配置 → 表单模式，也可直接编辑。
+# 数组整体替换；false 表示关闭，[] 表示清空。无需修改文章 Front Matter。
+
+# 品牌名称
+brand: Mihotel
+
+# 一句话介绍
+tagline: 把 AI 讲成大白话，谁都能用起来。
+
+# 导航栏头像：填写图片地址后替代星形标志；留空使用星形标志
+# IP 形象只放在首页“关于我”，导航保留星形标志；想换成头像填 /images/ip/avatar.png
+brand_avatar: ""
+
+# 主导航：按数组顺序显示，留空 [] 可隐藏全部导航
+navigation:
+  - title: 专题
+    url: /topics/
+    new_tab: false
+  - title: 文章
+    url: /archives/
+    new_tab: false
+  - title: 视频
+    url: /#videos
+    new_tab: false
+  - title: 关于
+    url: /about/
+    new_tab: false
+  - title: 订阅
+    url: /#subscribe
+    new_tab: false
+
+# 外观：颜色用六位十六进制；内容宽度范围 960–1600
+appearance:
+  mode: system
+  toggle: true
+  accent: "#3158df"
+  accent_dark: "#9aaeff"
+  background: "#f7f6f2"
+  background_dark: "#171b19"
+  content_width: 1200
+  font: sans
+
+# 首页开场文案与按钮
+hero:
+  primary_text: 读点什么
+  primary_url: /topics/
+  secondary_text: 认识一下
+  secondary_url: /about/
+  eyebrow: A LITTLE CORNER OF THE INTERNET
+  line_one: 保持好奇，
+  line_two: 自在生长。
+  introduction: 写下技术里的发现，也收藏生活中的微光。这里有代码、有想法，还有一些不着急的日常。
+  annotation: 一半是逻辑，一半是浪漫。
+
+# 3D 储物柜：关闭时显示静态封面，不加载三维引擎
+locker:
+  enabled: true
+  on_about: true
+  caption: THE CURIOSITY CABINET
+  number: NO. 001
+  note: 把想法、日常和一点点自己，好好收在这里。
+  poster: /images/locker-preview.png
+  poster_alt: 立体个人储物柜
+  landscape: /images/fieldnotes-landscape.svg
+  body_color: "#e8e3d3"
+  articles_color: "#294ddb"
+  life_color: "#ecd581"
+  about_color: "#d9835c"
+
+# 电影感首页：签名与重点颜色、粒子球两种颜色、标题字体样式表（https，留空只用系统字体）
+cinema:
+  accent: "#C6FF3D"
+  sphere_a: "#6EE7FF"
+  sphere_b: "#A78BFA"
+  fonts: https://fonts.googleapis.com/css2?family=Anton&family=Condiment&display=swap
+
+# 早期档案：这些分类的文章不上首页，合并成一行“早期档案”，也作为最后一颗星球
+archive:
+  categories:
+    - docker
+    - MySql
+    - markdown
+    - 量化笔记
+  text: 早期档案：转向 AI 之前写的技术笔记
+  name: 早期档案
+  description: 转向 AI 之前写的技术笔记，继续保留、可以搜到，但不再更新。
+  planet: ice
+
+# 首页模块：order 决定顺序，enabled 决定是否显示；不影响独立页面
+# 想换回原来的首页，把 order 改回 hero / interlude / topics / featured / projects / journal / about
+home:
+  order:
+    - stage
+    - routes
+    - glossary
+    - videos
+    - updates
+    - connect
+  hero:
+    enabled: true
+  interlude:
+    enabled: true
+    items:
+      - 写代码
+      - 记灵感
+      - 去生活
+    note: Good things take curiosity.
+  topics:
+    enabled: true
+    eyebrow: THE NOTEBOOK SHELF
+    title: 挑一格，慢慢探索
+    link_text: 专题书架
+  featured:
+    enabled: true
+    eyebrow: SELECTED NOTES
+    title: 值得慢慢读的几篇
+    link_text: 全部文章
+    limit: 3
+  projects:
+    enabled: true
+    eyebrow: ON MY WORKBENCH
+    title: 不只记录，也动手创造
+    link_text: 我的作品
+  journal:
+    enabled: true
+    eyebrow: THE JOURNAL
+    title: 最近，写了这些
+    limit: 5
+    show_life: true
+  about:
+    enabled: true
+    eyebrow: ALWAYS EXPLORING
+    title: 一个持续更新中的人。
+    description: 在这里，想法可以不完整，热爱可以很具体。
+    link_text: 更多关于我
+  stage:
+    enabled: true
+    # planets：每个知识库一颗 3D 星球（来自下面的 routes 和早期档案）；sphere：3D 粒子球；video：全屏背景视频
+    visual: planets
+    eyebrow: Plain-words AI · Videos & Notes
+    heading:
+      - Hello!
+      - I'm Mihotel
+    signature: Mihotel
+    tagline: 把 AI 讲成大白话，谁都能用起来。
+    note: A human who translates AI into plain words. One video, one note, one trick you can use today.
+    primary_text: 看最新一期
+    primary_url: "#videos"
+    secondary_text: 读笔记
+    secondary_url: /archives/
+    # 粒子球周围漂浮的标签，最多 5 个
+    chips:
+      - 写工作总结
+      - 做旅行计划
+      - 拍照问 AI
+      - 整理表格
+      - 做 PPT
+    video: ""
+    video_webm: ""
+    poster: ""
+    mobile_video: ""
+    mobile_video_webm: ""
+    mobile_poster: ""
+  episode:
+    enabled: true
+    heading:
+      - Latest
+      - Episode
+    signature: new!
+    intro: Every episode comes with a plain-words note you can come back to, copy from, and share.
+    intro_zh: 每期视频，都配一份能回看、能复制的大白话笔记。
+    label: 认识 AI
+    post: ""
+    cover_title: ""
+    # 视频发布后填写：B站标题、BV 号与日期、时长、观看地址
+    video_title: ""
+    meta: ""
+    duration: ""
+    video_url: ""
+    watch_text: 看视频
+    read_text: 读笔记
+    # 留空时显示抽象光效封面；视频发布后可以把 B站封面图填到 poster
+    video: ""
+    video_webm: ""
+    poster: ""
+    cards:
+      - label: Next · 下一期
+        title: 发刊词：为什么要懂一点原理
+        url: ""
+  notes:
+    enabled: true
+    heading:
+      - Notes
+    signature: plain words
+    link_text: All notes
+    limit: 4
+    # 转向 AI 之前的技术笔记：不在首页列出，合并成一行“早期档案”
+    exclude_categories:
+      - docker
+      - MySql
+      - markdown
+      - 量化笔记
+    archive_text: 早期档案：转向 AI 之前写的技术笔记
+    upcoming:
+      - title: 发刊词：为什么要懂一点原理
+        label: 规划中
+  profile:
+    enabled: true
+    eyebrow: About · 关于我
+    heading:
+      - The guy in
+      - the blue hoodie
+    signature: that's me
+    description: ""
+    note: ""
+    facts:
+      - label: Building
+        value: Hexo Pro
+    stickers:
+      - AI 翻译官
+      - 不讲术语
+      - 每周更新
+    link_text: 更多关于我
+    link_url: /about/
+    video: /videos/about.mp4
+    video_webm: /videos/about.webm
+    poster: /videos/about-poster.jpg
+  dispatch:
+    enabled: true
+    eyebrow: Weekly dispatch · AI 简报
+    title: 每周一个马上能用的 AI 小技巧。
+    description: 邮件订阅开通前，可以先在这些地方找到我。
+    # 开通邮件订阅服务后，把它提供的 https 表单地址填在这里，邮箱输入框就会出现
+    form_action: ""
+    email_field: email
+    placeholder: 输入邮箱，每周收一个 AI 小技巧
+    button_label: 订阅
+    video: ""
+    video_webm: ""
+    poster: ""
+    video_caption: ""
+    wordmark: ""
+    signature: see you next week!
+  # 学习路线：每条路线也是首屏的一颗星球。topic 填专题的 slug（见下面 topics），planned 是还没写的选题
+  # planet 可选 ocean（海洋）/ gas（气态巨行星，带光环）/ desert（暖阳星球：草原、秋林、河流，夜面城镇灯光，带空间站）/ ice（冰封，带小行星带）/ lava（熔岩）
+  routes:
+    enabled: true
+    eyebrow: Season 01 · AI 大白话
+    title: 懂一点原理，用得更好
+    description: 第一季分三站：认识它、会问它、让它帮你做事。按顺序看就行，不需要任何技术基础。
+    link_text: 全部专题
+    link_url: /topics/
+    # 每发布一篇，就把它从 planned 里删掉，避免“已发布”和“规划中”重复计数
+    items:
+      - step: 第一站 · 认识它
+        title: AI 到底是什么
+        description: 不讲公式。用生活里的比方讲清它是怎么「学会说话」的，以及这对你怎么用它意味着什么。
+        tag: 零基础
+        topic: ai-basics
+        region: 认识 AI
+        planet: ocean
+        planned:
+          - 发刊词：为什么要懂一点原理
+          - 你其实早就在用 AI 了
+          - 豆包、DeepSeek、ChatGPT 是什么关系
+          - 大模型是怎么学会说话的
+          - 为什么它会一本正经地胡说八道
+          - AI 的记性有多好
+          - AI 知道今天的新闻吗
+          - 智能体：从“告诉你”到“替你做”
+      - step: 第二站 · 会问它
+        title: 怎么跟 AI 说话
+        description: 它不认识你，只看得到你这次说的话。学会交代背景、给例子、让它反问你，回答就会准得多。
+        tag: 规划中
+        topic: ai-talk
+        region: 跟 AI 说话
+        planet: gas
+        planned:
+          - 为什么问得越具体，答得越好
+          - 给它看一个例子
+          - 不知道怎么问，就让它先问你
+          - 第一版不满意，怎么让它改
+          - 拍照问、说话问
+      - step: 第三站 · 让它帮你做事
+        title: 用 AI 写、读、理、画
+        description: 用不同职业的真实例子：写文案和回复、读长文和合同、整理表格和计划，再讲清哪些事别交给它。
+        tag: 规划中
+        topic: ai-work
+        region: 用 AI 做事
+        planet: desert
+        planned:
+          - 帮你写：文案、通知、回复
+          - 帮你读：长文章、合同、说明书
+          - 帮你理：表格、笔记、计划
+          - 画图和做视频是怎么回事
+          - 哪些事别交给 AI
+          - 怎么挑适合自己的 AI 工具
+  # 大白话词典：term 词语、en 英文名、definition 解释、url 详细笔记（可选）
+  glossary:
+    enabled: true
+    eyebrow: Plain words
+    title: 听到这些词，别慌
+    description: AI 圈的「黑话」，翻译成人话。
+    link_text: ""
+    link_url: ""
+    items:
+      - term: 大模型
+        en: LLM
+        definition: 读过海量文字、学会了「接着往下写」的程序。你提一个问题，它按学到的规律，一个词一个词地写出最可能的回答。
+        url: ""
+      - term: 提示词
+        en: Prompt
+        definition: 你对 AI 说的话。交代清楚你是谁、要它做什么、想要什么样的结果，它就答得更准。
+        url: ""
+      - term: 幻觉
+        en: Hallucination
+        definition: AI 一本正经地编出不存在的内容，比如一篇根本没有的论文。重要的信息，一定要自己再核对一遍。
+        url: ""
+      - term: 上下文
+        en: Context
+        definition: AI 在这次对话里「记得」的内容。聊得太长或者换了新对话，它可能就忘了前面说过的话。
+        url: ""
+  # 视频 × 笔记：post 填配套文章；视频发布后填 video_title / meta / duration / video_url，poster 可填 B站封面
+  videos:
+    enabled: true
+    eyebrow: Video × Notes
+    title: 每期视频，都有一份能回看的笔记
+    description: 视频负责讲清楚，笔记负责可查、可复制、可更新。
+    link_text: ""
+    link_url: ""
+    post: ""
+    label: 认识 AI
+    cover_title: ""
+    video_title: ""
+    meta: ""
+    duration: ""
+    video_url: ""
+    watch_text: 在 B站观看
+    poster: ""
+    extras:
+      - title: 下一篇：发刊词，为什么要懂一点原理
+        note: 规划中
+        url: "#routes"
+        icon: next
+    more: []
+  updates:
+    enabled: true
+    eyebrow: Latest
+    title: 最近更新
+    link_text: 全部文章
+    limit: 5
+    upcoming:
+      - title: 发刊词：为什么要懂一点原理
+        label: 下一篇
+  # 关于我与订阅：IP 形象只出现在这里；form_action 填邮件订阅服务的 https 表单地址后才显示邮箱输入框
+  connect:
+    enabled: true
+    eyebrow: About
+    title: ""
+    description: ""
+    note: ""
+    link_text: 更多关于我
+    link_url: /about/
+    show_project: true
+    video: /videos/about.mp4
+    video_webm: /videos/about.webm
+    poster: /videos/about-poster.jpg
+    subscribe_eyebrow: Weekly dispatch · AI 简报
+    subscribe_title: 每周一个马上能用的 AI 小技巧。
+    subscribe_description: 邮件订阅开通前，可以先在这些地方找到我。
+    form_action: ""
+    email_field: email
+    placeholder: 输入邮箱，每周收一个 AI 小技巧
+    button_label: 订阅
+
+# 全站功能开关
+features:
+  search: true
+  code_copy: true
+  image_zoom: true
+
+# 文章列表（归档、分类、标签）的开场背景：一段缓慢的抽象光影视频，往下滚会变暗，交回页面星空
+# 现在用的是参考模板的示例素材（托管在模板作者的 CDN 上），正式上线建议换成自己的视频：
+# 放进 source/videos/ 后写成 /videos/文件名.mp4；hue 是整体偏色角度（-180–180），0 为原色
+list_backdrop:
+  enabled: true
+  video: https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260912_104303_0c6d60b2-9353-408e-9449-585108a22fb5.mp4
+  poster: https://d2ol7oe51mr4n9.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/130837c4-0244-4f37-9c61-8d801d93fd29.jpg
+  hue: 40
+
+# 专题页开场：每个专题是一颗星球（代码实时绘制），当前专题铺满下方天空，另外两颗在左右边缘，点一下互换
+# 星球类型按专题的 artwork 自动选（大模型→海洋、MySQL→气态巨行星、Docker→沙漠），也可以在 topics 里给专题写 planet
+topic_hero:
+  enabled: true
+
+# 精选文章：title 或 source 精确匹配，草稿不会公开
+featured: []
+
+# 专题书架：sources 决定阅读顺序，categories 自动收录同分类文章
+# 「AI 大白话」第一季的三站：草稿在 _drafts/ai-*.md，发布后自动出现在这里（专题没有已发布文章时不显示）
+topics:
+  - slug: ai-basics
+    title: 第一站 · AI 到底是什么
+    label: WHAT IT IS
+    description: 用生活里的比方讲清大模型是怎么「学会说话」的。每讲一个原理，都告诉你它对使用意味着什么。
+    note: 适合用过 AI，但不知道它为什么会那样回答的人。
+    artwork: intelligence
+    planet: ocean
+    categories:
+      - 认识 AI
+    sources:
+      - _posts/ai-00-hello.md
+      - _posts/ai-01-already-around-you.md
+      - _posts/ai-02-apps-and-models.md
+      - _posts/ai-03-how-it-learns-to-talk.md
+      - _posts/ai-04-why-it-makes-things-up.md
+      - _posts/ai-05-memory-and-context.md
+      - _posts/ai-06-todays-news.md
+      - _posts/ai-07-agents.md
+  - slug: ai-talk
+    title: 第二站 · 怎么跟 AI 说话
+    label: HOW TO ASK
+    description: 它不认识你，只看得到你这次说的话。学会交代背景、给例子、让它反问你。
+    note: 适合觉得 AI 回答总是“差点意思”的人。
+    artwork: intelligence
+    planet: gas
+    categories:
+      - 跟 AI 说话
+    sources:
+      - _posts/ai-08-be-specific.md
+      - _posts/ai-09-show-an-example.md
+      - _posts/ai-10-let-it-ask-you.md
+      - _posts/ai-11-ask-for-revisions.md
+      - _posts/ai-12-photo-and-voice.md
+  - slug: ai-work
+    title: 第三站 · 让 AI 帮你做事
+    label: PUT IT TO WORK
+    description: 写、读、理、画，用不同职业的真实例子把 AI 用到自己身上，也讲清哪些事别交给它。
+    note: 适合想让 AI 真正帮上忙的人。
+    artwork: intelligence
+    planet: desert
+    categories:
+      - 用 AI 做事
+    sources:
+      - _posts/ai-13-writing.md
+      - _posts/ai-14-reading.md
+      - _posts/ai-15-organizing.md
+      - _posts/ai-16-images-and-video.md
+      - _posts/ai-17-what-not-to-hand-over.md
+      - _posts/ai-18-pick-your-tool.md
+
+# 个人作品：图片可用 /images/ 下的文件
+projects:
+  - slug: hexo-pro
+    title: Hexo Pro
+    label: A TOOL I AM BUILDING
+    tagline: 把写博客这件事，变得顺手一点。
+    description: 从管理自己的 Hexo 博客开始，把编辑、预览、桌面管理和手机写作放进同一个工具里。这个站点，也是它的使用现场。
+    status: 持续打磨中
+    image: /images/hexo-pro-editor.png
+    image_alt: Hexo Pro 的文章管理与编辑界面
+    stack:
+      - Hexo
+      - React
+      - Electron
+      - Capacitor
+    source_url: https://github.com/wuzheng228/hexo-pro-client
+    features:
+      - title: 写作与预览
+        description: 块编辑、Markdown 源码与当前主题预览，缩短从想法到文章的距离。
+      - title: 桌面与手机
+        description: 在电脑上整理博客，也能用 iPhone App 继续记录，不必一直守着电脑。
+      - title: 同步与发布
+        description: 通过 GitHub 同步源文件，再由 GitHub Actions 将博客部署到 EdgeOne。
+
+# 关于我
+about:
+  title: 关于我
+  eyebrow: A PERSON, NOT JUST A PROFILE
+  status: 保持好奇，持续更新
+  show_projects: true
+  heading: 一边写代码，一边把想法做出来。
+  description: 我喜欢从自己的问题出发，做一些真正用得上的东西。最近在打磨 Hexo Pro，让博客写作、管理和多端同步变得顺手一点。
+  note: 这里也存放一路学到的技术笔记。把踩过的坑、想通的问题写下来，留给下一次需要的自己，也留给刚好路过的你。
+  focus: Hexo Pro · 写作与多端同步
+  interests:
+    - 技术探索
+    - 开源与创造
+    - 日常灵感
+    - 保持好奇
+  # 关于页首屏：全屏视频背景 + 液态玻璃控件，开启后不再显示储物柜；heading 里用 *单词* 标出斜体
+  # video 现在是参考模板的示例视频（画面里是别人，托管在模板作者的 CDN 上），建议换成你自己的视频：
+  # 放进 source/videos/ 后写成 /videos/文件名.mp4
+  hero:
+    enabled: true
+    heading: AI, in *plain* words.
+    subtitle: 我喜欢从自己的问题出发，做一些真正用得上的东西。最近在打磨 Hexo Pro，让写博客、管理和多端同步变得顺手一点。
+    video: https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260328_115001_bcdaa3b4-03de-47e7-ad63-ae3e392c32d4.mp4
+    poster: ""
+    shift: 17
+    button_text: 了解更多
+    cta_text: 在 GitHub 看看我在做什么
+    cta_url: ""
+
+# 社交链接：填写后会出现在首页开场和订阅区；留空的平台不显示
+social:
+  github: https://github.com/heywarms
+  bilibili: ""
+  xiaohongshu: ""
+  douyin: ""
+  wechat: ""
+  rss: ""
+  email: ""
+
+# 生活切片与照片
+life:
+  title: 给日常，留一点空白。
+  description: 屏幕之外，还有值得慢慢发现的风景。把喜欢的片刻收好，让灵感有地方停留。
+  categories:
+    - 生活
+    - 随笔
+    - 旅行
+    - 摄影
+    - 日常
+  photos: []
+
+# 文章阅读功能；updated_dates 不修改 Front Matter
+article:
+  # 阅读风格：paper（纸张）或 voyage（星舰：在飞船上看星辰时阅读）
+  style: voyage
+  toc: true
+  mobile_toc: true
+  progress: true
+  reading_time: true
+  info: true
+  share: true
+  tags: true
+  series: true
+  notice: 引用时请注明作者与原文链接；文中另有来源或授权说明的内容，请遵循其说明。
+  updated_dates: {}
+
+# 页脚文案与链接
+footer:
+  enabled: true
+  title: 保持热爱。
+  description: 下次见面，带着新的发现。
+  motto: A small place, a curious mind.
+  start_year: ""
+  show_credit: true
+  links: []

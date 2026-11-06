@@ -1,0 +1,61 @@
+<% const s = section; const lines = s.heading.length ? s.heading : [theme.brand || config.title]; const sphere = s.visual === 'sphere'; const regions = s.visual === 'planets' ? fn_planets() : []; const planets = regions.length > 0; const twoVideos = s.visual === 'video' && Boolean(s.mobile_video || s.mobile_video_webm); const hasVideo = s.visual === 'video' && Boolean(s.video || s.video_webm || twoVideos); %>
+<section class="cinema-stage<%= sphere ? ' is-sphere' : '' %><%= planets ? ' is-sphere is-planets' : '' %>" data-cinema-stage>
+  <% if (hasVideo) { %><div class="stage-media" aria-hidden="true">
+    <div class="stage-media-inner">
+      <%- partial('_partial/cinema-video', {video: s.video, webm: s.video_webm, poster: s.poster, className: twoVideos ? 'is-desktop' : '', preload: 'auto'}) %>
+      <% if (twoVideos) { %><%- partial('_partial/cinema-video', {video: s.mobile_video, webm: s.mobile_video_webm, poster: s.mobile_poster || s.poster, className: 'is-mobile', preload: 'none'}) %><% } %>
+    </div>
+    <span class="stage-shade"></span>
+  </div><% } %>
+  <% if (planets) { %><canvas class="voyage-canvas" aria-hidden="true" data-voyage-canvas></canvas>
+  <div class="voyage-labels" aria-hidden="true" data-voyage-labels></div>
+  <div class="voyage-flash" aria-hidden="true" data-voyage-flash></div><% } %>
+  <div class="cinema-shell stage-layout">
+    <div class="stage-copy">
+      <% if (s.eyebrow) { %><p class="cinema-mono stage-eyebrow"><span class="cinema-live" aria-hidden="true"></span><%= s.eyebrow %></p><% } %>
+      <%- partial('_partial/cinema-heading', {tag: 'h1', lines, signature: s.signature, className: 'stage-title'}) %>
+      <% if (s.tagline) { %><p class="stage-tagline"><%= s.tagline %></p><% } %>
+      <% if (s.note) { %><p class="cinema-mono stage-note"><%= s.note %></p><% } %>
+      <% if ((s.primary_text && s.primary_url) || (s.secondary_text && s.secondary_url)) { %><div class="stage-actions">
+        <% if (s.primary_text && s.primary_url) { %><a class="cinema-button is-light" href="<%= fn_url(s.primary_url) %>"><%= s.primary_text %> <%- fn_icon('arrow') %></a><% } %>
+        <% if (s.secondary_text && s.secondary_url) { %><a class="cinema-button glass" href="<%= fn_url(s.secondary_url) %>"><%= s.secondary_text %></a><% } %>
+      </div><% } %>
+      <%- partial('_partial/cinema-social', {className: 'stage-social'}) %>
+    </div>
+    <% if (sphere) { %><div class="stage-visual" aria-hidden="true">
+      <div class="stage-visual-inner">
+        <div class="stage-core"></div>
+        <canvas class="stage-sphere" data-cinema-sphere></canvas>
+        <% s.chips.forEach(chip => { %><span class="stage-chip"><span class="glass"><i></i><%= chip %></span></span><% }); %>
+      </div>
+    </div><% } %>
+    <% if (planets) { %><div class="stage-planets" data-planets data-state="map" data-planet="<%= regions[0].planet %>">
+      <div class="planet-view" data-voyage-focus>
+        <div class="planet-fallback" aria-hidden="true"></div>
+      </div>
+      <p class="cinema-mono voyage-status" data-voyage-status role="status" aria-live="polite">星图 · 选一个目的地</p>
+      <div class="planet-tabs" role="tablist" aria-label="目的地：知识库">
+        <% regions.forEach((region, index) => { %><button type="button" role="tab" id="planet-tab-<%= index %>" aria-controls="planet-panel-<%= index %>" aria-selected="<%= index === 0 %>" tabindex="<%= index === 0 ? 0 : -1 %>" class="planet-tab glass<%= index === 0 ? ' is-active' : '' %>" data-planet-tab="<%= index %>" data-planet="<%= region.planet %>" data-name="<%= region.name %>"><span class="planet-dot is-<%= region.planet %>" aria-hidden="true"></span><%= region.name %><small><%= region.count %></small></button><% }); %>
+      </div>
+      <% regions.forEach((region, index) => { %><div class="planet-panel glass" role="tabpanel" id="planet-panel-<%= index %>" aria-labelledby="planet-tab-<%= index %>" data-planet-panel="<%= index %>"<% if (index) { %> hidden<% } %>>
+        <p class="cinema-mono planet-code"><%= region.code ? region.code + ' · ' : '' %><%= region.summary %></p>
+        <p class="planet-title"><%= region.title %></p>
+        <% if (region.description) { %><p class="planet-description"><%= region.description %></p><% } %>
+        <% if (region.kind === 'archive') { %><p class="cinema-mono planet-groups"><%= region.groups.map(group => group.name + ' ' + group.count).join(' · ') %></p><% } %>
+        <div class="voyage-actions">
+          <button type="button" class="voyage-engage" data-voyage-engage hidden>
+            <span class="engage-flame" aria-hidden="true"></span>
+            <span class="engage-turbine" aria-hidden="true"><i></i></span>
+            <span class="engage-label" data-engage-label>启动跃迁</span>
+            <%- fn_icon('arrow') %>
+          </button>
+          <button type="button" class="glass voyage-return" data-voyage-return hidden><%- fn_icon('back') %> 返回星图</button>
+          <% if (region.kind === 'archive') { %><a class="planet-link" href="<%= url_for('/archives/') %>">打开档案 <%- fn_icon('arrow') %></a>
+          <% } else if (region.first) { %><a class="planet-link" href="<%= url_for(region.first.path) %>">读第 1 篇：<%= region.first.title %> <%- fn_icon('arrow') %></a>
+          <% } else { %><a class="planet-link" href="#routes">看学习路线 <%- fn_icon('arrow') %></a><% } %>
+        </div>
+      </div><% }); %>
+    </div><% } %>
+  </div>
+  <% if (hasVideo || sphere || planets) { %><button class="glass stage-toggle" type="button" aria-label="<%= hasVideo ? '暂停背景视频' : '暂停动画' %>" aria-pressed="false" data-cinema-toggle hidden><svg class="icon-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg><svg class="icon-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></button><% } %>
+</section>

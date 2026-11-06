@@ -1,0 +1,1 @@
+<<%= tag %> class="cinema-display<%= className ? ' ' + className : '' %>"><% lines.forEach((line, index) => { %><% if (index) { %><br><% } %><%= line %><% }); %><% if (signature) { %><span class="cinema-signature" aria-hidden="true"><%= signature %></span><% } %></<%= tag %>>

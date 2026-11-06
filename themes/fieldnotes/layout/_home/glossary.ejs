@@ -1,0 +1,12 @@
+<% const g = section; %>
+<section class="deck-section" id="glossary">
+  <div class="cinema-shell">
+    <%- partial('_partial/deck-heading', {number, eyebrow: g.eyebrow, title: g.title, description: g.description, link_text: g.link_text, link_url: g.link_url}) %>
+    <div class="deck-grid is-compact">
+      <% g.items.forEach(item => { const tag = item.url ? 'a' : 'div'; %><<%= tag %> class="deck-card deck-tilt glossary-card"<% if (item.url) { %> href="<%= fn_url(item.url) %>"<% } %>>
+        <span class="glossary-head"><span class="glossary-term"><%= item.term %></span><% if (item.en) { %><span class="glossary-en"><%= item.en %></span><% } %></span>
+        <span class="glossary-definition"><%= item.definition %></span>
+      </<%= tag %>><% }); %>
+    </div>
+  </div>
+</section>

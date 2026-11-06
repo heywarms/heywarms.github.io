@@ -1,0 +1,6 @@
+<% const project = (theme.projects || [])[0]; if (project) { %>
+<div class="project-spotlight">
+  <div class="project-spotlight-copy"><p class="eyebrow"><%= project.label %></p><h3><%= project.title %></h3><p class="project-tagline"><%= project.tagline %></p><p class="project-summary"><%= project.description %></p><div class="project-status"><span class="live-dot"></span><%= project.status %></div><a class="button button-dark" href="<%= url_for('/projects/#' + project.slug) %>">看看这个项目 <%- fn_icon('northeast') %></a></div>
+  <a class="project-preview" href="<%= url_for('/projects/#' + project.slug) %>" aria-label="查看 <%= project.title %> 项目详情"><div class="project-window-bar" aria-hidden="true"><i></i><i></i><i></i><span><%= project.title %> / WORK IN PROGRESS</span></div><% if (project.image) { %><img src="<%= url_for(project.image) %>" alt="<%= project.image_alt %>" width="2327" height="1317" loading="lazy"><% } %><span class="project-preview-caption">从自己的问题出发，做一个自己的工具。 <%- fn_icon('arrow') %></span></a>
+</div>
+<% } %>

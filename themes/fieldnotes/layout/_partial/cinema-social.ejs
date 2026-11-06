@@ -1,0 +1,2 @@
+<% const social = fn_settings().social; const labels = {bilibili: 'B站', xiaohongshu: '小红书', douyin: '抖音', wechat: '公众号', github: 'GitHub', rss: 'RSS', email: '邮件'}; const items = Object.keys(labels).filter(key => social[key]); %>
+<% if (items.length) { %><nav class="cinema-social<%= className ? ' ' + className : '' %>" aria-label="在其他平台找到我"><% items.forEach(key => { const url = social[key]; %><a class="glass" href="<%= fn_media(url) %>"<% if (fn_external(url)) { %> target="_blank" rel="noopener noreferrer"<% } %>><%= labels[key] %></a><% }); %></nav><% } %>

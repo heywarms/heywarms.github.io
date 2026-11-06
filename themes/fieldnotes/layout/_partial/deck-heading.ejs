@@ -1,0 +1,8 @@
+<div class="deck-heading">
+  <div>
+    <% if (eyebrow) { %><p class="deck-eyebrow"><%= eyebrow %></p><% } %>
+    <h2 class="deck-title"><%= title %></h2>
+    <% if (description) { %><p class="deck-description"><%= description %></p><% } %>
+  </div>
+  <% if (link_text && link_url) { %><a class="deck-more" href="<%= fn_url(link_url) %>"<% if (fn_external(link_url)) { %> target="_blank" rel="noopener noreferrer"<% } %>><%= link_text %> <%- fn_icon('northeast') %></a><% } %>
+</div>

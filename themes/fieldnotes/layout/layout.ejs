@@ -1,10 +1,11 @@
+<% const preferences = fn_settings(); const isAboutPage = page.path === "about/index.html" || page.type === "about" || page.layout === "about"; const cinemaHome = fn_cinema_home(); const stageHome = fn_stage_home(); const voyage = fn_voyage_classes(); const aboutHero = isAboutPage && preferences.about.hero.enabled; const listPage = is_archive() || is_category() || is_tag() || (is_home() && page.current > 1); const listBackdrop = listPage && preferences.list_backdrop.enabled; const topicHero = page.fieldnotes_topics && !page.fieldnotes_topic && preferences.topic_hero.enabled && fn_topics().length > 1; const rootClass = [cinemaHome && 'cinema-home', stageHome && 'has-stage', ...voyage, aboutHero && 'has-about-hero', listBackdrop && 'has-list-backdrop', topicHero && 'has-topic-hero'].filter(Boolean).join(' '); %>
 <!DOCTYPE html>
-<html lang="<%= config.language || 'zh-CN' %>">
+<html lang="<%= config.language || 'zh-CN' %>"<% if (rootClass) { %> class="<%= rootClass %>"<% } %> data-default-theme="<%= preferences.appearance.mode %>" data-theme-toggle="<%= preferences.appearance.toggle %>">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#f7f6f2">
+  <meta name="theme-color" content="<%= voyage.length ? '#05070f' : '#f7f6f2' %>">
   <title><%= page.title ? page.title + ' · ' + config.title : config.title + ' · ' + (theme.tagline || '') %></title>
   <meta name="description" content="<%= page.description || (is_post() ? fn_excerpt(page, 150) : config.description || theme.tagline) %>">
   <link rel="canonical" href="<%= full_url_for(page.path || '') %>">
@@ -14,15 +15,47 @@
   <meta property="og:description" content="<%= is_post() ? fn_excerpt(page, 150) : config.description || theme.tagline %>">
   <meta property="og:url" content="<%= full_url_for(page.path || '') %>">
   <meta property="og:site_name" content="<%= config.title %>">
-  <script>try{document.documentElement.dataset.theme=localStorage.getItem('fieldnotes-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light')}catch(e){}document.documentElement.classList.add('js')</script>
+  <script>(()=>{const r=document.documentElement;let mode=r.dataset.defaultTheme;try{const saved=localStorage.getItem('fieldnotes-theme');if(r.dataset.themeToggle==='true'&&['light','dark'].includes(saved))mode=saved}catch(e){}r.dataset.theme=mode==='system'?(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'):mode;r.classList.add('js')})()</script>
   <link rel="stylesheet" href="<%= url_for('/css/fieldnotes.css') %>">
+  <link rel="stylesheet" href="<%= url_for('/css/collections.css') %>">
+  <link rel="stylesheet" href="<%= url_for('/css/settings.css') %>">
+  <style><%- fn_theme_css() %></style>
   <script src="<%= url_for('/js/fieldnotes.js') %>" defer></script>
-  <% if ((is_home() && (!page.current || page.current === 1)) || page.path === "about/index.html" || page.type === "about" || page.layout === "about") { %>
+  <% if (cinemaHome) { %>
+  <% if (preferences.cinema.fonts) { %><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="<%= preferences.cinema.fonts %>"><% } %>
+  <% if (stageHome && preferences.home.stage.poster) { %><link rel="preload" as="image" href="<%= fn_media(preferences.home.stage.poster) %>"><% } %>
+  <link rel="stylesheet" href="<%= url_for('/css/cinema.css') %>">
+  <script src="<%= url_for('/js/cinema.js') %>" defer></script>
+  <% if (stageHome && preferences.home.stage.visual === 'planets') { %><script type="module" src="<%= url_for('/js/planets.js') %>"></script><% } %>
+  <% if (preferences.home.order.includes('routes')) { %><script type="module" src="<%= url_for('/js/deck-ships.js') %>"></script><% } %>
+  <% } %>
+  <% if (voyage.length) { %>
+  <link rel="stylesheet" href="<%= url_for('/css/voyage-space.css') %>">
+  <% if (voyage.includes('voyage-reader')) { %><link rel="stylesheet" href="<%= url_for('/css/voyage-reader.css') %>"><% } %>
+  <script src="<%= url_for('/js/starfield.js') %>" defer></script>
+  <% } %>
+  <% if (listBackdrop) { %>
+  <link rel="stylesheet" href="<%= url_for('/css/list-backdrop.css') %>">
+  <% if (preferences.list_backdrop.poster) { %><link rel="preload" as="image" href="<%= fn_media(preferences.list_backdrop.poster) %>"><% } %>
+  <script src="<%= url_for('/js/list-backdrop.js') %>" defer></script>
+  <% } %>
+  <% if (topicHero) { %>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Prata&display=swap">
+  <link rel="stylesheet" href="<%= url_for('/css/topic-hero.css') %>">
+  <script type="module" src="<%= url_for('/js/topic-planets.js') %>"></script>
+  <% } %>
+  <% if (aboutHero) { %>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap">
+  <link rel="stylesheet" href="<%= url_for('/css/about-hero.css') %>">
+  <% if (preferences.about.hero.video) { %><script src="<%= url_for('/js/about-hero.js') %>" defer></script><% } %>
+  <% } %>
+  <% if ((is_home() && (!page.current || page.current === 1) && preferences.home.order.includes('hero') && fn_locker_enabled('home')) || (isAboutPage && !aboutHero && fn_locker_enabled('about'))) { %>
   <link rel="stylesheet" href="<%= url_for('/css/locker.css') %>">
   <script type="module" src="<%= url_for('/js/locker.js') %>"></script>
   <% } %>
 </head>
-<body data-search-url="<%= url_for('/fieldnotes/search.json') %>">
+<body data-code-copy="<%= preferences.features.code_copy %>" data-image-zoom="<%= preferences.features.image_zoom %>" data-search-url="<%= url_for('/fieldnotes/search.json') %>">
+  <% if (listBackdrop) { %><%- partial('_partial/list-backdrop') %><% } %>
   <a class="skip-link" href="#main">跳到主要内容</a>
   <%- partial('_partial/header') %>
   <main id="main"><%- body %></main>

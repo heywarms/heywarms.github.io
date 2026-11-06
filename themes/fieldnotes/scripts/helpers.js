@@ -1,6 +1,7 @@
 'use strict';
 
 const { stripHTML, unescapeHTML } = require('hexo-util');
+const {settings} = require('../lib/settings.cjs');
 
 function postsFrom(collection) {
   const items = collection && typeof collection.toArray === 'function' ? collection.toArray() : [];
@@ -25,15 +26,15 @@ hexo.extend.helper.register('fn_minutes', function(post) {
   const words = text.replace(/[\u3400-\u9fff]/g, ' ').split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.ceil(chinese / 400 + words / 220));
 });
-hexo.extend.helper.register('fn_featured', function() {
+hexo.extend.helper.register('fn_featured', function(limit = 3) {
   const all = postsFrom(this.site.posts);
   const picked = (this.theme.featured || []).map(item => {
     const post = all.find(post => post.title === item.title || post.source === item.source);
     return post ? { post, ...item } : null;
   }).filter(Boolean);
-  if (picked.length) return picked.slice(0, 3);
-  return all.sort((a, b) => Number(b.date) - Number(a.date)).slice(0, 3)
-    .map((post, i) => ({ post, label: 'FIELD NOTES', artwork: ['containers', 'database', 'intelligence'][i] }));
+  if (picked.length) return picked.slice(0, limit);
+  return all.sort((a, b) => Number(b.date) - Number(a.date)).slice(0, limit)
+    .map((post, i) => ({ post, label: 'FIELD NOTES', artwork: ['containers', 'database', 'intelligence'][i % 3] }));
 });
 hexo.extend.helper.register('fn_categories', function(post) {
   return post.categories && typeof post.categories.toArray === 'function' ? post.categories.toArray() : [];
@@ -42,6 +43,16 @@ hexo.extend.helper.register('fn_is_life', function(post) {
   const names = (this.theme.life && this.theme.life.categories) || [];
   const categories = post.categories && typeof post.categories.toArray === 'function' ? post.categories.toArray() : [];
   return categories.some(category => names.includes(category.name));
+});
+// The wordmark: the brand name with its first "o" drawn as a small ringed planet, echoing
+// the star map on the homepage. Names without an "o" stay plain text.
+hexo.extend.helper.register('fn_wordmark', function(name) {
+  const text = String(name || '');
+  const escape = value => value.replace(/[&<>"']/g, ch => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'})[ch]);
+  const at = text.indexOf('o');
+  if (at < 0) return escape(text);
+  const planet = '<svg class="brand-o" viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle class="planet" cx="10" cy="10.5" r="5.4" stroke-width="2.1"/><ellipse class="ring" cx="10" cy="10.5" rx="9" ry="2.6" stroke-width="1.2" transform="rotate(-18 10 10.5)"/></svg>';
+  return escape(text.slice(0, at)) + planet + escape(text.slice(at + 1));
 });
 hexo.extend.helper.register('fn_icon', function(name, className = '') {
   const paths = {
@@ -56,7 +67,11 @@ hexo.extend.helper.register('fn_icon', function(name, className = '') {
     copy: '<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V4H4v12h4"/>',
     github: '<path d="M9 19c-4 1-4-2-5-2m10 4v-3.9a3.4 3.4 0 0 0-1-2.6c3.3-.4 6.8-1.6 6.8-7.4A5.8 5.8 0 0 0 18.2 3 5.4 5.4 0 0 0 18 0s-1.3-.4-4.3 1.6a15 15 0 0 0-7.8 0C2.9-.4 1.6 0 1.6 0a5.4 5.4 0 0 0-.2 3A5.8 5.8 0 0 0 0 7.1c0 5.8 3.5 7 6.8 7.4a3.4 3.4 0 0 0-1 2.6V21" transform="translate(2 1) scale(.95)"/>',
     refresh: '<path d="M20 7v5h-5M4 17v-5h5"/><path d="M6 7a7 7 0 0 1 12-1l2 3M4 15l2 3a7 7 0 0 0 12-1"/>',
-    spark: '<path d="M12 1v22M1 12h22M4.2 4.2l15.6 15.6M4.2 19.8 19.8 4.2"/>',
+    rss: '<path d="M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/>',
+    mail: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/>',
+    play: '<rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9 5 3-5 3Z"/>',
+    book: '<path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>',
+    chat: '<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12Z"/>',
     heart: '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.6a5.5 5.5 0 0 0 0-7.8Z"/>',
     back: '<path d="M19 12H5m7-7-7 7 7 7"/>'
   };
@@ -64,6 +79,7 @@ hexo.extend.helper.register('fn_icon', function(name, className = '') {
 });
 
 hexo.extend.generator.register('fieldnotes-search', function(locals) {
+  if (!settings(hexo.theme.config).features.search) return [];
   const urlFor = hexo.extend.helper.get('url_for').bind(hexo);
   return {
     path: 'fieldnotes/search.json',

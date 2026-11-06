@@ -6,11 +6,12 @@
   const themeButton = $('[data-toggle-theme]');
   const themeMedia = matchMedia('(prefers-color-scheme: dark)');
   let savedTheme;
-  try { savedTheme = localStorage.getItem('fieldnotes-theme'); } catch (_) {}
+  try { savedTheme = root.dataset.themeToggle === 'true' ? localStorage.getItem('fieldnotes-theme') : null; } catch (_) {}
+  if (!['light', 'dark'].includes(savedTheme)) savedTheme = null;
   function applyTheme(theme) {
     root.dataset.theme = theme;
-    themeButton.setAttribute('aria-label', theme === 'dark' ? '切换浅色模式' : '切换深色模式');
-    $('meta[name="theme-color"]').content = theme === 'dark' ? '#171b19' : '#f7f6f2';
+    themeButton?.setAttribute('aria-label', theme === 'dark' ? '切换浅色模式' : '切换深色模式');
+    $('meta[name="theme-color"]').content = getComputedStyle(root).getPropertyValue('--paper').trim();
   }
   if (themeButton) {
     themeButton.hidden = false;
@@ -20,12 +21,14 @@
       applyTheme(savedTheme);
       try { localStorage.setItem('fieldnotes-theme', savedTheme); } catch (_) {}
     });
-    themeMedia.addEventListener('change', event => { if (!savedTheme) applyTheme(event.matches ? 'dark' : 'light'); });
   }
+  applyTheme(root.dataset.theme);
+  themeMedia.addEventListener('change', event => { if (!savedTheme && root.dataset.defaultTheme === 'system') applyTheme(event.matches ? 'dark' : 'light'); });
 
   const menuButton = $('[data-toggle-menu]');
   const nav = $('#primary-nav');
   function closeMenu() {
+    if (!nav || !menuButton) return;
     nav.classList.remove('is-open');
     menuButton.setAttribute('aria-expanded', 'false');
     menuButton.setAttribute('aria-label', '展开导航');
@@ -74,7 +77,7 @@
       catch (_) { notify('复制失败，可以复制浏览器中的地址'); }
     });
   });
-  $$('.prose figure.highlight').forEach(figure => {
+  if (document.body.dataset.codeCopy !== 'false') $$('.prose figure.highlight').forEach(figure => {
     const content = figure.querySelector('.code');
     if (!content) return;
     const button = document.createElement('button');
@@ -185,7 +188,7 @@
     viewer.showModal();
     viewer.addEventListener('close', () => { if (trigger) trigger.focus({preventScroll: true}); }, {once: true});
   }
-  $$('.prose img').filter(image => !image.closest('a')).forEach(image => {
+  if (document.body.dataset.imageZoom !== 'false') $$('.prose img').filter(image => !image.closest('a')).forEach(image => {
     image.tabIndex = 0;
     image.setAttribute('role', 'button');
     image.setAttribute('aria-label', '放大图片' + (image.alt ? '：' + image.alt : ''));
@@ -194,17 +197,52 @@
       if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); viewImage(image, image); }
     });
   });
-  $$('[data-photo-view]').forEach(button => button.addEventListener('click', () => viewImage(button.querySelector('img'), button)));
+  if (document.body.dataset.imageZoom !== 'false') $$('[data-photo-view]').forEach(button => button.addEventListener('click', () => viewImage(button.querySelector('img'), button)));
 
   const article = $('#article-content');
   const progress = $('.reading-progress span');
-  if (article && progress) {
+  const mobileToc = $('[data-mobile-toc]');
+  function sizeMobileToc() {
+    if (!mobileToc || !mobileToc.open) return;
+    const height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+    const available = Math.max(80, height - mobileToc.getBoundingClientRect().bottom - 20);
+    mobileToc.style.setProperty('--toc-available', available + 'px');
+  }
+  if (mobileToc) {
+    mobileToc.addEventListener('toggle', sizeMobileToc);
+    mobileToc.addEventListener('click', event => {
+      const link = event.target.closest('a[href^="#"]');
+      if (!link) return;
+      mobileToc.open = false;
+      let id;
+      try { id = decodeURIComponent(link.hash.slice(1)); } catch (_) { id = link.hash.slice(1); }
+      const heading = document.getElementById(id);
+      if (heading) {
+        // Preserve native fragment navigation/history and move keyboard focus
+        // out of the closed disclosure to the chosen section.
+        if (!heading.hasAttribute('tabindex')) heading.tabIndex = -1;
+        requestAnimationFrame(() => heading.focus({preventScroll: true}));
+      }
+    });
+    document.addEventListener('click', event => {
+      if (mobileToc.open && !mobileToc.contains(event.target)) mobileToc.open = false;
+    });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && mobileToc.open) {
+        mobileToc.open = false;
+        mobileToc.querySelector('summary').focus({preventScroll: true});
+      }
+    });
+    matchMedia('(max-width: 800px)').addEventListener('change', () => { mobileToc.open = false; });
+  }
+  if (article) {
     let queued = false;
     function updateProgress() {
       const rect = article.getBoundingClientRect();
       const total = Math.max(1, article.offsetHeight - window.innerHeight * .6);
       const value = Math.max(0, Math.min(1, (window.innerHeight * .2 - rect.top) / total));
-      progress.style.transform = 'scaleX(' + value + ')';
+      if (progress) progress.style.transform = 'scaleX(' + value + ')';
+      sizeMobileToc();
       queued = false;
     }
     function queueProgress() { if (!queued) { queued = true; requestAnimationFrame(updateProgress); } }
@@ -218,6 +256,8 @@
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
+          const currentHeading = $('[data-toc-current]');
+          if (currentHeading) currentHeading.textContent = entry.target.textContent;
           tocLinks.forEach(link => {
             let target;
             try { target = decodeURIComponent(link.hash.slice(1)); } catch (_) { target = link.hash.slice(1); }

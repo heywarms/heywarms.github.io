@@ -1,0 +1,11 @@
+<div class="collection-grid">
+  <% fn_topics().forEach((topic, index) => { %>
+  <a class="collection-card collection-<%= topic.artwork %>" href="<%= url_for(topic.path) %>">
+    <div class="collection-tab" aria-hidden="true">专题 <span><%= String(index + 1).padStart(2, '0') %></span></div>
+    <div class="collection-topline"><span class="eyebrow"><%= topic.label %></span><span><%= topic.posts.length %> 篇笔记</span></div>
+    <h3><%= topic.title %></h3>
+    <p><%= topic.description %></p>
+    <div class="collection-bottom"><span>翻开这份手记</span><%- fn_icon('arrow') %></div>
+  </a>
+  <% }); %>
+</div>

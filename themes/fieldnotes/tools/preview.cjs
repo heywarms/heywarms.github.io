@@ -22,7 +22,7 @@ async function main() {
   const temp = fs.mkdtempSync(path.join(os.tmpdir(), 'hexo-fieldnotes-'));
   const config = yaml.load(fs.readFileSync(path.join(project, '_config.yml'), 'utf8'));
   const preview = {};
-  for (const key of ['title','subtitle','description','author','language','timezone','permalink','pretty_urls','date_format','time_format','pagination_dir','per_page','index_generator','archive_generator','category_generator','tag_generator','highlight','prismjs','marked','external_link','post_asset_folder','future']) {
+  for (const key of ['title','subtitle','description','author','language','timezone','permalink','pretty_urls','date_format','time_format','pagination_dir','per_page','index_generator','archive_generator','category_generator','tag_generator','highlight','prismjs','marked','external_link','post_asset_folder','future','theme_config']) {
     if (config[key] !== undefined) preview[key] = config[key];
   }
   Object.assign(preview, {
@@ -30,6 +30,10 @@ async function main() {
     root, source_dir: 'source', public_dir: 'public',
     render_drafts: false
   });
+  const configFlag = args.indexOf('--theme-config');
+  const override = configFlag >= 0 ? path.resolve(args[configFlag + 1]) : path.join(project, '_config.fieldnotes.yml');
+  if (configFlag >= 0 && !fs.existsSync(override)) throw new Error('Theme configuration file not found');
+  if (fs.existsSync(override)) fs.copyFileSync(override, path.join(temp, '_config.fieldnotes.yml'));
   fs.writeFileSync(path.join(temp, '_config.yml'), yaml.dump(preview));
   const packages = ['hexo-generator-index','hexo-generator-archive','hexo-generator-category','hexo-generator-tag','hexo-renderer-ejs','hexo-renderer-marked'];
   fs.writeFileSync(path.join(temp, 'package.json'), JSON.stringify({name:'fieldnotes-preview',private:true,hexo:{version:'7.3.0'},dependencies:Object.fromEntries(packages.map(name=>[name,'*']))}));

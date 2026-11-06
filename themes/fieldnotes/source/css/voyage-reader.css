@@ -1,0 +1,58 @@
+/* Voyage reader: articles read aboard a starship. voyage-space.css already paints the sky,
+   swaps in the deep-space tokens and draws the glass console and prose; this file adds what
+   only a post has: the header, a wider console beside the route map, and the ending. */
+
+/* ---------- Progress ---------- */
+.voyage-reader .reading-progress { height: 2px; }
+.voyage-reader .reading-progress span { background: linear-gradient(90deg, var(--space-cyan), var(--space-lime)); box-shadow: 0 0 12px var(--space-cyan); }
+
+/* ---------- Post header ---------- */
+.voyage-reader .post-page { padding-top: 54px; }
+.voyage-reader .post-categories { align-items: center; }
+.voyage-reader .post-categories::before { content: "航行日志 · LOG"; padding: 4px 10px; border: 1px solid color-mix(in srgb, var(--space-lime) 35%, transparent); border-radius: 999px; color: var(--space-lime); font-family: var(--space-mono); font-size: 11px; letter-spacing: .14em; }
+.voyage-reader .post-categories a { padding: 4px 11px; border-radius: 999px; background: rgba(110, 231, 255, .07); color: var(--space-cyan); }
+.voyage-reader .post-header h1 { color: #f4f7ff; text-shadow: 0 0 42px rgba(110, 231, 255, .18); }
+.voyage-reader .post-meta { gap: 8px; font-family: var(--space-mono); letter-spacing: .05em; }
+.voyage-reader .post-meta > * + *::before { content: "·"; margin-right: 8px; color: var(--space-cyan); }
+.voyage-reader .article-collection { border-radius: 14px; }
+
+/* ---------- The reading console ---------- */
+.voyage-reader .reading-layout { grid-template-columns: minmax(0, 820px) minmax(160px, 1fr); gap: 56px; padding-top: 6px; border-top: 0; }
+.voyage-reader .prose { font-size: 16.5px; line-height: 2; }
+
+/* ---------- Route map (table of contents) ---------- */
+.voyage-reader .post-toc > div { top: 24px; padding: 22px 20px 14px; border: 1px solid rgba(150, 175, 255, .12); border-radius: 22px; background: rgba(8, 12, 27, .6); }
+.voyage-reader .post-toc h2 { color: #f4f7ff; }
+.voyage-reader .post-toc nav > ol { position: relative; padding-left: 4px; }
+.voyage-reader .post-toc nav > ol::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 1px; background: linear-gradient(var(--space-cyan), var(--space-violet)); opacity: .35; }
+.voyage-reader .post-toc .toc-link { position: relative; padding-left: 20px; border-left: 0; }
+.voyage-reader .post-toc .toc-link::before { content: ""; position: absolute; left: 0; top: .6em; width: 7px; height: 7px; border: 1px solid color-mix(in srgb, var(--space-cyan) 60%, transparent); border-radius: 50%; background: var(--paper); transition: background .2s ease, box-shadow .2s ease; }
+.voyage-reader .post-toc .toc-child { margin-left: 0; padding-left: 12px; border-left: 0; }
+.voyage-reader .post-toc .toc-child .toc-link::before { left: 3px; width: 4px; height: 4px; top: .75em; }
+.voyage-reader .post-toc .toc-link.is-active { color: #fff; }
+.voyage-reader .post-toc .toc-link.is-active::before { border-color: var(--space-lime); background: var(--space-lime); box-shadow: 0 0 10px var(--space-lime); }
+.voyage-reader .mobile-toc { border-color: rgba(150, 175, 255, .14); border-radius: 16px; background: var(--console); }
+
+/* ---------- After the article ---------- */
+.voyage-reader .article-note { border-left-color: var(--space-cyan); border-radius: 0 16px 16px 0; }
+.voyage-reader .article-note .eyebrow { color: var(--space-lime); font-family: var(--space-mono); letter-spacing: .18em; }
+.voyage-reader .post-end > p { color: var(--muted); font-family: var(--space-mono); letter-spacing: .12em; }
+.voyage-reader .post-tags a { border-color: rgba(110, 231, 255, .18); background: rgba(110, 231, 255, .06); color: var(--space-cyan); }
+.voyage-reader .post-navigation a,
+.voyage-reader .series-links > a { padding: 16px 18px; border: 1px solid var(--line); border-radius: 16px; background: rgba(8, 12, 27, .55); transition: border-color .2s ease, box-shadow .2s ease; }
+.voyage-reader .series-links > .series-forward { background: linear-gradient(120deg, rgba(110, 231, 255, .08), rgba(167, 139, 250, .06)); }
+
+@media (hover: hover) and (pointer: fine) {
+  .voyage-reader .post-navigation a:hover,
+  .voyage-reader .series-links > a:hover { border-color: color-mix(in srgb, var(--space-cyan) 55%, transparent); box-shadow: 0 0 24px -10px var(--space-cyan); }
+}
+@media (max-width: 1100px) {
+  .voyage-reader .reading-layout { grid-template-columns: minmax(0, 1fr) 180px; gap: 32px; }
+}
+@media (max-width: 800px) {
+  .voyage-reader .post-page { padding-top: 36px; }
+  .voyage-reader .reading-layout { grid-template-columns: minmax(0, 1fr); gap: 24px; }
+}
+@media print {
+  .voyage-reader .post-header h1 { color: inherit; text-shadow: none; }
+}

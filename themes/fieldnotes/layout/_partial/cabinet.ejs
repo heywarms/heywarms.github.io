@@ -1,0 +1,5 @@
+<% if (fn_locker_enabled(lockerMode)) { %>
+<%- partial('_partial/locker', {lockerMode}) %>
+<% } else { const cabinet = fn_settings().locker; %>
+<figure class="static-cabinet"><img src="<%= fn_url(cabinet.poster) %>" alt="<%= cabinet.poster_alt %>" width="900" height="900"><figcaption><%= cabinet.note %></figcaption></figure>
+<% } %>

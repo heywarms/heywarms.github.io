@@ -1,0 +1,66 @@
+/* Article lists open on a slow abstract light painting. It covers the first screen behind
+   the header and the centred intro, fades out at its foot into the page's own sky, and
+   dims as the list scrolls over it, so the rows always sit on a dark, quiet ground. */
+.list-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100vh;
+  height: 100svh;
+  overflow: hidden;
+  pointer-events: none;
+  background: #02060f;
+  opacity: var(--list-fade, 1);
+  -webkit-mask-image: linear-gradient(#000 52%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(#000 52%, rgba(0, 0, 0, 0) 100%);
+}
+/* The footage's brightest point is its centre; lifting it a little puts it behind the title. */
+.list-backdrop :is(video, img) {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  transform: translateY(-8%) scale(1.08);
+  filter: hue-rotate(var(--list-hue, 0deg));
+}
+/* The veil keeps the headline legible over the flare and darkens the edges. */
+.list-backdrop-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 34% at 50% 42%, rgba(2, 6, 15, .5) 0%, rgba(2, 6, 15, .28) 55%, rgba(2, 6, 15, 0) 100%),
+    linear-gradient(180deg, rgba(2, 6, 15, .35) 0%, rgba(2, 6, 15, .05) 22%, rgba(2, 6, 15, .1) 60%, rgba(2, 6, 15, .5) 100%);
+}
+
+/* The intro becomes a centred title block over the light, the filters right under it. */
+html.has-list-backdrop .archive-page > .page-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 52vh;
+  min-height: 52svh;
+  padding: 40px 0 28px;
+  text-align: center;
+}
+html.has-list-backdrop .archive-page > .page-intro h1 { text-shadow: 0 2px 24px rgba(2, 6, 15, .65), 0 0 60px rgba(2, 6, 15, .5); }
+html.has-list-backdrop .archive-page > .page-intro > p:last-child:not(.eyebrow) { margin-inline: auto; color: rgba(236, 241, 252, .82); text-shadow: 0 1px 14px rgba(2, 6, 15, .8); }
+html.has-list-backdrop .archive-page > .topic-nav { justify-content: center; border-bottom-color: transparent; }
+html.has-list-backdrop .archive-page > .topic-nav > a { -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+
+@media (max-width: 620px) {
+  /* The portrait crop drives the bright arcs straight through the copy: aim a stronger veil. */
+  .list-backdrop-veil {
+    background:
+      radial-gradient(120% 40% at 50% 42%, rgba(2, 6, 15, .62) 0%, rgba(2, 6, 15, .34) 55%, rgba(2, 6, 15, 0) 100%),
+      linear-gradient(180deg, rgba(2, 6, 15, .4) 0%, rgba(2, 6, 15, 0) 22%, rgba(2, 6, 15, .1) 60%, rgba(2, 6, 15, .55) 100%);
+  }
+  html.has-list-backdrop .archive-page > .page-intro { min-height: 46vh; min-height: 46svh; padding-bottom: 20px; }
+}
+@media print {
+  .list-backdrop { display: none; }
+}

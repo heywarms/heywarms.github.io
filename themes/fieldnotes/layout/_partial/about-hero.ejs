@@ -1,0 +1,23 @@
+<% const h = about.hero; const social = fn_settings().social; const connect = fn_settings().home.connect;
+   const labels = {github: 'GitHub', bilibili: 'B站', xiaohongshu: '小红书', douyin: '抖音', wechat: '公众号', rss: 'RSS', email: '邮件'};
+   const icons = {github: 'github', bilibili: 'play', xiaohongshu: 'book', douyin: 'play', wechat: 'chat', rss: 'rss', email: 'mail'};
+   const links = Object.keys(labels).filter(key => social[key]);
+   // Without a subscription service the glass bar links to a profile instead of faking a form.
+   const cta = h.cta_url || (links[0] ? social[links[0]] : '');
+   const ctaText = h.cta_text || (links[0] ? '在 ' + labels[links[0]] + ' 找到我' : ''); %>
+<section class="about-hero" aria-labelledby="about-hero-title">
+  <% if (h.video) { %><video class="about-hero-video" muted autoplay playsinline preload="auto"<% if (h.poster) { %> poster="<%= fn_media(h.poster) %>"<% } %> style="--shift: <%= h.shift %>%" data-hero-video aria-hidden="true"><source src="<%= fn_media(h.video) %>" type="video/mp4"></video><% } %>
+  <div class="about-hero-content">
+    <h1 class="about-hero-title" id="about-hero-title"><%- fn_emphasis(h.heading || about.title) %></h1>
+    <div class="about-hero-body">
+      <% if (connect.form_action) { %>
+      <form class="liquid-glass about-hero-field" action="<%= connect.form_action %>" method="post" target="_blank"><label class="sr-only" for="about-hero-email">邮箱</label><input id="about-hero-email" type="email" name="<%= connect.email_field %>" placeholder="<%= connect.placeholder || '输入邮箱' %>" autocomplete="email" required><button class="about-hero-go" type="submit" aria-label="<%= connect.button_label || '订阅' %>"><%- fn_icon('arrow') %></button></form>
+      <% } else if (cta) { %>
+      <a class="liquid-glass about-hero-field" href="<%= fn_url(cta) %>"<% if (fn_external(cta)) { %> target="_blank" rel="noopener noreferrer"<% } %>><span><%= ctaText %></span><span class="about-hero-go" aria-hidden="true"><%- fn_icon('arrow') %></span></a>
+      <% } %>
+      <p class="about-hero-subtitle"><%= h.subtitle || theme.about.description %></p>
+      <a class="liquid-glass about-hero-more" href="#profile"><%= h.button_text %></a>
+    </div>
+  </div>
+  <% if (links.length) { %><nav class="about-hero-social" aria-label="在其他平台找到我"><% links.forEach(key => { const url = social[key]; %><a class="liquid-glass" href="<%= fn_media(url) %>" aria-label="<%= labels[key] %>"<% if (fn_external(url)) { %> target="_blank" rel="noopener noreferrer"<% } %>><%- fn_icon(icons[key]) %></a><% }); %></nav><% } %>
+</section>

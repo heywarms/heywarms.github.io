@@ -1,0 +1,25 @@
+<% const c = section; const about = theme.about || {}; const description = c.description || about.description || ''; const project = c.show_project ? (theme.projects || [])[0] : null; const hasArt = Boolean(c.video || c.video_webm || c.poster); const brand = theme.brand || config.title; %>
+<section class="deck-section" id="about">
+  <div class="cinema-shell connect-layout">
+    <div class="deck-card connect-about">
+      <% if (hasArt) { %><div class="connect-media"><%- partial('_partial/cinema-video', {video: c.video, webm: c.video_webm, poster: c.poster, className: '', preload: 'metadata'}) %></div><% } %>
+      <div class="connect-copy">
+        <% if (c.eyebrow) { %><p class="deck-eyebrow"><%= c.eyebrow %></p><% } %>
+        <h2 class="deck-title"><%= c.title || '你好，我是 ' + brand %></h2>
+        <% if (description) { %><p class="connect-description"><%= description %></p><% } %>
+        <% if (c.note) { %><p class="connect-note"><%= c.note %></p><% } %>
+        <% if (project) { %><a class="connect-project" href="<%= url_for('/projects/') %>"><span class="deck-orb is-gas" aria-hidden="true"></span><span><small>我在做的工具<%= project.status ? ' · ' + project.status : '' %></small><strong><%= project.title %></strong><% if (project.tagline) { %><span><%= project.tagline %></span><% } %></span><%- fn_icon('northeast') %></a><% } %>
+        <% if (c.link_text && c.link_url) { %><a class="deck-more" href="<%= fn_url(c.link_url) %>"><%= c.link_text %> <%- fn_icon('arrow') %></a><% } %>
+      </div>
+    </div>
+    <div class="connect-subscribe" id="subscribe">
+      <div class="connect-subscribe-inner">
+        <% if (c.subscribe_eyebrow) { %><p class="deck-eyebrow"><%= c.subscribe_eyebrow %></p><% } %>
+        <% if (c.subscribe_title) { %><h2 class="connect-subscribe-title"><%= c.subscribe_title %></h2><% } %>
+        <% if (c.subscribe_description) { %><p class="connect-subscribe-description"><%= c.subscribe_description %></p><% } %>
+        <% if (c.form_action) { %><form class="glass dispatch-form" action="<%= c.form_action %>" method="post" target="_blank"><label class="sr-only" for="connect-email">邮箱地址</label><input id="connect-email" type="email" name="<%= c.email_field %>" placeholder="<%= c.placeholder %>" autocomplete="email" required><button type="submit" aria-label="<%= c.button_label %>"><%- fn_icon('arrow') %></button></form><% } %>
+        <%- partial('_partial/cinema-social', {className: 'connect-social'}) %>
+      </div>
+    </div>
+  </div>
+</section>

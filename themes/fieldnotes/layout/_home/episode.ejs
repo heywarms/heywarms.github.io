@@ -1,0 +1,29 @@
+<% const e = section; const post = fn_find_post(e.post); const title = e.cover_title || (post && post.title) || ''; const watch = e.video_url ? fn_url(e.video_url) : ''; const read = post ? url_for(post.path) : ''; const href = watch || read; const external = fn_external(watch); const hasMedia = Boolean(e.video || e.video_webm || e.poster); %>
+<% if (title || hasMedia) { %>
+<section class="cinema-section cinema-episode" id="videos">
+  <% if (e.intro) { %><div class="episode-ghost" aria-hidden="true"><% for (let i = 0; i < 8; i++) { %><p class="cinema-mono"><%= e.intro %></p><% } %></div><% } %>
+  <div class="cinema-shell">
+    <div class="cinema-heading-row">
+      <%- partial('_partial/cinema-heading', {tag: 'h2', lines: e.heading.length ? e.heading : ['Latest'], signature: e.signature, className: ''}) %>
+      <% if (e.intro || e.intro_zh) { %><div class="cinema-intro"><% if (e.intro) { %><p class="cinema-mono"><%= e.intro %></p><% } %><% if (e.intro_zh) { %><p><%= e.intro_zh %></p><% } %></div><% } %>
+    </div>
+    <<%= href ? 'a' : 'div' %> class="episode-cover<%= hasMedia ? '' : ' is-abstract' %>"<% if (href) { %> href="<%= href %>"<% if (external) { %> target="_blank" rel="noopener noreferrer"<% } %><% } %>>
+      <% if (hasMedia) { %><%- partial('_partial/cinema-video', {video: e.video, webm: e.video_webm, poster: e.poster, className: '', preload: 'metadata'}) %><% } else { %><span class="episode-orb" aria-hidden="true"></span><% } %>
+      <span class="episode-shade" aria-hidden="true"></span>
+      <% if (e.label) { %><span class="cinema-mono episode-label"><%= e.label %></span><% } %>
+      <span class="episode-cover-copy">
+        <% if (title) { %><span class="episode-cover-title"><%= title %></span><% } %>
+        <% if (href) { %><span class="episode-play"><span class="episode-play-button" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13l11-6.5z"/></svg></span><span class="cinema-mono"><%= watch ? 'Play' : 'Read' %><%= e.duration ? ' · ' + e.duration : '' %></span></span><% } %>
+      </span>
+    </<%= href ? 'a' : 'div' %>>
+    <% if (e.video_title || e.meta || watch || read) { %><div class="episode-meta">
+      <div><% if (e.video_title) { %><p class="episode-title"><%= e.video_title %></p><% } %><% if (e.meta) { %><p class="cinema-mono episode-sub"><%= e.meta %></p><% } %></div>
+      <div class="episode-actions">
+        <% if (watch) { %><a class="cinema-button is-light" href="<%= watch %>"<% if (external) { %> target="_blank" rel="noopener noreferrer"<% } %>><%= e.watch_text %></a><% } %>
+        <% if (read) { %><a class="cinema-button glass" href="<%= read %>"><%= e.read_text %></a><% } %>
+      </div>
+    </div><% } %>
+    <% if (e.cards.length) { %><div class="episode-cards"><% e.cards.forEach((card, index) => { const tag = card.url ? 'a' : 'div'; %><<%= tag %> class="episode-card tone-<%= index % 3 %>"<% if (card.url) { %> href="<%= fn_url(card.url) %>"<% if (fn_external(card.url)) { %> target="_blank" rel="noopener noreferrer"<% } %><% } %>><% if (card.label) { %><span class="cinema-mono"><%= card.label %></span><% } %><strong><%= card.title %></strong></<%= tag %>><% }); %></div><% } %>
+  </div>
+</section>
+<% } %>

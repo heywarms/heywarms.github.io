@@ -1,0 +1,95 @@
+/* About hero: a full-screen looping video under liquid-glass controls and a large serif
+   headline. The site header floats over it as a glass pill; the profile follows below. */
+.liquid-glass {
+  position: relative;
+  overflow: hidden;
+  border: none;
+  background: rgba(255, 255, 255, .01);
+  background-blend-mode: luminosity;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, .1);
+}
+/* The glass edge: a gradient ring, masked so only the border shows. */
+.liquid-glass::before,
+html.has-about-hero .site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1.4px;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(255, 255, 255, .45) 0%, rgba(255, 255, 255, .15) 20%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0) 60%, rgba(255, 255, 255, .15) 80%, rgba(255, 255, 255, .45) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ---------- Header as a glass pill over the video ---------- */
+html.has-about-hero .site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  max-width: 1024px;
+  height: auto;
+  min-height: 64px;
+  margin: 24px auto 0;
+  padding: 10px 14px 10px 24px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .01);
+  background-blend-mode: luminosity;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, .1);
+}
+html.has-about-hero .site-header .brand:not(:has(.brand-mark)) { padding-left: 0; }
+html.has-about-hero .site-header :is(.brand strong, .primary-nav a[aria-current]) { color: #fff; }
+html.has-about-hero .site-header .primary-nav a { color: rgba(255, 255, 255, .8); }
+
+/* ---------- Hero ---------- */
+.about-hero { position: relative; display: flex; flex-direction: column; min-height: 100vh; min-height: 100svh; overflow: hidden; isolation: isolate; background: #000; color: #fff; }
+/* Shifted down so the top of the frame is cropped; the subject sits in the lower part. */
+.about-hero-video { position: absolute; inset: 0; z-index: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; pointer-events: none; transform: translateY(var(--shift, 17%)); }
+/* The hero hands over to the page's own sky below. */
+.about-hero::after { content: ""; position: absolute; inset: auto 0 0; z-index: 1; height: 140px; background: linear-gradient(rgba(0, 0, 0, 0), var(--paper)); pointer-events: none; }
+.about-hero-content { position: relative; z-index: 10; display: flex; flex: 1; flex-direction: column; align-items: center; justify-content: center; padding: 112px 24px 48px; text-align: center; transform: translateY(-20%); }
+.about-hero-title { margin: 0 0 32px; color: #fff; font-family: "Instrument Serif", serif; font-size: clamp(40px, 10vw, 72px); font-weight: 400; line-height: 1.05; letter-spacing: -.025em; white-space: nowrap; }
+.about-hero-title em { font-style: italic; }
+.about-hero-body { display: grid; gap: 16px; width: 100%; max-width: 576px; }
+.about-hero-field { display: flex; align-items: center; gap: 12px; padding: 8px 8px 8px 24px; border-radius: 999px; color: #fff; text-align: left; }
+.about-hero-field input { flex: 1; min-width: 0; padding: 0; border: 0; background: transparent; color: #fff; font: inherit; font-size: 16px; outline: 0; }
+.about-hero-field input::placeholder { color: rgba(255, 255, 255, .4); }
+.about-hero-field > span:first-child { flex: 1; min-width: 0; font-size: 15px; }
+.about-hero-go { display: grid; flex: none; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%; background: #fff; color: #000; cursor: pointer; }
+.about-hero-go .icon { width: 20px; height: 20px; }
+.about-hero-field:focus-within { box-shadow: inset 0 1px 1px rgba(255, 255, 255, .1), 0 0 0 2px rgba(255, 255, 255, .35); }
+.about-hero-subtitle { margin: 0; padding: 0 16px; color: #fff; font-size: 14px; line-height: 1.625; }
+.about-hero-more { justify-self: center; padding: 12px 32px; border-radius: 999px; color: #fff; font-size: 14px; font-weight: 500; transition: background-color .2s ease; }
+.about-hero-more:hover, a.about-hero-field:hover { background-color: rgba(255, 255, 255, .05); }
+.about-hero-social { position: relative; z-index: 10; display: flex; justify-content: center; gap: 16px; padding-bottom: 48px; }
+.about-hero-social a { display: grid; place-items: center; padding: 16px; border-radius: 50%; color: rgba(255, 255, 255, .8); transition: color .2s ease, background-color .2s ease; }
+.about-hero-social a:hover { background-color: rgba(255, 255, 255, .05); color: #fff; }
+.about-hero-social .icon { width: 20px; height: 20px; }
+.about-hero :is(a, button, input):focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+/* ---------- The profile below ---------- */
+.about-page.has-hero { padding-top: 24px; }
+.about-page.has-hero .about-layout { grid-template-columns: minmax(0, 1fr); max-width: 760px; }
+.about-page.has-hero .about-copy { scroll-margin-top: 40px; }
+/* The facts list is styled in locker.css for the cabinet version; this page does not load it. */
+.about-page.has-hero .profile-facts { display: grid; grid-template-columns: auto 1fr; gap: 10px 25px; margin: 26px 0; padding: 22px 0; border-block: 1px solid var(--line); font-size: 12px; }
+.about-page.has-hero .profile-facts dt { color: var(--muted); }
+.about-page.has-hero .profile-facts dd { margin: 0; }
+
+@media (max-width: 620px) {
+  html.has-about-hero .site-header { min-height: 58px; margin-top: 16px; padding: 8px 8px 8px 18px; }
+  .about-hero-content { padding-top: 96px; }
+  .about-hero-title { white-space: normal; }
+  .about-hero-subtitle { padding: 0 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .about-hero-more, .about-hero-social a { transition: none; }
+}

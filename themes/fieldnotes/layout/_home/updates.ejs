@@ -1,0 +1,13 @@
+<% const u = section; const archive = fn_settings().archive; const picked = fn_notes({exclude_categories: archive.categories, limit: u.limit}); %>
+<% if (picked.posts.length || u.upcoming.length) { %>
+<section class="deck-section" id="updates">
+  <div class="cinema-shell">
+    <%- partial('_partial/deck-heading', {number, eyebrow: u.eyebrow, title: u.title, description: '', link_text: u.link_text, link_url: '/archives/'}) %>
+    <div class="deck-card updates-list">
+      <% u.upcoming.forEach(item => { %><div class="updates-row is-upcoming"><span class="updates-date">即将</span><span class="deck-pill is-next"><%= item.label || '预告' %></span><span class="updates-title"><%= item.title %></span></div><% }); %>
+      <% picked.posts.forEach(post => { const category = fn_note_category(post, archive.categories); %><a class="updates-row" href="<%= url_for(post.path) %>"><time class="updates-date" datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'YYYY.MM.DD') %></time><span class="deck-pill">笔记</span><span class="updates-title"><%= post.title %></span><% if (category) { %><span class="updates-category"><%= category %></span><% } %></a><% }); %>
+      <% if (picked.archived) { %><a class="updates-row is-archive" href="<%= url_for('/archives/') %>"><span class="updates-date"><%= archive.name %></span><span class="updates-title"><%= archive.text %> · <%= picked.archived %> 篇</span><%- fn_icon('arrow') %></a><% } %>
+    </div>
+  </div>
+</section>
+<% } %>

@@ -1,0 +1,20 @@
+<% const r = section; const routes = fn_routes(); %>
+<section class="deck-section" id="routes">
+  <div class="cinema-shell">
+    <%- partial('_partial/deck-heading', {number, eyebrow: r.eyebrow, title: r.title, description: r.description, link_text: r.link_text, link_url: r.link_url}) %>
+    <div class="deck-grid">
+      <% routes.forEach((route, index) => { const live = route.posts.length; const planned = route.planned.length; const meta = [live && live + ' 篇已发布', planned && planned + ' 篇规划中'].filter(Boolean).join(' · '); %>
+      <article class="deck-card deck-tilt route-card">
+        <div class="route-top"><span class="deck-ship" data-ship="<%= ['scout', 'cruiser', 'carrier'][index % 3] %>" aria-hidden="true"><span class="deck-orb is-<%= route.planet %>"></span></span><% if (route.tag) { %><span class="deck-tag<%= live ? ' is-live' : '' %>"><%= route.tag %></span><% } %></div>
+        <% if (route.step) { %><p class="route-step"><%= route.step %></p><% } %>
+        <h3 class="route-title"><%= route.title %></h3>
+        <% if (route.description) { %><p class="route-description"><%= route.description %></p><% } %>
+        <p class="route-meta"><%= meta || '规划中' %></p>
+        <% if (route.first) { %><a class="route-link is-live" href="<%= url_for(route.first.path) %>">第 1 篇：<%= route.first.title %> <%- fn_icon('arrow') %></a>
+        <% } else if (route.topic) { %><a class="route-link" href="<%= url_for(route.topic.path) %>">查看专题 <%- fn_icon('arrow') %></a>
+        <% } else { %><span class="route-link is-muted">即将开放</span><% } %>
+      </article>
+      <% }); %>
+    </div>
+  </div>
+</section>

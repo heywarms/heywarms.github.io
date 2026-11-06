@@ -1,0 +1,84 @@
+/* Topics hero: the featured topic's world fills the lower sky; the other two sit half-cropped
+   at the screen edges beside the button, and clicking one swaps it in (topic-planets.js). */
+html.has-topic-hero .site-header { position: absolute; top: 0; left: 0; right: 0; z-index: 20; margin-inline: auto; }
+.topic-hero {
+  --cyan: #79dce8;
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  isolation: isolate;
+  background: radial-gradient(120% 70% at 50% 110%, rgba(110, 231, 255, .14), transparent 60%), #02040b;
+  color: #fff;
+}
+.topic-hero-sky { position: absolute; inset: 0; z-index: 0; display: block; width: 100%; height: 100%; opacity: 0; transition: opacity .9s ease; }
+.topic-hero.is-ready .topic-hero-sky { opacity: 1; }
+/* The horizon hands over to the shelf below. */
+.topic-hero::after { content: ""; position: absolute; inset: auto 0 0; z-index: 1; height: 120px; background: linear-gradient(rgba(5, 7, 15, 0), var(--paper, #05070f)); pointer-events: none; }
+
+.topic-hero-copy { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; padding: clamp(132px, 20vh, 196px) 24px 0; text-align: center; pointer-events: none; }
+.topic-hero-copy a { pointer-events: auto; }
+.topic-hero-eyebrow { margin: 0; color: rgba(255, 255, 255, .88); font-size: clamp(13px, 1.5vw, 19px); font-weight: 500; letter-spacing: .3em; text-indent: .3em; }
+.topic-hero-title { margin: 20px 0 0; font-family: "Prata", "Songti SC", "Noto Serif SC", "STSong", Georgia, serif; font-size: clamp(42px, 7vw, 100px); font-weight: 400; line-height: 1.12; letter-spacing: .02em; text-shadow: 0 4px 40px rgba(2, 4, 11, .6); word-break: keep-all; text-wrap: balance; }
+.topic-hero-mask { display: block; overflow: hidden; padding: .12em .1em 0; margin-top: -.12em; }
+.topic-hero-mask > span { display: block; }
+.topic-hero-rule { display: block; width: 100px; height: 5px; margin-top: 24px; border-radius: 3px; background: var(--cyan); box-shadow: 0 0 18px rgba(121, 220, 232, .45); }
+.topic-hero-lede { max-width: 620px; margin: 24px 0 0; color: rgba(255, 255, 255, .92); font-size: clamp(15px, 1.3vw, 18px); line-height: 1.75; text-wrap: pretty; text-shadow: 0 1px 16px rgba(2, 4, 11, .8); }
+.topic-hero-meta { margin: 8px 0 0; color: rgba(255, 255, 255, .6); font-size: 13px; letter-spacing: .08em; }
+.topic-hero-cta { display: flex; justify-content: center; width: 100%; margin-top: 32px; }
+.topic-hero-go {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 216px; height: 64px; border-radius: 32px;
+  color: #071227; font-size: 17px; font-weight: 700; letter-spacing: .04em;
+  background: linear-gradient(180deg, #fff 0%, #d6e8f8 4%, #d9ecfe 72%, #fff 100%);
+  box-shadow: 0 10px 18px -8px rgba(255, 255, 255, .5), 0 0 26px rgba(255, 255, 255, .18), inset 0 0 0 2px rgba(255, 255, 255, .9);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.topic-hero-go:hover { transform: translateY(-2px); box-shadow: 0 14px 24px -10px rgba(255, 255, 255, .6), 0 0 34px rgba(121, 220, 232, .35), inset 0 0 0 2px #fff; }
+
+/* Side planets are drawn on the canvas; these buttons sit over them. */
+.topic-planet { position: absolute; z-index: 3; padding: 0; border: 0; border-radius: 50%; background: transparent; cursor: pointer; }
+.topic-hero:not(.is-ready) .topic-planet { visibility: hidden; }
+.topic-hero-label { position: absolute; z-index: 3; transform: translateY(-50%); color: #fff; font-family: "Prata", "Songti SC", "Noto Serif SC", Georgia, serif; font-size: 17px; letter-spacing: .2em; white-space: nowrap; pointer-events: none; text-shadow: 0 1px 12px rgba(2, 4, 11, .9); }
+.topic-hero-scroll { position: absolute; left: 50%; bottom: 56px; z-index: 3; display: grid; place-items: center; width: 72px; height: 72px; margin-left: -36px; border-radius: 50%; background: rgba(24, 30, 42, .7); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px); color: #fff; }
+.topic-hero-scroll svg { width: 16px; height: 20px; }
+.topic-hero :is(a, button):focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+
+/* Switching: the copy dips out, changes, and rises back in. */
+.topic-hero-swap { transition: opacity .24s ease, transform .3s cubic-bezier(.22, 1, .36, 1); }
+.topic-hero-label.topic-hero-swap { transition: opacity .24s ease; }
+.topic-hero.is-switching .topic-hero-swap { opacity: 0; }
+.topic-hero.is-switching :is(.topic-hero-eyebrow, .topic-hero-lede, .topic-hero-meta) { transform: translateY(8px); }
+.topic-hero.is-switching .topic-hero-mask > span { transform: translateY(60%); }
+
+/* Entrance, once. */
+@media (prefers-reduced-motion: no-preference) {
+  .topic-hero .topic-hero-copy > * { animation: topic-rise .8s cubic-bezier(.16, 1, .3, 1) both; }
+  .topic-hero .topic-hero-eyebrow { animation-delay: .1s; }
+  .topic-hero .topic-hero-title { animation-delay: .2s; }
+  .topic-hero .topic-hero-rule { animation: topic-draw .7s cubic-bezier(.16, 1, .3, 1) .45s both; }
+  .topic-hero .topic-hero-lede { animation-delay: .5s; }
+  .topic-hero .topic-hero-meta { animation-delay: .58s; }
+  .topic-hero .topic-hero-cta { animation-delay: .7s; }
+}
+@keyframes topic-rise { from { opacity: 0; transform: translateY(14px); } }
+@keyframes topic-draw { from { transform: scaleX(0); } }
+
+/* The shelf below no longer repeats the page heading. */
+html.has-topic-hero .collections-page { padding-top: 24px; scroll-margin-top: 24px; }
+
+@media (max-width: 579px) {
+  .topic-hero-copy { padding-top: 116px; }
+  .topic-hero-eyebrow { letter-spacing: .22em; }
+  .topic-hero-title { margin-top: 14px; }
+  .topic-hero-rule { width: 84px; margin-top: 18px; }
+  .topic-hero-lede { margin-top: 18px; text-wrap: balance; }
+  .topic-hero-cta { margin-top: 26px; }
+  .topic-hero-go { width: 190px; height: 58px; }
+  .topic-hero-label { transform: none; font-size: 14px; letter-spacing: .12em; }
+  .topic-hero-scroll { display: none; }
+}
+@media (max-height: 660px) { .topic-hero-scroll { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .topic-hero-sky, .topic-hero-swap, .topic-hero-go { transition: none; }
+}

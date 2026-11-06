@@ -1,0 +1,249 @@
+/* Voyage space: every inner page sits in the same deep sky as the articles, so leaving a
+   post never jumps back to paper. Deep-space tokens replace the paper palette (so shared
+   components follow), starfield.js paints the stars, and lists keep their own layout.
+   Post-only rules (the reading console's layout, route map…) live in voyage-reader.css. */
+html.voyage-space {
+  --space-cyan: var(--sphere-a, #6ee7ff);
+  --space-violet: var(--sphere-b, #a78bfa);
+  --space-lime: var(--cinema-accent, #c6ff3d);
+  --space-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --console: rgba(8, 12, 27, .78);
+  --panel: #080c1b;
+  --glass: rgba(10, 15, 32, .62);
+  --paper: #05070f;
+  --surface: rgba(14, 20, 40, .72);
+  --ink: #e3e9f8;
+  --muted: #8e9abd;
+  --line: rgba(150, 175, 255, .14);
+  --blue: #8bdcff;
+  --blue-soft: rgba(110, 231, 255, .07);
+  --orange: #fdba74;
+  --sage: rgba(198, 255, 61, .08);
+  --code: rgba(5, 9, 22, .82);
+  --shadow: 0 24px 60px rgba(0, 0, 0, .45);
+  color-scheme: dark;
+}
+
+/* ---------- The sky: nebula glow, stars (canvas), and a planet far below ---------- */
+.voyage-space .starfield { position: fixed; inset: 0; z-index: -1; display: block; width: 100%; height: 100%; pointer-events: none; }
+.voyage-space body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(60vmax 45vmax at 88% 4%, color-mix(in srgb, var(--space-violet) 15%, transparent), transparent 70%),
+    radial-gradient(55vmax 40vmax at 4% 96%, color-mix(in srgb, var(--space-cyan) 9%, transparent), transparent 70%),
+    radial-gradient(40vmax 30vmax at 50% 45%, rgba(47, 91, 234, .06), transparent 70%);
+}
+/* Only the sunlit rim of the planet shows along the bottom of the window. It is drawn after
+   the starfield, so it hides the stars behind it. */
+.voyage-space body::after {
+  content: "";
+  position: fixed;
+  left: 50%;
+  top: 91vh;
+  z-index: -1;
+  width: 190vmax;
+  height: 190vmax;
+  margin-left: -95vmax;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 0, rgba(110, 231, 255, .09), transparent 18%), #04060d;
+  box-shadow: 0 -2px 40px rgba(110, 231, 255, .16), inset 0 10px 30px rgba(110, 231, 255, .14);
+}
+
+/* ---------- Header, footer and shared controls ---------- */
+.voyage-space .site-header {
+  height: 70px;
+  margin-top: 18px;
+  padding: 0 12px 0 18px;
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: 999px;
+  background: rgba(12, 18, 38, .5);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06);
+}
+/* The ship has one lighting mode, so the theme switch has nothing to do here. */
+.voyage-space .theme-toggle { display: none; }
+.voyage-space .back-link { font-family: var(--space-mono); font-size: 11px; letter-spacing: .08em; }
+.voyage-space .live-dot { background: var(--space-lime); box-shadow: 0 0 0 4px rgba(198, 255, 61, .1), 0 0 10px rgba(198, 255, 61, .55); }
+/* Primary buttons match the homepage: a white pill that lights up lime. */
+.voyage-space .button-dark { background: #fff; color: #05070f; }
+.voyage-space .footer-back { background: var(--glass); transition: border-color .2s ease, box-shadow .2s ease; }
+.voyage-space .footer-bottom { font-family: var(--space-mono); letter-spacing: .04em; }
+
+/* ---------- Page intros and filters ---------- */
+.voyage-space .page-intro .eyebrow { width: fit-content; padding: 4px 12px; border: 1px solid color-mix(in srgb, var(--space-lime) 35%, transparent); border-radius: 999px; color: var(--space-lime); font-family: var(--space-mono); font-weight: 500; letter-spacing: .14em; }
+.voyage-space .page-intro h1 { color: #f4f7ff; text-shadow: 0 0 42px rgba(110, 231, 255, .18); }
+.voyage-space .topic-nav > a,
+.voyage-space .pagination :is(.page-number, .extend) { background: var(--glass); transition: border-color .2s ease, color .2s ease; }
+.voyage-space .topic-nav > a[aria-current],
+.voyage-space .pagination .current,
+.voyage-space .locker-controls > button[aria-expanded=true] {border-color: color-mix(in srgb, var(--space-cyan) 45%, transparent); background: rgba(110, 231, 255, .1); color: #fff; box-shadow: 0 0 20px -8px var(--space-cyan); }
+.voyage-space .pagination { font-family: var(--space-mono); }
+
+/* ---------- Rows: archive, life entries and topic routes ---------- */
+.voyage-space .archive-year > h2 { color: #f4f7ff; }
+.voyage-space .archive-year > h2 span,
+.voyage-space :is(.archive-row, .post-row) time,
+.voyage-space :is(.archive-row div > span, .row-category, .route-meta) { font-family: var(--space-mono); letter-spacing: .04em; }
+.voyage-space :is(.archive-row, .post-row) h3,
+.voyage-space .reading-route h2 { color: #eef2ff; transition: color .2s ease; }
+.voyage-space :is(.archive-row, .post-row, .reading-route a) > .icon { transition: color .2s ease, transform .2s ease; }
+.voyage-space .route-number { font: 500 22px/1.3 var(--space-mono); color: var(--space-cyan); }
+
+/* ---------- Cards: categories, tags and topic folders ---------- */
+.voyage-space .taxonomy-grid > a,
+.voyage-space .collection-card { transition: transform .25s var(--ease-out), border-color .25s ease, box-shadow .25s ease; }
+.voyage-space .taxonomy-grid > a { border-radius: 18px; background: var(--glass); }
+.voyage-space .taxonomy-grid .eyebrow { color: var(--space-lime); font-family: var(--space-mono); font-weight: 500; }
+.voyage-space .taxonomy-grid h2,
+.voyage-space .collection-card h3 { color: #f4f7ff; }
+/* Each folder takes one of the sky's accents; the tab and card share one solid colour. */
+html.voyage-space .collection-card { --accent: var(--space-cyan); --folder: color-mix(in srgb, var(--accent) 8%, #080d20); border-radius: 0 18px 18px 18px; }
+html.voyage-space .collection-database { --accent: var(--space-lime); --folder: color-mix(in srgb, var(--accent) 6%, #080d20); }
+html.voyage-space .collection-intelligence { --accent: var(--space-violet); --folder: color-mix(in srgb, var(--accent) 10%, #080d20); }
+.voyage-space .collection-tab { font-family: var(--space-mono); color: var(--muted); }
+.voyage-space .collection-topline .eyebrow,
+.voyage-space .collection-bottom .icon { color: var(--accent); }
+.voyage-space .collection-guide > div { padding: 26px 24px; border: 1px solid var(--line); border-radius: 22px; background: var(--glass); }
+
+/* ---------- Projects, life and about ---------- */
+.voyage-space :is(.project-case-image, .project-spotlight) { border-radius: 20px; }
+.voyage-space .project-case-image .photo-button,
+.voyage-space .project-preview { border-radius: 12px; }
+.voyage-space .project-case-heading > .project-status,
+.voyage-space :is(.project-stack li, .interest-list span) { background: var(--glass); }
+.voyage-space .project-window-bar span { font-family: var(--space-mono); }
+/* The landscape stays as a postcard from home, dimmed a little so it does not glare. */
+.voyage-space .life-canvas { border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 40px 90px -40px rgba(0, 0, 0, .8); }
+.voyage-space .life-canvas > img { filter: brightness(.86) saturate(.9); }
+.voyage-space .photo-grid figure { border-radius: 16px; }
+.voyage-space .photo-grid .photo-button { overflow: hidden; border-radius: 10px; }
+.voyage-space .about-copy h2 { color: #f4f7ff; }
+/* The cabinet's floor glow is warm paper light; out here it reflects the sky instead.
+   (locker.css loads later and has a dark-mode glow, hence the extra class.) */
+.voyage-space .locker-experience .locker-stage::before { background: radial-gradient(ellipse, rgba(110, 231, 255, .1), transparent 70%); }
+.voyage-space .locker-object-tip { border: 1px solid var(--line); background: var(--panel); color: var(--ink); }
+
+/* ---------- Glass consoles: posts and plain pages read on the same panel ---------- */
+.voyage-space :is(.post-body, .basic-page > .prose:not(:empty)) {
+  position: relative;
+  padding: clamp(28px, 4vw, 56px) clamp(22px, 4.5vw, 64px);
+  border: 1px solid rgba(150, 175, 255, .12);
+  border-radius: 28px;
+  background: var(--console);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .05), 0 40px 90px -40px rgba(0, 0, 0, .7);
+}
+.voyage-space :is(.post-body, .basic-page > .prose:not(:empty))::before,
+.voyage-space :is(.post-body, .basic-page > .prose:not(:empty))::after { content: ""; position: absolute; width: 22px; height: 22px; border: 0 solid color-mix(in srgb, var(--space-lime) 80%, transparent); pointer-events: none; }
+.voyage-space :is(.post-body, .basic-page > .prose:not(:empty))::before { top: 14px; left: 14px; border-top-width: 1.5px; border-left-width: 1.5px; border-top-left-radius: 10px; }
+.voyage-space :is(.post-body, .basic-page > .prose:not(:empty))::after { right: 14px; bottom: 14px; border-right-width: 1.5px; border-bottom-width: 1.5px; border-bottom-right-radius: 10px; }
+
+/* ---------- Prose ---------- */
+.voyage-space .prose strong { color: #fff; }
+.voyage-space .prose :is(h1, h2, h3, h4) { color: #f4f7ff; }
+.voyage-space .prose h2 { padding-bottom: 12px; border-bottom: 0; background: linear-gradient(90deg, color-mix(in srgb, var(--space-cyan) 45%, transparent), transparent 70%) left bottom / 100% 1px no-repeat; }
+.voyage-space .prose h2::before { content: ""; display: inline-block; width: 8px; height: 8px; margin: 0 14px .2em 2px; border: 1.5px solid var(--space-cyan); vertical-align: middle; transform: rotate(45deg); box-shadow: 0 0 10px var(--space-cyan); }
+.voyage-space .prose h3 { color: #d8ecff; }
+.voyage-space .prose h3::before { content: "›"; margin-right: 10px; color: var(--space-lime); }
+.voyage-space .prose a { transition: text-shadow .2s ease; }
+.voyage-space .prose li::marker { color: var(--space-cyan); }
+.voyage-space .prose blockquote { border-left: 2px solid var(--space-cyan); border-radius: 0 14px 14px 0; background: linear-gradient(90deg, rgba(110, 231, 255, .09), rgba(110, 231, 255, .02)); color: #cdd8f2; box-shadow: -10px 0 26px -16px var(--space-cyan); }
+.voyage-space .prose :not(pre) > code { border: 1px solid rgba(110, 231, 255, .14); background: rgba(110, 231, 255, .08); color: var(--space-cyan); }
+.voyage-space .prose img { border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 24px 60px -24px rgba(0, 0, 0, .75); }
+.voyage-space .prose th { background: rgba(110, 231, 255, .07); color: #f4f7ff; }
+.voyage-space .prose tr:nth-child(even) td { background: rgba(255, 255, 255, .015); }
+.voyage-space .prose hr { position: relative; height: 1px; overflow: visible; border: 0; background: linear-gradient(90deg, transparent, rgba(110, 231, 255, .4), transparent); }
+.voyage-space .prose hr::after { content: "✦"; position: absolute; left: 50%; top: 50%; padding: 0 12px; transform: translate(-50%, -50%); background: #070a18; color: var(--space-cyan); font-size: 12px; }
+
+/* Code reads like a ship's terminal: a title bar with three lights over a dark glass pane. */
+.voyage-space .prose .highlight,
+.voyage-space .prose > pre { border: 1px solid rgba(110, 231, 255, .14); border-radius: 14px; background: var(--code); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .04); }
+.voyage-space .prose .highlight { padding-top: 46px; }
+.voyage-space .prose .highlight::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 32px;
+  border-bottom: 1px solid rgba(110, 231, 255, .1);
+  background:
+    radial-gradient(circle at 18px 16px, #ff8f8f 0 3.5px, transparent 4.5px),
+    radial-gradient(circle at 33px 16px, #ffd479 0 3.5px, transparent 4.5px),
+    radial-gradient(circle at 48px 16px, var(--space-lime) 0 3.5px, transparent 4.5px),
+    rgba(255, 255, 255, .025);
+}
+.voyage-space .copy-code { top: 0; right: 8px; min-height: 32px; padding: 3px 10px; border-color: transparent; background: transparent; color: var(--space-cyan); font-family: var(--space-mono); }
+.voyage-space .prose .highlight .gutter pre { border-right-color: rgba(110, 231, 255, .1); }
+.voyage-space .prose .highlight :is(.string, .attr) { color: #c3f584; }
+.voyage-space .prose .highlight :is(.keyword, .selector-tag) { color: #c4a7ff; }
+.voyage-space .prose .highlight :is(.number, .literal) { color: #fdba74; }
+.voyage-space .prose .highlight .comment { color: #6b7aa6; font-style: italic; }
+.voyage-space .prose .highlight :is(.title, .function) { color: #7dd3fc; }
+.voyage-space .prose .highlight :is(.built_in, .type, .params) { color: #f0abfc; }
+
+/* ---------- Search, image viewer and toast ---------- */
+.voyage-space :is(.search-dialog, .image-dialog) { border-color: rgba(150, 175, 255, .18); background: var(--panel); box-shadow: 0 30px 90px rgba(0, 0, 0, .6), inset 0 1px 0 rgba(255, 255, 255, .05); }
+.voyage-space .search-dialog { border-radius: 22px; }
+.voyage-space .image-dialog { border-radius: 20px; }
+.voyage-space :is(.search-dialog, .image-dialog)::backdrop { background: rgba(3, 5, 12, .7); }
+.voyage-space .search-input-wrap { border-radius: 14px; background: rgba(255, 255, 255, .03); transition: border-color .2s ease, box-shadow .2s ease; }
+.voyage-space .search-input-wrap:focus-within { border-color: color-mix(in srgb, var(--space-cyan) 50%, transparent); box-shadow: 0 0 0 3px rgba(110, 231, 255, .1); }
+/* The field already glows while focused, so the input itself needs no second ring. */
+.voyage-space .search-input-wrap input:focus-visible { outline: 0; }
+.voyage-space .search-result { border: 1px solid transparent; border-radius: 14px; transition: background .2s ease, border-color .2s ease; }
+.voyage-space .search-result:focus-visible { outline-offset: 0; border-color: color-mix(in srgb, var(--space-cyan) 45%, transparent); background: var(--blue-soft); }
+.voyage-space .search-result h3 { color: #f4f7ff; }
+.voyage-space .search-result > span,
+.voyage-space .search-status { font-family: var(--space-mono); letter-spacing: .04em; }
+.voyage-space .search-footer { background: var(--panel); }
+.voyage-space kbd { background: rgba(255, 255, 255, .04); font-family: var(--space-mono); }
+.voyage-space .toast { border: 1px solid color-mix(in srgb, var(--space-cyan) 30%, transparent); background: var(--panel); color: var(--ink); box-shadow: 0 14px 40px rgba(0, 0, 0, .5), 0 0 24px -10px var(--space-cyan); }
+
+@media (hover: hover) and (pointer: fine) {
+  .voyage-space .icon-button:hover { background: rgba(255, 255, 255, .08); }
+  .voyage-space .button-dark:hover { background: var(--space-lime); color: #05070f; }
+  .voyage-space :is(.topic-nav > a:not([aria-current]), .pagination .page-number:not(.current), .footer-back):hover { border-color: color-mix(in srgb, var(--space-cyan) 40%, transparent); color: var(--ink); }
+  .voyage-space .prose a:hover { text-shadow: 0 0 12px color-mix(in srgb, var(--blue) 60%, transparent); }
+  /* Rows light up as a soft band of glass, a little wider than the text. */
+  .voyage-space :is(.archive-row, .post-row, .reading-route a) { position: relative; isolation: isolate; }
+  .voyage-space :is(.archive-row, .post-row, .reading-route a)::before { content: ""; position: absolute; inset: 0 -14px; z-index: -1; border-radius: 16px; background: linear-gradient(90deg, rgba(110, 231, 255, .07), rgba(167, 139, 250, .04)); opacity: 0; transition: opacity .2s ease; pointer-events: none; }
+  .voyage-space .reading-route li:first-child a::before { top: -14px; }
+  .voyage-space :is(.archive-row, .post-row, .reading-route a):hover::before { opacity: 1; }
+  .voyage-space :is(.archive-row, .post-row):hover h3,
+  .voyage-space .reading-route a:hover h2 { color: var(--space-cyan); }
+  .voyage-space :is(.archive-row, .post-row, .reading-route a):hover > .icon { color: var(--space-cyan); transform: translate(2px, -2px); }
+  .voyage-space :is(.taxonomy-grid > a, .collection-card):hover { border-color: color-mix(in srgb, var(--space-violet) 45%, transparent); box-shadow: 0 30px 60px -24px color-mix(in srgb, var(--space-violet) 40%, transparent); }
+  .voyage-space .collection-card:hover h3 { color: var(--accent); }
+  .voyage-space .search-result:hover { border-color: color-mix(in srgb, var(--space-cyan) 25%, transparent); }
+}
+@media (max-width: 800px) {
+  .voyage-space .site-header { height: 62px; margin-top: 12px; }
+  .voyage-space :is(.post-body, .basic-page > .prose:not(:empty)) { margin-inline: -8px; border-radius: 20px; }
+  .voyage-space :is(.post-body, .basic-page > .prose:not(:empty))::before,
+  .voyage-space :is(.post-body, .basic-page > .prose:not(:empty))::after { width: 16px; height: 16px; }
+  .voyage-space :is(.post-body, .basic-page > .prose:not(:empty))::before { top: 10px; left: 10px; }
+  .voyage-space :is(.post-body, .basic-page > .prose:not(:empty))::after { right: 10px; bottom: 10px; }
+  /* The guide is already its own panel, so the stacked layout needs no rule under it. */
+  .voyage-space .collection-guide { padding-bottom: 0; border-bottom: 0; }
+}
+@media (max-width: 620px) {
+  /* The dropdown sits inside the blurred header, so it carries its own solid glass. */
+  .voyage-space .primary-nav { top: 74px; border-color: rgba(150, 175, 255, .16); border-radius: 22px; background: var(--panel); box-shadow: 0 24px 60px rgba(0, 0, 0, .55), inset 0 1px 0 rgba(255, 255, 255, .05); }
+  .voyage-space .primary-nav a { border-radius: 12px; }
+  .voyage-space .primary-nav a[aria-current] { background: rgba(110, 231, 255, .1); color: #fff; }
+  .voyage-space .route-number { font-size: 18px; }
+  .voyage-space .page-intro .eyebrow { letter-spacing: .1em; }
+}
+/* Paper does not show the sky: print in plain ink. */
+@media print {
+  html.voyage-space { --paper: #fff; --ink: #1d2030; --muted: #555b70; --line: #d8dbe6; --blue: #2747c8; --code: #f3f4f8; }
+  .voyage-space .starfield, .voyage-space body::before, .voyage-space body::after { display: none; }
+  .voyage-space :is(.post-body, .basic-page > .prose:not(:empty)) { padding: 0; border: 0; background: none; box-shadow: none; }
+  .voyage-space :is(.post-body, .basic-page > .prose:not(:empty))::before,
+  .voyage-space :is(.post-body, .basic-page > .prose:not(:empty))::after { display: none; }
+  .voyage-space .prose :is(h1, h2, h3, h4, strong), .voyage-space .page-intro h1 { color: inherit; text-shadow: none; }
+}

@@ -1,13 +1,321 @@
-# Fieldnotes — personal theme. All presentation settings live here.
-# Existing posts and Front Matter require no changes.
+# Fieldnotes 主题配置
+# 推荐修改博客根目录 _config.fieldnotes.yml；它覆盖此处默认值。
+# Hexo Pro → 主题 → Fieldnotes → 配置 → 表单模式，也可直接编辑。
+# 数组整体替换；false 表示关闭，[] 表示清空。无需修改文章 Front Matter。
+
+# 品牌名称
 brand: Mihotel
+
+# 一句话介绍
 tagline: 保持热爱，奔赴山海。
+
+# 导航栏头像：填写图片地址（如 /images/ip/avatar.png）后替代星形标志；留空使用星形标志
+brand_avatar: ""
+
+# 主导航：按数组顺序显示，留空 [] 可隐藏全部导航
+navigation:
+  - title: 首页
+    url: /
+    new_tab: false
+  - title: 专题
+    url: /topics/
+    new_tab: false
+  - title: 文章
+    url: /archives/
+    new_tab: false
+  - title: 作品
+    url: /projects/
+    new_tab: false
+  - title: 生活
+    url: /life/
+    new_tab: false
+  - title: 关于
+    url: /about/
+    new_tab: false
+
+# 外观：颜色用六位十六进制；内容宽度范围 960–1600
+appearance:
+  mode: system
+  toggle: true
+  accent: "#3158df"
+  accent_dark: "#9aaeff"
+  background: "#f7f6f2"
+  background_dark: "#171b19"
+  content_width: 1200
+  font: sans
+
+# 首页开场文案与按钮
 hero:
+  primary_text: 读点什么
+  primary_url: /topics/
+  secondary_text: 认识一下
+  secondary_url: /about/
   eyebrow: A LITTLE CORNER OF THE INTERNET
   line_one: 保持好奇，
   line_two: 自在生长。
   introduction: 写下技术里的发现，也收藏生活中的微光。这里有代码、有想法，还有一些不着急的日常。
   annotation: 一半是逻辑，一半是浪漫。
+
+# 3D 储物柜：关闭时显示静态封面，不加载三维引擎
+locker:
+  enabled: true
+  on_about: true
+  caption: THE CURIOSITY CABINET
+  number: NO. 001
+  note: 把想法、日常和一点点自己，好好收在这里。
+  poster: /images/locker-preview.png
+  poster_alt: 立体个人储物柜
+  landscape: /images/fieldnotes-landscape.svg
+  body_color: "#e8e3d3"
+  articles_color: "#294ddb"
+  life_color: "#ecd581"
+  about_color: "#d9835c"
+
+# 电影感首页：order 中加入 stage / episode / notes / profile / dispatch 时生效
+# accent 是手写签名与重点按钮的颜色；sphere_a / sphere_b 是粒子球与抽象封面的两种颜色
+# fonts 是 Anton + Condiment 字体样式表（https），留空则只用系统字体
+cinema:
+  accent: "#C6FF3D"
+  sphere_a: "#6EE7FF"
+  sphere_b: "#A78BFA"
+  fonts: https://fonts.googleapis.com/css2?family=Anton&family=Condiment&display=swap
+
+# 早期档案：categories 中分类的文章不上首页列表，合并为一行“早期档案”，也是首屏最后一颗星球
+archive:
+  categories: []
+  text: 早期档案：之前写的技术笔记
+  name: 早期档案
+  description: 之前写的技术笔记，继续保留、可以搜到。
+  planet: ice
+
+# 首页模块：order 决定顺序，enabled 决定是否显示；不影响独立页面
+# 经典模块：hero / interlude / topics / featured / projects / journal / about
+# 电影感模块：stage（开场）/ episode（最新一期）/ notes（文章列表）/ profile（关于我）/ dispatch（订阅与字标）
+# 玻璃卡片模块：routes（学习路线）/ glossary（大白话词典）/ videos（视频 × 笔记）/ updates（最近更新）/ connect（关于我与订阅）
+home:
+  order:
+    - hero
+    - interlude
+    - topics
+    - featured
+    - projects
+    - journal
+    - about
+  hero:
+    enabled: true
+  interlude:
+    enabled: true
+    items:
+      - 写代码
+      - 记灵感
+      - 去生活
+    note: Good things take curiosity.
+  topics:
+    enabled: true
+    eyebrow: THE NOTEBOOK SHELF
+    title: 挑一格，慢慢探索
+    link_text: 专题书架
+  featured:
+    enabled: true
+    eyebrow: SELECTED NOTES
+    title: 值得慢慢读的几篇
+    link_text: 全部文章
+    limit: 3
+  projects:
+    enabled: true
+    eyebrow: ON MY WORKBENCH
+    title: 不只记录，也动手创造
+    link_text: 我的作品
+  journal:
+    enabled: true
+    eyebrow: THE JOURNAL
+    title: 最近，写了这些
+    limit: 5
+    show_life: true
+  about:
+    enabled: true
+    eyebrow: ALWAYS EXPLORING
+    title: 一个持续更新中的人。
+    description: 在这里，想法可以不完整，热爱可以很具体。
+    link_text: 更多关于我
+  # 开场：visual 为 planets（星际旅行：星图上每条学习路线和早期档案各是一个星系，跃迁后抵达它的 3D 星球）、sphere（3D 粒子球，chips 是周围漂浮的标签）或 video（全屏背景视频）
+  # heading 每项一行；视频放在博客 source/ 下，填 /videos/xxx.mp4；mobile_* 为手机竖版，可留空
+  stage:
+    enabled: true
+    visual: sphere
+    eyebrow: Plain-words AI · Videos & Notes
+    heading:
+      - Hello!
+      - I'm Mihotel
+    signature: Mihotel
+    tagline: ""
+    note: ""
+    primary_text: 看最新一期
+    primary_url: "#videos"
+    secondary_text: 读笔记
+    secondary_url: /archives/
+    chips: []
+    video: ""
+    video_webm: ""
+    poster: ""
+    mobile_video: ""
+    mobile_video_webm: ""
+    mobile_poster: ""
+  # 最新一期：post 填 _posts/文件名.md 或文章标题；video_url 填 B站等视频地址；cards 最多 3 张小卡片
+  episode:
+    enabled: true
+    heading:
+      - Latest
+      - Episode
+    signature: new!
+    intro: ""
+    intro_zh: ""
+    label: ""
+    post: ""
+    cover_title: ""
+    video_title: ""
+    meta: ""
+    duration: ""
+    video_url: ""
+    watch_text: 看视频
+    read_text: 读笔记
+    video: ""
+    video_webm: ""
+    poster: ""
+    cards: []
+  # 文章列表：exclude_categories 中的分类不上首页，并合并为一行“早期档案”；upcoming 为预告条目
+  notes:
+    enabled: true
+    heading:
+      - Notes
+    signature: plain words
+    link_text: All notes
+    limit: 4
+    exclude_categories: []
+    archive_text: 早期档案：之前写的技术笔记
+    upcoming: []
+  # 关于我：description 留空时使用 about.description；facts 为“标签 / 内容”列表；stickers 为贴纸文字
+  profile:
+    enabled: true
+    eyebrow: About · 关于我
+    heading:
+      - The guy in
+      - the blue hoodie
+    signature: that's me
+    description: ""
+    note: ""
+    facts: []
+    stickers: []
+    link_text: 更多关于我
+    link_url: /about/
+    video: ""
+    video_webm: ""
+    poster: ""
+  # 订阅与字标：form_action 填邮件订阅服务的 https 表单地址后才显示邮箱输入框；wordmark 留空使用品牌名称
+  dispatch:
+    enabled: true
+    eyebrow: Weekly dispatch
+    title: ""
+    description: ""
+    form_action: ""
+    email_field: email
+    placeholder: 输入邮箱
+    button_label: 订阅
+    video: ""
+    video_webm: ""
+    poster: ""
+    video_caption: ""
+    wordmark: ""
+    signature: see you next week!
+  # 学习路线：items 最多 3 条；topic 填专题 slug，planned 是规划中的选题；region 是星球短名
+  # planet 可选 ocean / gas / desert / ice / lava，不填时按顺序使用前三种
+  routes:
+    enabled: true
+    eyebrow: Start here
+    title: 从这里开始
+    description: ""
+    link_text: ""
+    link_url: ""
+    items: []
+  # 大白话词典：items 每项 term / en / definition / url
+  glossary:
+    enabled: true
+    eyebrow: Plain words
+    title: 听到这些词，别慌
+    description: ""
+    link_text: ""
+    link_url: ""
+    items: []
+  # 视频 × 笔记：post 为配套文章；poster 留空时显示抽象光效封面；extras 为“这一期的配套”，more 为往期小卡片
+  videos:
+    enabled: true
+    eyebrow: Video × Notes
+    title: 每期视频，都有一份能回看的笔记
+    description: ""
+    link_text: ""
+    link_url: ""
+    post: ""
+    label: ""
+    cover_title: ""
+    video_title: ""
+    meta: ""
+    duration: ""
+    video_url: ""
+    watch_text: 在 B站观看
+    poster: ""
+    extras: []
+    more: []
+  # 最近更新：按时间列出文章，早期档案分类合并成一行；upcoming 为预告
+  updates:
+    enabled: true
+    eyebrow: Latest
+    title: 最近更新
+    link_text: 全部文章
+    limit: 5
+    upcoming: []
+  # 关于我与订阅：video / poster 可放 IP 动画；form_action 填邮件订阅服务的 https 表单地址后才出现邮箱输入框
+  connect:
+    enabled: true
+    eyebrow: About
+    title: ""
+    description: ""
+    note: ""
+    link_text: 更多关于我
+    link_url: /about/
+    show_project: true
+    video: ""
+    video_webm: ""
+    poster: ""
+    subscribe_eyebrow: Weekly dispatch
+    subscribe_title: ""
+    subscribe_description: ""
+    form_action: ""
+    email_field: email
+    placeholder: 输入邮箱
+    button_label: 订阅
+
+# 全站功能开关
+features:
+  search: true
+  code_copy: true
+  image_zoom: true
+
+# 文章列表（归档、分类、标签、首页第 2 页起）的开场背景：一段缓慢循环的视频铺满首屏，
+# 标题居中压在画面最亮处，往下滚逐渐变暗、交回页面背景。poster 是首帧图，视频出来前先显示它。
+# hue 把视频整体偏色（-180–180 度），让素材的颜色靠近站点配色；没有 video 时只显示 poster
+list_backdrop:
+  enabled: false
+  video: ""
+  poster: ""
+  hue: 0
+
+# 专题页开场：每个专题是一颗代码绘制的星球（海洋、气态巨行星带光环、沙漠、冰、熔岩），
+# 当前专题铺满下方天空，另外两颗半露在左右边缘，点一下互换。最多取前 3 个专题。
+# 专题可写 planet: ocean / gas / desert / ice / lava；不写时按 artwork 选，再不行取没用过的类型
+topic_hero:
+  enabled: false
+
+# 精选文章：title 或 source 精确匹配，草稿不会公开
 featured:
   - title: Docker快速入门
     label: BUILD & EXPLORE
@@ -21,24 +329,146 @@ featured:
     label: STAY CURIOUS
     description: 关于大模型的第一份笔记，从概念到可能性。
     artwork: intelligence
+
+# 专题书架：sources 决定阅读顺序，categories 自动收录同分类文章
+topics:
+  - slug: docker
+    title: Docker 实践手记
+    label: BUILD & RUN
+    description: 从跑起第一个容器，到处理通信、权限与远程访问。沿着实际问题，慢慢搭好自己的工具箱。
+    note: 适合想把 Docker 真正用起来的人。
+    artwork: containers
+    categories:
+      - docker
+    sources:
+      - _posts/Docker快速入门.md
+      - _posts/docker宿主机与容器传递文件-cp-命令.md
+      - _posts/多容器通信.md
+      - _posts/docker-run-bin-bash和-usr-sbin-init区别.md
+      - _posts/docker-privileged.md
+      - _posts/容器配置ssh远程登录.md
+  - slug: mysql
+    title: MySQL 深入一层
+    label: UNDER THE HOOD
+    description: 从索引走向事务、锁和日志。不只记住怎么用，也试着理解数据库为什么这样工作。
+    note: 适合写过 SQL，想继续往下探索的人。
+    artwork: database
+    categories:
+      - MySql
+    sources:
+      - _posts/MySql-索引.md
+      - _posts/MySQL设置事务自动提交（开启和关闭）.md
+      - _posts/MySQL-锁.md
+      - _posts/MySql死锁问题.md
+      - _posts/MySql-binlog-debus.md
+  - slug: ai
+    title: 从大模型开始
+    label: STAY CURIOUS
+    description: 留一格给新的好奇。从认识大模型开始，记录对 AI 的理解与接下来的探索。
+    note: 从概念入门，先建立一张地图。
+    artwork: intelligence
+    categories:
+      - 大模型
+    sources:
+      - _posts/什么是大模型.md
+
+# 个人作品：图片可用 /images/ 下的文件
+projects:
+  - slug: hexo-pro
+    title: Hexo Pro
+    label: A TOOL I AM BUILDING
+    tagline: 把写博客这件事，变得顺手一点。
+    description: 从管理自己的 Hexo 博客开始，把编辑、预览、桌面管理和手机写作放进同一个工具里。这个站点，也是它的使用现场。
+    status: 持续打磨中
+    image: /images/hexo-pro-editor.png
+    image_alt: Hexo Pro 的文章管理与编辑界面
+    stack:
+      - Hexo
+      - React
+      - Electron
+      - Capacitor
+    source_url: https://github.com/wuzheng228/hexo-pro-client
+    features:
+      - title: 写作与预览
+        description: 块编辑、Markdown 源码与当前主题预览，缩短从想法到文章的距离。
+      - title: 桌面与手机
+        description: 在电脑上整理博客，也能用 iPhone App 继续记录，不必一直守着电脑。
+      - title: 同步与发布
+        description: 通过 GitHub 同步源文件，再由 GitHub Actions 将博客部署到 EdgeOne。
+
+# 关于我
 about:
-  heading: 你好，很高兴在这里遇见你。
-  description: 这是我的个人数字花园。我在这里整理技术知识、记录正在探索的问题，也给生活里的灵感留一个位置。
-  note: 希望每次回看，都能遇见一个更清晰的自己。
+  title: 关于我
+  eyebrow: A PERSON, NOT JUST A PROFILE
+  status: 保持好奇，持续更新
+  show_projects: true
+  heading: 一边写代码，一边把想法做出来。
+  description: 我喜欢从自己的问题出发，做一些真正用得上的东西。最近在打磨 Hexo Pro，让博客写作、管理和多端同步变得顺手一点。
+  note: 这里也存放一路学到的技术笔记。把踩过的坑、想通的问题写下来，留给下一次需要的自己，也留给刚好路过的你。
+  focus: Hexo Pro · 写作与多端同步
   interests:
     - 技术探索
     - 开源与创造
     - 日常灵感
     - 保持好奇
+  # 关于页首屏：全屏循环视频 + 液态玻璃控件（开启后不显示储物柜）
+  # heading 用 *单词* 标出斜体；shift 把视频往下移的百分比（0–40），主体在画面下方时用
+  # 订阅框：首页 connect.form_action 填了就显示邮箱输入；否则改成跳到 cta_url（留空用第一个社交链接）
+  hero:
+    enabled: false
+    heading: ""
+    subtitle: ""
+    video: ""
+    poster: ""
+    shift: 17
+    button_text: 了解更多
+    cta_text: ""
+    cta_url: ""
+
+# 社交链接：留空的平台不显示；email 可直接填邮箱地址
 social:
   github: https://github.com/heywarms
+  bilibili: ""
+  xiaohongshu: ""
+  douyin: ""
+  wechat: ""
+  rss: ""
+  email: ""
+
+# 生活切片与照片
 life:
   title: 给日常，留一点空白。
   description: 屏幕之外，还有值得慢慢发现的风景。把喜欢的片刻收好，让灵感有地方停留。
-  categories: [生活, 随笔, 旅行, 摄影, 日常]
-  # Add your own photographs here. Paths may point to source/images/ files.
-  # photos:
-  #   - src: /images/my-photo.jpg
-  #     alt: 照片里的风景
-  #     caption: 记住这一刻
+  categories:
+    - 生活
+    - 随笔
+    - 旅行
+    - 摄影
+    - 日常
   photos: []
+
+# 文章阅读功能；updated_dates 不修改 Front Matter
+article:
+  # 阅读风格：paper（纸张，跟随深浅色）或 voyage（星舰：深空星辰背景、玻璃阅读面板；
+  # 星空同时铺到归档、分类、标签、专题、关于等站内页，首页不变）
+  style: paper
+  toc: true
+  mobile_toc: true
+  progress: true
+  reading_time: true
+  info: true
+  share: true
+  tags: true
+  series: true
+  notice: 引用时请注明作者与原文链接；文中另有来源或授权说明的内容，请遵循其说明。
+  updated_dates: {}
+
+# 页脚文案与链接
+footer:
+  enabled: true
+  title: 保持热爱。
+  description: 下次见面，带着新的发现。
+  motto: A small place, a curious mind.
+  start_year: ""
+  show_credit: true
+  links: []

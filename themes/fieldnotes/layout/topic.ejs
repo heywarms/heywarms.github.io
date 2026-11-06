@@ -1,0 +1,19 @@
+<% const topic = fn_topics().find(item => item.slug === page.fieldnotes_topic); %>
+<% if (topic) { %>
+<section class="shell collection-page">
+  <header class="page-intro collection-intro">
+    <a class="text-link back-link" href="<%= url_for('/topics/') %>"><%- fn_icon('back') %> 回到专题书架</a>
+    <p class="eyebrow"><%= topic.label %> · <%= topic.posts.length %> 篇</p>
+    <h1><%= topic.title %></h1><p><%= topic.description %></p>
+  </header>
+  <div class="collection-layout">
+    <aside class="collection-guide"><div><h2>从这里开始</h2><p><%= topic.note || '按顺序慢慢读，也可以直接选择感兴趣的内容。' %></p><a class="button button-dark" href="<%= url_for(topic.posts[0].path) %>">读第一篇 <%- fn_icon('arrow') %></a><span>共 <%= topic.posts.length %> 篇 · 约 <%= topic.posts.reduce((total, post) => total + fn_minutes(post), 0) %> 分钟</span></div></aside>
+    <ol class="reading-route" aria-label="建议阅读顺序">
+      <% topic.posts.forEach((post, index) => { %>
+      <li><a href="<%= url_for(post.path) %>"><span class="route-number" aria-hidden="true"><%= String(index + 1).padStart(2, '0') %></span><div><div class="route-meta"><span><%= index === 0 ? '从这一篇起步' : '接着探索' %></span><span><%= fn_minutes(post) %> 分钟阅读</span></div><h2><%= post.title %></h2><p><%= fn_excerpt(post, 110) %></p></div><%- fn_icon('northeast') %></a></li>
+      <% }); %>
+    </ol>
+  </div>
+  <div class="collection-other"><span>换一格，继续探索</span><% fn_topics().filter(item => item.slug !== topic.slug).forEach(item => { %><a class="text-link" href="<%= url_for(item.path) %>"><%= item.title %> <%- fn_icon('arrow') %></a><% }); %></div>
+</section>
+<% } %>

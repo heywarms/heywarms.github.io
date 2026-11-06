@@ -135,7 +135,7 @@ disable_top_img: false
 index_img: false # "background: url() top / cover no-repeat"
 
 # If the banner of page not setting, it will show the top_img
-default_top_img: false
+default_top_img: /img/default_cover.jpg
 
 cover:
   # display the cover or not (是否显示文章封面)
@@ -147,7 +147,7 @@ cover:
   position: left
   # When cover is not set, the default cover is displayed (当没有设置cover时，默认的封面显示)
   default_cover:
-    # - /img/default_cover.jpg
+    - /img/default_cover.jpg
 
 # Replace Broken Images (替换无法显示的图片)
 error_img:

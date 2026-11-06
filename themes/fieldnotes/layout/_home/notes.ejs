@@ -1,0 +1,16 @@
+<% const n = section; const picked = fn_notes(n); %>
+<% if (picked.posts.length || n.upcoming.length) { %>
+<section class="cinema-section cinema-notes" id="notes">
+  <div class="cinema-shell">
+    <div class="cinema-heading-row is-end">
+      <%- partial('_partial/cinema-heading', {tag: 'h2', lines: n.heading.length ? n.heading : ['Notes'], signature: n.signature, className: ''}) %>
+      <% if (n.link_text) { %><a class="cinema-mono cinema-more" href="<%= url_for('/archives/') %>"><%= n.link_text %> <%- fn_icon('northeast') %></a><% } %>
+    </div>
+    <div class="notes-list">
+      <% picked.posts.forEach((post, index) => { const category = fn_note_category(post, n.exclude_categories); %><a class="notes-row" href="<%= url_for(post.path) %>"><span class="cinema-mono notes-index"><%= String(index + 1).padStart(2, '0') %></span><span class="notes-title"><%= post.title %></span><span class="cinema-mono notes-meta"><%= category ? category + ' · ' : '' %><time datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'YYYY.MM.DD') %></time></span><span class="notes-arrow" aria-hidden="true">→</span></a><% }); %>
+      <% n.upcoming.forEach((item, index) => { %><div class="notes-row is-upcoming"><span class="cinema-mono notes-index"><%= String(picked.posts.length + index + 1).padStart(2, '0') %></span><span class="notes-title"><%= item.title %></span><% if (item.label) { %><span class="cinema-mono notes-meta"><%= item.label %></span><% } %></div><% }); %>
+      <% if (picked.archived && n.archive_text) { %><a class="notes-row is-archive" href="<%= url_for('/archives/') %>"><span class="cinema-mono notes-index">—</span><span class="notes-title"><%= n.archive_text %> · <%= picked.archived %> 篇</span><span class="notes-arrow" aria-hidden="true">→</span></a><% } %>
+    </div>
+  </div>
+</section>
+<% } %>

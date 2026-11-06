@@ -1,4 +1,7 @@
+<% const footer = fn_settings().footer; if (footer.enabled) { const year = new Date().getFullYear(); const since = Number(footer.start_year); %>
 <footer class="site-footer shell">
-  <div class="footer-top"><p>保持热爱。<br><span>下次见面，带着新的发现。</span></p><a class="footer-back" href="#main" aria-label="回到顶部"><%- fn_icon('arrow') %></a></div>
-  <div class="footer-bottom"><span>© <%= new Date().getFullYear() %> <%= config.title %></span><span>A small place, a curious mind.</span><span>Made with <span aria-label="爱">♡</span> &amp; <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a></span></div>
+  <div class="footer-top"><p><%= footer.title %><br><span><%= footer.description %></span></p><a class="footer-back" href="#main" aria-label="回到顶部"><%- fn_icon('arrow') %></a></div>
+  <% if (footer.links.length) { %><nav class="footer-links" aria-label="页脚链接"><% footer.links.forEach(item => { %><a href="<%= fn_url(item.url) %>"<% if (item.new_tab) { %> target="_blank" rel="noopener noreferrer"<% } %>><%= item.title %></a><% }); %></nav><% } %>
+  <div class="footer-bottom"><span>© <%= since > 1900 && since < year ? since + '–' : '' %><%= year %> <%= config.title %></span><span><%= footer.motto %></span><% if (footer.show_credit) { %><span>基于 <a href="https://hexo.io/" target="_blank" rel="noopener noreferrer">Hexo</a></span><% } %></div>
 </footer>
+<% } %>

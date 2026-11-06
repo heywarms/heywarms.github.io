@@ -1,0 +1,1673 @@
+{
+  "brand": {
+    "label": "品牌名称"
+  },
+  "tagline": {
+    "label": "一句话介绍"
+  },
+  "brand_avatar": {
+    "label": "导航栏头像",
+    "description": "填写图片地址后替代星形标志，例如 /images/ip/avatar.png；留空使用星形标志。"
+  },
+  "navigation": {
+    "label": "主导航",
+    "type": "collapse",
+    "item_template": {
+      "title": "首页",
+      "url": "/",
+      "new_tab": false
+    }
+  },
+  "navigation.*": {
+    "label": "内容",
+    "fixed": true
+  },
+  "navigation.*.title": {
+    "label": "标题"
+  },
+  "navigation.*.url": {
+    "label": "链接地址",
+    "description": "站内地址填写 /topics/、/archives/ 等；外部地址填写完整 https:// 链接。"
+  },
+  "navigation.*.new_tab": {
+    "label": "在新窗口打开"
+  },
+  "appearance": {
+    "label": "外观",
+    "fixed": true
+  },
+  "appearance.mode": {
+    "label": "默认明暗模式",
+    "type": "select",
+    "options": [
+      {
+        "value": "system",
+        "label": "跟随系统"
+      },
+      {
+        "value": "light",
+        "label": "浅色"
+      },
+      {
+        "value": "dark",
+        "label": "深色"
+      }
+    ],
+    "description": "允许切换时，访客保存的偏好优先；关闭切换按钮则固定使用这里的设置。"
+  },
+  "appearance.toggle": {
+    "label": "显示明暗切换按钮"
+  },
+  "appearance.accent": {
+    "label": "浅色强调色",
+    "type": "color"
+  },
+  "appearance.accent_dark": {
+    "label": "深色强调色",
+    "type": "color"
+  },
+  "appearance.background": {
+    "label": "浅色背景",
+    "type": "color"
+  },
+  "appearance.background_dark": {
+    "label": "深色背景",
+    "type": "color"
+  },
+  "appearance.content_width": {
+    "label": "内容最大宽度（像素）",
+    "min": 960,
+    "max": 1600
+  },
+  "appearance.font": {
+    "label": "正文字体",
+    "type": "select",
+    "options": [
+      {
+        "value": "sans",
+        "label": "简洁无衬线"
+      },
+      {
+        "value": "serif",
+        "label": "书刊衬线"
+      }
+    ]
+  },
+  "hero": {
+    "label": "首页开场",
+    "fixed": true
+  },
+  "hero.primary_text": {
+    "label": "主按钮文字"
+  },
+  "hero.primary_url": {
+    "label": "主按钮链接",
+    "description": "站内地址填写 /topics/、/archives/ 等；外部地址填写完整 https:// 链接。"
+  },
+  "hero.secondary_text": {
+    "label": "次按钮文字"
+  },
+  "hero.secondary_url": {
+    "label": "次按钮链接",
+    "description": "站内地址填写 /topics/、/archives/ 等；外部地址填写完整 https:// 链接。"
+  },
+  "hero.eyebrow": {
+    "label": "眉题"
+  },
+  "hero.line_one": {
+    "label": "标题第一行"
+  },
+  "hero.line_two": {
+    "label": "标题第二行"
+  },
+  "hero.introduction": {
+    "label": "介绍"
+  },
+  "hero.annotation": {
+    "label": "手写注释"
+  },
+  "locker": {
+    "label": "3D 储物柜",
+    "fixed": true
+  },
+  "locker.enabled": {
+    "label": "开启 3D 交互",
+    "description": "关闭后显示静态封面，不加载三维引擎。"
+  },
+  "locker.on_about": {
+    "label": "关于页显示 3D"
+  },
+  "locker.caption": {
+    "label": "柜顶文字"
+  },
+  "locker.number": {
+    "label": "柜子编号"
+  },
+  "locker.note": {
+    "label": "补充说明"
+  },
+  "locker.poster": {
+    "label": "静态封面图片"
+  },
+  "locker.poster_alt": {
+    "label": "封面图片说明"
+  },
+  "locker.landscape": {
+    "label": "明信片图片"
+  },
+  "locker.body_color": {
+    "label": "柜体颜色",
+    "type": "color"
+  },
+  "locker.articles_color": {
+    "label": "文章柜门颜色",
+    "type": "color"
+  },
+  "locker.life_color": {
+    "label": "生活柜门颜色",
+    "type": "color"
+  },
+  "locker.about_color": {
+    "label": "档案抽屉颜色",
+    "type": "color"
+  },
+  "cinema": {
+    "label": "电影感首页",
+    "fixed": true
+  },
+  "cinema.accent": {
+    "label": "签名与重点颜色",
+    "type": "color"
+  },
+  "cinema.sphere_a": {
+    "label": "粒子球主色",
+    "type": "color"
+  },
+  "cinema.sphere_b": {
+    "label": "粒子球辅色",
+    "type": "color"
+  },
+  "cinema.fonts": {
+    "label": "标题字体样式表",
+    "description": "Anton + Condiment 的 https 样式表地址；留空则只使用系统字体。"
+  },
+  "archive": {
+    "label": "早期档案",
+    "fixed": true
+  },
+  "archive.categories": {
+    "label": "归入早期档案的分类",
+    "type": "collapse",
+    "item_template": "",
+    "description": "这些分类的文章不在首页列出，合并为一行“早期档案”，并作为首屏最后一颗星球。"
+  },
+  "archive.categories.*": {
+    "label": "分类名称"
+  },
+  "archive.text": {
+    "label": "最近更新里的档案文字"
+  },
+  "archive.name": {
+    "label": "档案星球名称"
+  },
+  "archive.description": {
+    "label": "档案说明"
+  },
+  "archive.planet": {
+    "label": "档案星球样式",
+    "type": "select",
+    "options": [
+      {
+        "value": "ocean",
+        "label": "海洋星球（云层、卫星、数据环）"
+      },
+      {
+        "value": "gas",
+        "label": "气态巨行星（风暴、光环、两颗卫星）"
+      },
+      {
+        "value": "desert",
+        "label": "暖阳星球（草原、秋林、河流，夜面城镇灯光，空间站）"
+      },
+      {
+        "value": "ice",
+        "label": "冰封星球（陨石坑、小行星带）"
+      },
+      {
+        "value": "lava",
+        "label": "熔岩星球（发光裂谷、卫星）"
+      }
+    ]
+  },
+  "home": {
+    "label": "首页编排",
+    "fixed": true
+  },
+  "home.order": {
+    "label": "模块显示顺序",
+    "type": "collapse",
+    "item_template": "hero",
+    "description": "用上下箭头排序；删去的模块不在首页显示。重新添加时可从列表选择。独立页面仍可访问。"
+  },
+  "home.order.*": {
+    "label": "首页模块",
+    "type": "select",
+    "options": [
+      {
+        "value": "hero",
+        "label": "首页开场"
+      },
+      {
+        "value": "interlude",
+        "label": "兴趣横栏"
+      },
+      {
+        "value": "topics",
+        "label": "专题书架"
+      },
+      {
+        "value": "featured",
+        "label": "精选文章"
+      },
+      {
+        "value": "projects",
+        "label": "个人作品"
+      },
+      {
+        "value": "journal",
+        "label": "最近文章"
+      },
+      {
+        "value": "about",
+        "label": "个人介绍"
+      },
+      {
+        "value": "stage",
+        "label": "电影感 · 视频开场"
+      },
+      {
+        "value": "episode",
+        "label": "电影感 · 最新一期"
+      },
+      {
+        "value": "notes",
+        "label": "电影感 · 文章列表"
+      },
+      {
+        "value": "profile",
+        "label": "电影感 · 关于我"
+      },
+      {
+        "value": "dispatch",
+        "label": "电影感 · 订阅与字标"
+      },
+      {
+        "value": "routes",
+        "label": "玻璃卡片 · 学习路线"
+      },
+      {
+        "value": "glossary",
+        "label": "玻璃卡片 · 大白话词典"
+      },
+      {
+        "value": "videos",
+        "label": "玻璃卡片 · 视频 × 笔记"
+      },
+      {
+        "value": "updates",
+        "label": "玻璃卡片 · 最近更新"
+      },
+      {
+        "value": "connect",
+        "label": "玻璃卡片 · 关于我与订阅"
+      }
+    ]
+  },
+  "home.hero": {
+    "label": "首页开场",
+    "fixed": true
+  },
+  "home.hero.enabled": {
+    "label": "显示此模块"
+  },
+  "home.interlude": {
+    "label": "兴趣横栏",
+    "fixed": true
+  },
+  "home.interlude.enabled": {
+    "label": "显示此模块"
+  },
+  "home.interlude.items": {
+    "label": "文字项",
+    "type": "collapse",
+    "item_template": "写代码"
+  },
+  "home.interlude.items.*": {
+    "label": "内容"
+  },
+  "home.interlude.note": {
+    "label": "补充说明"
+  },
+  "home.topics": {
+    "label": "专题书架",
+    "fixed": true
+  },
+  "home.topics.enabled": {
+    "label": "显示此模块"
+  },
+  "home.topics.eyebrow": {
+    "label": "眉题"
+  },
+  "home.topics.title": {
+    "label": "标题"
+  },
+  "home.topics.link_text": {
+    "label": "入口文字"
+  },
+  "home.featured": {
+    "label": "精选文章",
+    "fixed": true
+  },
+  "home.featured.enabled": {
+    "label": "显示此模块"
+  },
+  "home.featured.eyebrow": {
+    "label": "眉题"
+  },
+  "home.featured.title": {
+    "label": "标题"
+  },
+  "home.featured.link_text": {
+    "label": "入口文字"
+  },
+  "home.featured.limit": {
+    "label": "精选文章数量",
+    "min": 1,
+    "max": 9
+  },
+  "home.projects": {
+    "label": "个人作品",
+    "fixed": true
+  },
+  "home.projects.enabled": {
+    "label": "显示此模块"
+  },
+  "home.projects.eyebrow": {
+    "label": "眉题"
+  },
+  "home.projects.title": {
+    "label": "标题"
+  },
+  "home.projects.link_text": {
+    "label": "入口文字"
+  },
+  "home.journal": {
+    "label": "最近文章",
+    "fixed": true
+  },
+  "home.journal.enabled": {
+    "label": "显示此模块"
+  },
+  "home.journal.eyebrow": {
+    "label": "眉题"
+  },
+  "home.journal.title": {
+    "label": "标题"
+  },
+  "home.journal.limit": {
+    "label": "最近文章数量",
+    "min": 1,
+    "max": 20
+  },
+  "home.journal.show_life": {
+    "label": "显示生活侧栏"
+  },
+  "home.about": {
+    "label": "关于我",
+    "fixed": true
+  },
+  "home.about.enabled": {
+    "label": "显示此模块"
+  },
+  "home.about.eyebrow": {
+    "label": "眉题"
+  },
+  "home.about.title": {
+    "label": "标题"
+  },
+  "home.about.description": {
+    "label": "介绍文案"
+  },
+  "home.about.link_text": {
+    "label": "入口文字"
+  },
+  "home.stage": {
+    "label": "电影感 · 视频开场",
+    "fixed": true
+  },
+  "home.stage.enabled": {
+    "label": "显示视频开场"
+  },
+  "home.stage.visual": {
+    "label": "开场画面",
+    "type": "select",
+    "options": [
+      {
+        "value": "planets",
+        "label": "星际旅行（星图 → 跃迁 → 知识星球）"
+      },
+      {
+        "value": "sphere",
+        "label": "3D 粒子球"
+      },
+      {
+        "value": "video",
+        "label": "全屏背景视频"
+      }
+    ]
+  },
+  "home.stage.eyebrow": {
+    "label": "眉题"
+  },
+  "home.stage.heading": {
+    "label": "大标题（每项一行）",
+    "type": "collapse",
+    "item_template": ""
+  },
+  "home.stage.heading.*": {
+    "label": "一行"
+  },
+  "home.stage.signature": {
+    "label": "手写签名"
+  },
+  "home.stage.tagline": {
+    "label": "一句话定位"
+  },
+  "home.stage.note": {
+    "label": "补充说明（等宽小字）"
+  },
+  "home.stage.primary_text": {
+    "label": "主按钮文字"
+  },
+  "home.stage.primary_url": {
+    "label": "主按钮链接",
+    "description": "站内地址填写 /archives/、#videos 等；外部地址填写完整 https:// 链接。"
+  },
+  "home.stage.secondary_text": {
+    "label": "次按钮文字"
+  },
+  "home.stage.secondary_url": {
+    "label": "次按钮链接",
+    "description": "站内地址填写 /archives/、#videos 等；外部地址填写完整 https:// 链接。"
+  },
+  "home.stage.chips": {
+    "label": "粒子球周围的标签（最多 5 个）",
+    "type": "collapse",
+    "item_template": ""
+  },
+  "home.stage.chips.*": {
+    "label": "标签"
+  },
+  "home.stage.video": {
+    "label": "视频 MP4 地址",
+    "description": "博客 source/ 下的文件填 /videos/xxx.mp4；外部地址填完整 https:// 链接。"
+  },
+  "home.stage.video_webm": {
+    "label": "视频 WebM 地址（可选）",
+    "description": "体积更小，浏览器支持时优先使用。"
+  },
+  "home.stage.poster": {
+    "label": "视频封面图",
+    "description": "视频加载前、或访客开启“减少动态效果”时显示。"
+  },
+  "home.stage.mobile_video": {
+    "label": "手机竖版视频 MP4",
+    "description": "留空时手机也使用上面的视频。"
+  },
+  "home.stage.mobile_video_webm": {
+    "label": "手机竖版视频 WebM（可选）"
+  },
+  "home.stage.mobile_poster": {
+    "label": "手机竖版封面图"
+  },
+  "home.episode": {
+    "label": "电影感 · 最新一期",
+    "fixed": true
+  },
+  "home.episode.enabled": {
+    "label": "显示最新一期"
+  },
+  "home.episode.heading": {
+    "label": "大标题（每项一行）",
+    "type": "collapse",
+    "item_template": ""
+  },
+  "home.episode.heading.*": {
+    "label": "一行"
+  },
+  "home.episode.signature": {
+    "label": "手写签名"
+  },
+  "home.episode.intro": {
+    "label": "英文说明（等宽小字）"
+  },
+  "home.episode.intro_zh": {
+    "label": "中文说明"
+  },
+  "home.episode.label": {
+    "label": "封面角标",
+    "description": "例如 EP.01 · 认识 AI。"
+  },
+  "home.episode.post": {
+    "label": "配套文章",
+    "description": "填写 _posts/文件名.md 或文章标题。"
+  },
+  "home.episode.cover_title": {
+    "label": "封面大字",
+    "description": "留空时使用配套文章标题。"
+  },
+  "home.episode.video_title": {
+    "label": "视频标题"
+  },
+  "home.episode.meta": {
+    "label": "视频信息",
+    "description": "例如 Bilibili · BV 号 · 发布日期。"
+  },
+  "home.episode.duration": {
+    "label": "视频时长"
+  },
+  "home.episode.video_url": {
+    "label": "观看地址",
+    "description": "填写 B站等平台的视频地址。"
+  },
+  "home.episode.watch_text": {
+    "label": "观看按钮文字"
+  },
+  "home.episode.read_text": {
+    "label": "读笔记按钮文字"
+  },
+  "home.episode.video": {
+    "label": "视频 MP4 地址",
+    "description": "博客 source/ 下的文件填 /videos/xxx.mp4；外部地址填完整 https:// 链接。"
+  },
+  "home.episode.video_webm": {
+    "label": "视频 WebM 地址（可选）",
+    "description": "体积更小，浏览器支持时优先使用。"
+  },
+  "home.episode.poster": {
+    "label": "视频封面图",
+    "description": "视频加载前、或访客开启“减少动态效果”时显示。"
+  },
+  "home.episode.cards": {
+    "label": "小卡片（最多 3 张）",
+    "type": "collapse",
+    "item_template": {
+      "label": "",
+      "title": "",
+      "url": ""
+    }
+  },
+  "home.episode.cards.*": {
+    "label": "内容",
+    "fixed": true
+  },
+  "home.episode.cards.*.label": {
+    "label": "小标签"
+  },
+  "home.episode.cards.*.title": {
+    "label": "标题"
+  },
+  "home.episode.cards.*.url": {
+    "label": "链接（可选）"
+  },
+  "home.notes": {
+    "label": "电影感 · 文章列表",
+    "fixed": true
+  },
+  "home.notes.enabled": {
+    "label": "显示文章列表"
+  },
+  "home.notes.heading": {
+    "label": "大标题（每项一行）",
+    "type": "collapse",
+    "item_template": ""
+  },
+  "home.notes.heading.*": {
+    "label": "一行"
+  },
+  "home.notes.signature": {
+    "label": "手写签名"
+  },
+  "home.notes.link_text": {
+    "label": "全部文章链接文字"
+  },
+  "home.notes.limit": {
+    "label": "显示文章数量",
+    "min": 1,
+    "max": 12
+  },
+  "home.notes.exclude_categories": {
+    "label": "归入早期档案的分类",
+    "type": "collapse",
+    "item_template": "",
+    "description": "这些分类的文章不在首页列出，合并为一行“早期档案”。"
+  },
+  "home.notes.exclude_categories.*": {
+    "label": "分类名称"
+  },
+  "home.notes.archive_text": {
+    "label": "早期档案文字"
+  },
+  "home.notes.upcoming": {
+    "label": "预告条目",
+    "type": "collapse",
+    "item_template": {
+      "title": "",
+      "label": "规划中"
+    }
+  },
+  "home.notes.upcoming.*": {
+    "label": "内容",
+    "fixed": true
+  },
+  "home.notes.upcoming.*.title": {
+    "label": "标题"
+  },
+  "home.notes.upcoming.*.label": {
+    "label": "状态文字"
+  },
+  "home.profile": {
+    "label": "电影感 · 关于我",
+    "fixed": true
+  },
+  "home.profile.enabled": {
+    "label": "显示关于我"
+  },
+  "home.profile.eyebrow": {
+    "label": "眉题"
+  },
+  "home.profile.heading": {
+    "label": "大标题（每项一行）",
+    "type": "collapse",
+    "item_template": ""
+  },
+  "home.profile.heading.*": {
+    "label": "一行"
+  },
+  "home.profile.signature": {
+    "label": "手写签名"
+  },
+  "home.profile.description": {
+    "label": "介绍",
+    "description": "留空时使用“关于我”的介绍。"
+  },
+  "home.profile.note": {
+    "label": "补充说明"
+  },
+  "home.profile.facts": {
+    "label": "个人信息",
+    "type": "collapse",
+    "item_template": {
+      "label": "",
+      "value": ""
+    }
+  },
+  "home.profile.facts.*": {
+    "label": "内容",
+    "fixed": true
+  },
+  "home.profile.facts.*.label": {
+    "label": "标签"
+  },
+  "home.profile.facts.*.value": {
+    "label": "内容"
+  },
+  "home.profile.stickers": {
+    "label": "贴纸文字（最多 4 个）",
+    "type": "collapse",
+    "item_template": ""
+  },
+  "home.profile.stickers.*": {
+    "label": "贴纸"
+  },
+  "home.profile.link_text": {
+    "label": "按钮文字"
+  },
+  "home.profile.link_url": {
+    "label": "按钮链接",
+    "description": "站内地址填写 /archives/、#videos 等；外部地址填写完整 https:// 链接。"
+  },
+  "home.profile.video": {
+    "label": "视频 MP4 地址",
+    "description": "博客 source/ 下的文件填 /videos/xxx.mp4；外部地址填完整 https:// 链接。"
+  },
+  "home.profile.video_webm": {
+    "label": "视频 WebM 地址（可选）",
+    "description": "体积更小，浏览器支持时优先使用。"
+  },
+  "home.profile.poster": {
+    "label": "视频封面图",
+    "description": "视频加载前、或访客开启“减少动态效果”时显示。"
+  },
+  "home.dispatch": {
+    "label": "电影感 · 订阅与字标",
+    "fixed": true
+  },
+  "home.dispatch.enabled": {
+    "label": "显示订阅区"
+  },
+  "home.dispatch.eyebrow": {
+    "label": "眉题"
+  },
+  "home.dispatch.title": {
+    "label": "标题"
+  },
+  "home.dispatch.description": {
+    "label": "说明"
+  },
+  "home.dispatch.form_action": {
+    "label": "订阅表单地址",
+    "description": "邮件订阅服务提供的 https 表单地址；留空则不显示邮箱输入框。"
+  },
+  "home.dispatch.email_field": {
+    "label": "邮箱字段名",
+    "description": "订阅服务要求的字段名，通常是 email。"
+  },
+  "home.dispatch.placeholder": {
+    "label": "输入框提示文字"
+  },
+  "home.dispatch.button_label": {
+    "label": "提交按钮说明"
+  },
+  "home.dispatch.video": {
+    "label": "视频 MP4 地址",
+    "description": "博客 source/ 下的文件填 /videos/xxx.mp4；外部地址填完整 https:// 链接。"
+  },
+  "home.dispatch.video_webm": {
+    "label": "视频 WebM 地址（可选）",
+    "description": "体积更小，浏览器支持时优先使用。"
+  },
+  "home.dispatch.poster": {
+    "label": "视频封面图",
+    "description": "视频加载前、或访客开启“减少动态效果”时显示。"
+  },
+  "home.dispatch.video_caption": {
+    "label": "视频角标文字"
+  },
+  "home.dispatch.wordmark": {
+    "label": "底部大字标",
+    "description": "留空时使用品牌名称。"
+  },
+  "home.dispatch.signature": {
+    "label": "大字标手写签名"
+  },
+  "home.routes": {
+    "label": "玻璃卡片 · 学习路线",
+    "fixed": true
+  },
+  "home.routes.enabled": {
+    "label": "显示这一块"
+  },
+  "home.routes.eyebrow": {
+    "label": "眉题（英文小字）"
+  },
+  "home.routes.title": {
+    "label": "标题"
+  },
+  "home.routes.description": {
+    "label": "说明"
+  },
+  "home.routes.link_text": {
+    "label": "右上角链接文字"
+  },
+  "home.routes.link_url": {
+    "label": "右上角链接",
+    "description": "站内地址填写 /archives/、#routes 等；外部地址填写完整 https:// 链接。"
+  },
+  "home.routes.items": {
+    "label": "路线（最多 3 条，每条也是首屏的一颗星球）",
+    "type": "collapse",
+    "item_template": {
+      "step": "",
+      "title": "",
+      "description": "",
+      "tag": "",
+      "topic": "",
+      "region": "",
+      "planet": "ocean",
+      "planned": []
+    }
+  },
+  "home.routes.items.*": {
+    "label": "内容",
+    "fixed": true
+  },
+  "home.routes.items.*.step": {
+    "label": "步骤文字",
+    "description": "例如：第一步 · 认识它。"
+  },
+  "home.routes.items.*.title": {
+    "label": "标题"
+  },
+  "home.routes.items.*.description": {
+    "label": "介绍"
+  },
+  "home.routes.items.*.tag": {
+    "label": "角标",
+    "description": "例如：零基础、规划中。"
+  },
+  "home.routes.items.*.topic": {
+    "label": "关联专题 slug",
+    "description": "填写 topics 里专题的 slug，例如 ai；留空表示还在规划。"
+  },
+  "home.routes.items.*.region": {
+    "label": "星球短名",
+    "description": "首屏切换按钮上显示的名字，例如：认识 AI。"
+  },
+  "home.routes.items.*.planet": {
+    "label": "星球样式",
+    "type": "select",
+    "options": [
+      {
+        "value": "ocean",
+        "label": "海洋星球（云层、卫星、数据环）"
+      },
+      {
+        "value": "gas",
+        "label": "气态巨行星（风暴、光环、两颗卫星）"
+      },
+      {
+        "value": "desert",
+        "label": "暖阳星球（草原、秋林、河流，夜面城镇灯光，空间站）"
+      },
+      {
+        "value": "ice",
+        "label": "冰封星球（陨石坑、小行星带）"
+      },
+      {
+        "value": "lava",
+        "label": "熔岩星球（发光裂谷、卫星）"
+      }
+    ]
+  },
+  "home.routes.items.*.planned": {
+    "label": "规划中的选题",
+    "type": "collapse",
+    "item_template": ""
+  },
+  "home.routes.items.*.planned.*": {
+    "label": "选题"
+  },
+  "home.glossary": {
+    "label": "玻璃卡片 · 大白话词典",
+    "fixed": true
+  },
+  "home.glossary.enabled": {
+    "label": "显示这一块"
+  },
+  "home.glossary.eyebrow": {
+    "label": "眉题（英文小字）"
+  },
+  "home.glossary.title": {
+    "label": "标题"
+  },
+  "home.glossary.description": {
+    "label": "说明"
+  },
+  "home.glossary.link_text": {
+    "label": "右上角链接文字"
+  },
+  "home.glossary.link_url": {
+    "label": "右上角链接",
+    "description": "站内地址填写 /archives/、#routes 等；外部地址填写完整 https:// 链接。"
+  },
+  "home.glossary.items": {
+    "label": "词条",
+    "type": "collapse",
+    "item_template": {
+      "term": "",
+      "en": "",
+      "definition": "",
+      "url": ""
+    }
+  },
+  "home.glossary.items.*": {
+    "label": "内容",
+    "fixed": true
+  },
+  "home.glossary.items.*.term": {
+    "label": "词语"
+  },
+  "home.glossary.items.*.en": {
+    "label": "英文名"
+  },
+  "home.glossary.items.*.definition": {
+    "label": "大白话解释"
+  },
+  "home.glossary.items.*.url": {
+    "label": "详细笔记链接（可选）"
+  },
+  "home.videos": {
+    "label": "玻璃卡片 · 视频 × 笔记",
+    "fixed": true
+  },
+  "home.videos.enabled": {
+    "label": "显示这一块"
+  },
+  "home.videos.eyebrow": {
+    "label": "眉题（英文小字）"
+  },
+  "home.videos.title": {
+    "label": "标题"
+  },
+  "home.videos.description": {
+    "label": "说明"
+  },
+  "home.videos.link_text": {
+    "label": "右上角链接文字",
+    "description": "例如：全部视频。"
+  },
+  "home.videos.link_url": {
+    "label": "右上角链接",
+    "description": "例如 B站主页地址。"
+  },
+  "home.videos.post": {
+    "label": "配套文章",
+    "description": "填写 _posts/文件名.md 或文章标题。"
+  },
+  "home.videos.label": {
+    "label": "封面角标"
+  },
+  "home.videos.cover_title": {
+    "label": "封面大字",
+    "description": "留空时使用配套文章标题。"
+  },
+  "home.videos.video_title": {
+    "label": "视频标题"
+  },
+  "home.videos.meta": {
+    "label": "视频信息",
+    "description": "例如 B站 · BV 号 · 发布日期。"
+  },
+  "home.videos.duration": {
+    "label": "视频时长"
+  },
+  "home.videos.video_url": {
+    "label": "观看地址"
+  },
+  "home.videos.watch_text": {
+    "label": "观看按钮文字"
+  },
+  "home.videos.poster": {
+    "label": "封面图",
+    "description": "可以填 B站封面；留空显示抽象光效封面。"
+  },
+  "home.videos.extras": {
+    "label": "这一期的配套（最多 4 项）",
+    "type": "collapse",
+    "item_template": {
+      "title": "",
+      "note": "",
+      "url": "",
+      "icon": "link"
+    }
+  },
+  "home.videos.extras.*": {
+    "label": "内容",
+    "fixed": true
+  },
+  "home.videos.extras.*.title": {
+    "label": "标题"
+  },
+  "home.videos.extras.*.note": {
+    "label": "补充说明"
+  },
+  "home.videos.extras.*.url": {
+    "label": "链接（可选）"
+  },
+  "home.videos.extras.*.icon": {
+    "label": "图标",
+    "type": "select",
+    "options": [
+      {
+        "value": "note",
+        "label": "文档"
+      },
+      {
+        "value": "image",
+        "label": "图片"
+      },
+      {
+        "value": "copy",
+        "label": "复制"
+      },
+      {
+        "value": "link",
+        "label": "链接"
+      },
+      {
+        "value": "next",
+        "label": "下一篇"
+      }
+    ]
+  },
+  "home.videos.more": {
+    "label": "往期小卡片（最多 3 张）",
+    "type": "collapse",
+    "item_template": {
+      "label": "",
+      "title": "",
+      "url": ""
+    }
+  },
+  "home.videos.more.*": {
+    "label": "内容",
+    "fixed": true
+  },
+  "home.videos.more.*.label": {
+    "label": "小标签"
+  },
+  "home.videos.more.*.title": {
+    "label": "标题"
+  },
+  "home.videos.more.*.url": {
+    "label": "链接（可选）"
+  },
+  "home.updates": {
+    "label": "玻璃卡片 · 最近更新",
+    "fixed": true
+  },
+  "home.updates.enabled": {
+    "label": "显示这一块"
+  },
+  "home.updates.eyebrow": {
+    "label": "眉题（英文小字）"
+  },
+  "home.updates.title": {
+    "label": "标题"
+  },
+  "home.updates.link_text": {
+    "label": "全部文章链接文字"
+  },
+  "home.updates.limit": {
+    "label": "显示文章数量",
+    "min": 1,
+    "max": 12
+  },
+  "home.updates.upcoming": {
+    "label": "预告条目（最多 3 条）",
+    "type": "collapse",
+    "item_template": {
+      "title": "",
+      "label": "下一篇"
+    }
+  },
+  "home.updates.upcoming.*": {
+    "label": "内容",
+    "fixed": true
+  },
+  "home.updates.upcoming.*.title": {
+    "label": "标题"
+  },
+  "home.updates.upcoming.*.label": {
+    "label": "状态文字"
+  },
+  "home.connect": {
+    "label": "玻璃卡片 · 关于我与订阅",
+    "fixed": true
+  },
+  "home.connect.enabled": {
+    "label": "显示这一块"
+  },
+  "home.connect.eyebrow": {
+    "label": "眉题（英文小字）"
+  },
+  "home.connect.title": {
+    "label": "标题"
+  },
+  "home.connect.description": {
+    "label": "介绍",
+    "description": "留空时使用“关于我”的介绍。"
+  },
+  "home.connect.note": {
+    "label": "补充说明"
+  },
+  "home.connect.link_text": {
+    "label": "链接文字"
+  },
+  "home.connect.link_url": {
+    "label": "链接地址",
+    "description": "站内地址填写 /archives/、#routes 等；外部地址填写完整 https:// 链接。"
+  },
+  "home.connect.show_project": {
+    "label": "显示第一个作品"
+  },
+  "home.connect.video": {
+    "label": "IP 视频 MP4 地址"
+  },
+  "home.connect.video_webm": {
+    "label": "IP 视频 WebM 地址（可选）"
+  },
+  "home.connect.poster": {
+    "label": "IP 视频封面图"
+  },
+  "home.connect.subscribe_eyebrow": {
+    "label": "订阅区眉题"
+  },
+  "home.connect.subscribe_title": {
+    "label": "订阅区标题"
+  },
+  "home.connect.subscribe_description": {
+    "label": "订阅区说明"
+  },
+  "home.connect.form_action": {
+    "label": "订阅表单地址",
+    "description": "邮件订阅服务提供的 https 表单地址；留空则不显示邮箱输入框。"
+  },
+  "home.connect.email_field": {
+    "label": "邮箱字段名"
+  },
+  "home.connect.placeholder": {
+    "label": "输入框提示文字"
+  },
+  "home.connect.button_label": {
+    "label": "提交按钮说明"
+  },
+  "features": {
+    "label": "全站功能",
+    "fixed": true
+  },
+  "features.search": {
+    "label": "全文搜索"
+  },
+  "features.code_copy": {
+    "label": "代码复制按钮"
+  },
+  "features.image_zoom": {
+    "label": "图片点击放大"
+  },
+  "list_backdrop": {
+    "label": "文章列表背景",
+    "fixed": true
+  },
+  "list_backdrop.enabled": {
+    "label": "开启视频背景"
+  },
+  "list_backdrop.video": {
+    "label": "背景视频地址（mp4）"
+  },
+  "list_backdrop.poster": {
+    "label": "首帧图"
+  },
+  "list_backdrop.hue": {
+    "label": "整体偏色角度（-180–180）"
+  },
+  "topic_hero": {
+    "label": "专题页星球开场",
+    "fixed": true
+  },
+  "topic_hero.enabled": {
+    "label": "开启（专题数至少 2 个）"
+  },
+  "featured": {
+    "label": "精选文章",
+    "type": "collapse",
+    "item_template": {
+      "title": "Docker快速入门",
+      "label": "BUILD & EXPLORE",
+      "description": "从一个容器开始，把环境、镜像与常用命令串起来。",
+      "artwork": "containers"
+    }
+  },
+  "featured.*": {
+    "label": "内容",
+    "fixed": true
+  },
+  "featured.*.title": {
+    "label": "标题"
+  },
+  "featured.*.label": {
+    "label": "标签文字"
+  },
+  "featured.*.description": {
+    "label": "介绍文案"
+  },
+  "featured.*.artwork": {
+    "label": "插画样式",
+    "type": "select",
+    "options": [
+      {
+        "value": "containers",
+        "label": "容器与积木"
+      },
+      {
+        "value": "database",
+        "label": "数据库"
+      },
+      {
+        "value": "intelligence",
+        "label": "灵感与智能"
+      }
+    ]
+  },
+  "topics": {
+    "label": "专题书架",
+    "type": "collapse",
+    "item_template": {
+      "slug": "new-topic",
+      "title": "新专题",
+      "label": "NEW SHELF",
+      "description": "一句话说清这组笔记解决什么问题。",
+      "note": "适合谁读。",
+      "artwork": "intelligence",
+      "planet": "",
+      "categories": [],
+      "sources": []
+    }
+  },
+  "topics.*": {
+    "label": "内容",
+    "fixed": true
+  },
+  "topics.*.slug": {
+    "label": "页面短名称",
+    "description": "只用小写字母、数字和连字符，会成为专题网址 /topics/<slug>/。"
+  },
+  "topics.*.title": {
+    "label": "标题"
+  },
+  "topics.*.label": {
+    "label": "标签文字"
+  },
+  "topics.*.description": {
+    "label": "介绍文案"
+  },
+  "topics.*.note": {
+    "label": "补充说明"
+  },
+  "topics.*.artwork": {
+    "label": "插画样式",
+    "type": "select",
+    "options": [
+      {
+        "value": "containers",
+        "label": "容器与积木"
+      },
+      {
+        "value": "database",
+        "label": "数据库"
+      },
+      {
+        "value": "intelligence",
+        "label": "灵感与智能"
+      }
+    ]
+  },
+  "topics.*.planet": {
+    "label": "专题页星球",
+    "type": "select",
+    "description": "留空时按插画样式自动选，并避开别的专题已用的类型。",
+    "options": [
+      {
+        "value": "",
+        "label": "自动"
+      },
+      {
+        "value": "ocean",
+        "label": "海洋星球"
+      },
+      {
+        "value": "gas",
+        "label": "带环的气态巨行星"
+      },
+      {
+        "value": "desert",
+        "label": "沙漠星球"
+      },
+      {
+        "value": "ice",
+        "label": "冰封星球"
+      },
+      {
+        "value": "lava",
+        "label": "熔岩星球"
+      }
+    ]
+  },
+  "topics.*.categories": {
+    "label": "关联文章分类",
+    "type": "collapse",
+    "item_template": ""
+  },
+  "topics.*.categories.*": {
+    "label": "内容"
+  },
+  "topics.*.sources": {
+    "label": "文章阅读顺序",
+    "type": "collapse",
+    "item_template": "",
+    "description": "填写 source/ 下的相对路径，例如 _posts/Docker快速入门.md。顺序就是阅读顺序。"
+  },
+  "topics.*.sources.*": {
+    "label": "内容"
+  },
+  "projects": {
+    "label": "个人作品",
+    "type": "collapse",
+    "item_template": {
+      "slug": "hexo-pro",
+      "title": "Hexo Pro",
+      "label": "A TOOL I AM BUILDING",
+      "tagline": "把写博客这件事，变得顺手一点。",
+      "description": "从管理自己的 Hexo 博客开始，把编辑、预览、桌面管理和手机写作放进同一个工具里。这个站点，也是它的使用现场。",
+      "status": "持续打磨中",
+      "image": "/images/hexo-pro-editor.png",
+      "image_alt": "Hexo Pro 的文章管理与编辑界面",
+      "stack": [
+        "Hexo",
+        "React",
+        "Electron",
+        "Capacitor"
+      ],
+      "source_url": "https://github.com/wuzheng228/hexo-pro-client",
+      "features": [
+        {
+          "title": "写作与预览",
+          "description": "块编辑、Markdown 源码与当前主题预览，缩短从想法到文章的距离。"
+        },
+        {
+          "title": "桌面与手机",
+          "description": "在电脑上整理博客，也能用 iPhone App 继续记录，不必一直守着电脑。"
+        },
+        {
+          "title": "同步与发布",
+          "description": "通过 GitHub 同步源文件，再由 GitHub Actions 将博客部署到 EdgeOne。"
+        }
+      ]
+    }
+  },
+  "projects.*": {
+    "label": "内容",
+    "fixed": true
+  },
+  "projects.*.slug": {
+    "label": "页面短名称"
+  },
+  "projects.*.title": {
+    "label": "标题"
+  },
+  "projects.*.label": {
+    "label": "标签文字"
+  },
+  "projects.*.tagline": {
+    "label": "一句话介绍"
+  },
+  "projects.*.description": {
+    "label": "介绍文案"
+  },
+  "projects.*.status": {
+    "label": "当前状态"
+  },
+  "projects.*.image": {
+    "label": "作品截图"
+  },
+  "projects.*.image_alt": {
+    "label": "截图说明"
+  },
+  "projects.*.stack": {
+    "label": "技术标签",
+    "type": "collapse",
+    "item_template": "Hexo"
+  },
+  "projects.*.stack.*": {
+    "label": "内容"
+  },
+  "projects.*.source_url": {
+    "label": "源代码地址"
+  },
+  "projects.*.features": {
+    "label": "功能介绍",
+    "type": "collapse",
+    "item_template": {
+      "title": "写作与预览",
+      "description": "块编辑、Markdown 源码与当前主题预览，缩短从想法到文章的距离。"
+    }
+  },
+  "projects.*.features.*": {
+    "label": "内容",
+    "fixed": true
+  },
+  "projects.*.features.*.title": {
+    "label": "标题"
+  },
+  "projects.*.features.*.description": {
+    "label": "介绍文案"
+  },
+  "about": {
+    "label": "关于我",
+    "fixed": true
+  },
+  "about.title": {
+    "label": "标题"
+  },
+  "about.eyebrow": {
+    "label": "眉题"
+  },
+  "about.status": {
+    "label": "当前状态"
+  },
+  "about.show_projects": {
+    "label": "显示作品"
+  },
+  "about.heading": {
+    "label": "介绍标题"
+  },
+  "about.description": {
+    "label": "介绍文案"
+  },
+  "about.note": {
+    "label": "补充说明"
+  },
+  "about.focus": {
+    "label": "正在做的事"
+  },
+  "about.interests": {
+    "label": "兴趣标签",
+    "type": "collapse",
+    "item_template": "技术探索"
+  },
+  "about.interests.*": {
+    "label": "内容"
+  },
+  "about.hero": {
+    "label": "首屏视频"
+  },
+  "about.hero.enabled": {
+    "label": "开启首屏（关闭则显示储物柜）"
+  },
+  "about.hero.heading": {
+    "label": "大标题（*单词* 为斜体）"
+  },
+  "about.hero.subtitle": {
+    "label": "副标题（留空用 about.description）"
+  },
+  "about.hero.video": {
+    "label": "背景视频地址（mp4）"
+  },
+  "about.hero.poster": {
+    "label": "视频封面图"
+  },
+  "about.hero.shift": {
+    "label": "视频下移百分比（0–40）"
+  },
+  "about.hero.button_text": {
+    "label": "下方按钮文字"
+  },
+  "about.hero.cta_text": {
+    "label": "玻璃条文字（没有订阅服务时）"
+  },
+  "about.hero.cta_url": {
+    "label": "玻璃条链接（留空用第一个社交链接）"
+  },
+  "social": {
+    "label": "社交链接",
+    "fixed": true
+  },
+  "social.github": {
+    "label": "GitHub 地址"
+  },
+  "social.bilibili": {
+    "label": "B站主页"
+  },
+  "social.xiaohongshu": {
+    "label": "小红书主页"
+  },
+  "social.douyin": {
+    "label": "抖音主页"
+  },
+  "social.wechat": {
+    "label": "公众号",
+    "description": "可填写文章链接或二维码图片地址。"
+  },
+  "social.rss": {
+    "label": "RSS 地址"
+  },
+  "social.email": {
+    "label": "邮箱",
+    "description": "直接填写邮箱地址即可。"
+  },
+  "life": {
+    "label": "生活切片",
+    "fixed": true
+  },
+  "life.title": {
+    "label": "标题"
+  },
+  "life.description": {
+    "label": "介绍文案"
+  },
+  "life.categories": {
+    "label": "关联文章分类",
+    "type": "collapse",
+    "item_template": "生活"
+  },
+  "life.categories.*": {
+    "label": "内容"
+  },
+  "life.photos": {
+    "label": "相册照片",
+    "type": "collapse",
+    "item_template": {
+      "src": "",
+      "alt": "",
+      "caption": ""
+    }
+  },
+  "article": {
+    "label": "文章阅读",
+    "fixed": true
+  },
+  "article.style": {
+    "label": "阅读风格",
+    "type": "select",
+    "options": [
+      {
+        "value": "paper",
+        "label": "纸张（跟随深浅色模式）"
+      },
+      {
+        "value": "voyage",
+        "label": "星舰（深空星辰背景，宁静科幻；站内页同一片星空）"
+      }
+    ]
+  },
+  "article.toc": {
+    "label": "桌面阅读目录"
+  },
+  "article.mobile_toc": {
+    "label": "手机阅读目录"
+  },
+  "article.progress": {
+    "label": "阅读进度条"
+  },
+  "article.reading_time": {
+    "label": "预计阅读时间"
+  },
+  "article.info": {
+    "label": "文章来源信息"
+  },
+  "article.share": {
+    "label": "分享按钮"
+  },
+  "article.tags": {
+    "label": "文章标签"
+  },
+  "article.series": {
+    "label": "专题连续阅读"
+  },
+  "article.notice": {
+    "label": "引用与版权提示"
+  },
+  "article.updated_dates": {
+    "label": "文章更新日期",
+    "fixed": false,
+    "description": "键为 _posts/文件名.md，值为 YYYY-MM-DD 日期。只影响更新日期展示，不修改文章。"
+  },
+  "footer": {
+    "label": "页脚",
+    "fixed": true
+  },
+  "footer.enabled": {
+    "label": "显示此模块"
+  },
+  "footer.title": {
+    "label": "标题"
+  },
+  "footer.description": {
+    "label": "介绍文案"
+  },
+  "footer.motto": {
+    "label": "页脚短句"
+  },
+  "footer.start_year": {
+    "label": "版权起始年份（留空为当年）"
+  },
+  "footer.show_credit": {
+    "label": "显示 Hexo 链接"
+  },
+  "footer.links": {
+    "label": "自定义链接",
+    "type": "collapse",
+    "item_template": {
+      "title": "",
+      "url": "",
+      "new_tab": false
+    }
+  },
+  "footer.links.*": {
+    "label": "内容",
+    "fixed": true
+  },
+  "footer.links.*.title": {
+    "label": "标题"
+  },
+  "footer.links.*.url": {
+    "label": "链接地址"
+  },
+  "footer.links.*.new_tab": {
+    "label": "在新窗口打开"
+  },
+  "life.photos.*": {
+    "label": "内容",
+    "fixed": true
+  },
+  "life.photos.*.src": {
+    "label": "图片地址"
+  },
+  "life.photos.*.alt": {
+    "label": "图片说明"
+  },
+  "life.photos.*.caption": {
+    "label": "照片说明"
+  }
+}

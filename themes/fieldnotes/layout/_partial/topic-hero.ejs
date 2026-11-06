@@ -1,0 +1,20 @@
+<% const worlds = fn_topic_worlds(topics); const shown = topics.slice(0, 3); const first = shown[0];
+   const data = shown.map((topic, index) => ({title: topic.title, description: topic.description, path: url_for(topic.path), count: topic.posts.length, minutes: topic.posts.reduce((total, post) => total + fn_minutes(post), 0), planet: worlds[index]})); %>
+<section class="topic-hero" data-topic-hero aria-labelledby="topic-hero-title">
+  <h1 class="sr-only">专题书架</h1>
+  <canvas class="topic-hero-sky" data-topic-sky aria-hidden="true"></canvas>
+  <div class="topic-hero-copy" aria-live="polite">
+    <p class="topic-hero-eyebrow topic-hero-swap" data-topic-index>专题 01 / <%= String(shown.length).padStart(2, '0') %></p>
+    <h2 class="topic-hero-title" id="topic-hero-title"><span class="topic-hero-mask"><span class="topic-hero-swap" data-topic-title><%= first.title %></span></span></h2>
+    <span class="topic-hero-rule" aria-hidden="true"></span>
+    <p class="topic-hero-lede topic-hero-swap" data-topic-lede><%= first.description %></p>
+    <p class="topic-hero-meta topic-hero-swap" data-topic-meta>共 <%= first.posts.length %> 篇 · 约 <%= data[0].minutes %> 分钟</p>
+    <div class="topic-hero-cta"><a class="topic-hero-go" href="<%= url_for(first.path) %>" data-topic-link>翻开这份手记</a></div>
+  </div>
+  <button class="topic-planet" type="button" data-slot="left" hidden></button>
+  <button class="topic-planet" type="button" data-slot="right" hidden></button>
+  <span class="topic-hero-label topic-hero-swap" data-label="left" aria-hidden="true"></span>
+  <span class="topic-hero-label topic-hero-swap" data-label="right" aria-hidden="true"></span>
+  <a class="topic-hero-scroll" href="#topic-shelf" aria-label="看全部专题"><svg viewBox="0 0 26 33" fill="none" aria-hidden="true"><path d="M13 1.5V31.5M1.9 20.4 13 31.5 24.1 20.4" stroke="currentColor" stroke-width="3"/></svg></a>
+  <script type="application/json" data-topic-data><%- JSON.stringify(data).replace(/</g, '\\u003c') %></script>
+</section>
